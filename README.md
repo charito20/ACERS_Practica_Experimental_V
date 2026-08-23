@@ -25,6 +25,11 @@ https://github.com/Roselyn15/Proyecto-IR---AgroMoreira---Sistema-de-Gestion-Agri
     éxito y plan de monitoreo de los dos componentes de IA.
   - `informe/sec5_validacion.tex`, `informe/sec8_metricas.tex` y
     `informe/anexo_b_respuestas.tex` — secciones para integrar al informe final.
+  - `analisis_estadistico/` — auditoría estadística de las métricas M1 a M4
+    (responsable: jean200525, componente empírico y análisis estadístico):
+    script reproducible de conteo, inventarios de los 42 requisitos, matriz de
+    116 pares para consistencia, cadena de trazabilidad por requisito,
+    aritmética visible de cada métrica y tabla consolidada.
 
 ## Resultados de la auditoría
 
@@ -32,3 +37,18 @@ https://github.com/Roselyn15/Proyecto-IR---AgroMoreira---Sistema-de-Gestion-Agri
 |---|---|---|---|
 | M5 Modificabilidad | 3,50 | 3,00 | <= 3,0 |
 | M6 Corrección | 0,119 | 0,024 | <= 0,05 |
+
+Resultados de la auditoría estadística (M1–M4), medida sobre
+`01_ERS/ERS_SRS_2A_v1.0.tex`:
+
+| Métrica | Valor obtenido | Referencia | Cumple |
+|---|---|---|---|
+| M1a Completitud de atributos | 42/42 = 100 % | >= 95 % | Sí |
+| M1b CU especificados | pendiente de verificación cruzada | = 100 % | N/D con causa y acción |
+| M1c Actores operativos con >= 1 RF | 2/2 = 100 % | = 100 % | Sí |
+| M2 Consistencia | 1 − 0/116 = 1,00 | >= 0,98 | Sí |
+| M3 Verificabilidad | 42/42 = 100 % | >= 90 % | Sí |
+| M4ade Trazabilidad adelante (Debe tener) | 16/16 = 100 % | >= 90 % | Sí |
+| M4atr Trazabilidad atrás | 42/42 = 100 % | = 100 % | Sí |
+
+El detalle completo está en `09_Cierre_PE5/analisis_estadistico/`.
