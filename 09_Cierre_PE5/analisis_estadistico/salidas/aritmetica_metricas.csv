@@ -1,0 +1,11 @@
+Metrica,Formula,Numerador,Denominador,Resultado,Referencia,Cumple
+M1a,atributos completos / total requisitos x 100,42,42,100%,M1a >= 95%,Si
+M1b,CU especificados / CU identificados x 100,No medible desde este repositorio,No medible desde este repositorio,Pendiente de verificacion cruzada,M1b = 100%,N/D con causa y accion
+M1c,actores con >= 1 RF (operativos) / actores operativos x 100,2,2,100%,M1c = 100%,Si
+M1c (lectura alternativa),actores con >= 1 RF (todos) / actores totales x 100,2,4,50%,Justificada: PI-03 y PI-04 no tienen necesidades operativas evidenciadas en el modelo i*,Decision documentada
+M3,requisitos verificables / total x 100,42,42,100%,M3 >= 90% (100% en RF criticos),Si
+M2,1 - conflictos / pares analizados,0,116,"1,00",M2 >= 0,98 con cero conflictos abiertos,Si
+M4ade,RF con cadena completa dentro del alcance Debe-tener / RF Debe-tener x 100,16,16,100%,M4ade >= 90%,Si
+M4atr,RF con fuente identificada / total requisitos x 100,42,42,100%,M4atr = 100%,Si
+M5 (referencia),requisitos afectados promedio al modificar uno,3.00,,,<= 3.0,Si (medida por auditoria previa)
+M6 (referencia),defectos post-inspeccion / total requisitos,0.024,,,<= 0.05,Si (medida por auditoria previa)
