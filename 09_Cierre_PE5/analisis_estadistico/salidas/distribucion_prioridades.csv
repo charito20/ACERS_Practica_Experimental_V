@@ -1,0 +1,7 @@
+﻿"Categoria","Valor","Cantidad"
+"RF","Debe tener","16"
+"RF","Debería tener","8"
+"RF","Podría tener","2"
+"RF","Podría tener (necesidad secundaria frente a las prioridades explícitas del administrador)","1"
+"RNF","Alta","10"
+"RNF","Media","5"
