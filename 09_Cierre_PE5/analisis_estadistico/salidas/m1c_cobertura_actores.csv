@@ -1,0 +1,5 @@
+﻿"Actor","Tipo","RFsAsociados","TieneRF","Justificacion"
+"Administrador de la finca","Operativo (PI-01)","25","True","Actor principal en las fichas Actor/origen; entrevista EV-01"
+"Trabajador agrícola (Jornalero)","Operativo (PI-02)","5","True","Actor en fichas de registro de labores y cosechas; entrevista EV-02"
+"Equipo de desarrollo","Organizacional (PI-03)","0","False","Sin dependencias operativas en el modelo i*; no consume funcionalidades del sistema"
+"Docente de la asignatura","Organizacional (PI-04)","0","False","Supervisión académica mediante entregables; sin interacción operativa con el SGA"
