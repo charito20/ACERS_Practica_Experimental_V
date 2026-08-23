@@ -1,0 +1,27 @@
+Enlace;Requisito A;Requisito B;Sentido de la dependencia;Referencia en el ERS (linea)
+E01;RF-01;RF-14;Los permisos por rol que gestiona RF-14 condicionan el acceso que especifica RF-01;lineas 230 y 644-654
+E02;RF-01;RNF-10;El bloqueo por intentos fallidos se aplica sobre el flujo de inicio de sesion de RF-01;lineas 1395-1403
+E03;RF-02;RF-03;La salida de RF-02 declara disponibilidad para asociar cultivos (RF-03);linea 266
+E04;RF-03;RF-05;Precondicion de RF-05: existir un cultivo registrado;linea 368
+E05;RF-03;RF-16;Entrada de RF-16: seleccion de cultivo afectado;linea 712
+E06;RF-03;RF-21;Entrada de RF-21: cultivo asociado al calendario de compras;linea 846
+E07;RF-04;RF-10;Salida de RF-04: disponible para consulta del administrador (RF-10);linea 330
+E08;RF-04;RF-24;El historial de RF-24 lista labores registradas por RF-04;lineas 330 y 924-930
+E09;RF-05;RF-07;Las consultas por periodo de RF-07 procesan registros de cosecha de RF-05;lineas 420-432
+E10;RF-05;RF-11;Los reportes de produccion de RF-11 requieren registros almacenados de RF-05;lineas 548-560
+E11;RF-05;RF-12;La productividad por parcela de RF-12 analiza la produccion registrada en RF-05;lineas 580-592
+E12;RF-05;RF-17;RF-17 anade peso y comprobante al registro de cosecha de RF-05;linea 748
+E13;RF-05;RF-18;La comparacion entre periodos de RF-18 opera sobre la produccion registrada en RF-05;linea 768
+E14;RF-05;RF-24;El historial de RF-24 lista cosechas registradas por RF-05;lineas 924-930
+E15;RF-05;RF-27;La consulta agregada de RF-27 agrupa la produccion registrada en RF-05;linea 1002
+E16;RF-06;RF-21;Entrada de RF-21: insumo seleccionado del inventario;linea 850
+E17;RF-06;RF-22;La entrega de RF-22 descuenta la cantidad del inventario de RF-06;lineas 394 y 872-882
+E18;RF-06;RF-25;Los insumos con disponibilidad critica de RF-06 disparan alertas de RF-25;lineas 950-954
+E19;RF-08;RF-09;Salida de RF-08: actividad planificada disponible para asignacion (RF-09);linea 458
+E20;RF-09;RF-10;RF-10 consulta el estado de tareas previamente asignadas por RF-09;linea 520
+E21;RF-15;RF-26;Ambos especifican salidas del mismo modulo de IA (alerta temprana y recomendacion);lineas 682-686 y 976-986
+E22;RF-15;RNF-15;La explicabilidad cubre cada recomendacion generada (D-02);lineas 1601-1623
+E23;RF-16;RF-19;El reporte de perdidas de RF-19 consume los registros de enfermedad de RF-16;lineas 794-804
+E24;RF-16;RF-20;El nombre de la enfermedad de RF-16 se selecciona desde el catalogo de RF-20;lineas 712 y 826-830
+E25;RF-16;RF-25;El registro con gravedad alta de RF-16 genera la alerta de RF-25;lineas 714 y 958-960
+E26;RF-26;RNF-15;La explicabilidad cubre cada alerta temprana generada (D-01);lineas 1538 y 1615

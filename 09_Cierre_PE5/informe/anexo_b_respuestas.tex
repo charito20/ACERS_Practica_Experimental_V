@@ -1,0 +1,26 @@
+% ============================================================
+% ANEXO B - Respuestas preparadas (Maria Escudero - PE5)
+% Bloques asignados: Validacion (10-12) y Metricas (19-20)
+% Fragmento para \input en el informe final
+% ============================================================
+\subsection*{Validación}
+
+\noindent\textbf{10. ¿Cuántos defectos halló la inspección y cuáles siguen abiertos?}\\
+Entre el ciclo de revisión de la Entrega 2 y la re-inspección interna registramos nueve observaciones corregidas entre entregas (LB-01 a LB-09, en \texttt{registro\_defectos\_lineabase\_1B\_2A.csv}) y cinco hallazgos únicos en la re-inspección de esta práctica (DR-01 a DR-05, en \texttt{registro\_reinspeccion\_PE5.csv}). De estos últimos siguen abiertos uno: DR-01, crítico de trazabilidad, porque la matriz aún no tiene filas para RF-17 a RF-27; quedó con responsable y plazo dentro del Paso 2. Los otros cuatro quedaron cerrados: tres corregidos sobre el texto (RF-25, RNF-05, RNF-15) y uno justificado documentalmente (TR-19, requisito Could Have).
+
+\medskip
+\noindent\textbf{11. ¿Qué defecto crítico se les escapó y cómo lo detectaron después?}\\
+El más grave que se nos pasó fue DR-01: añadimos once requisitos funcionales en la Entrega 3 con sus fichas completas, pero nadie verificó que la matriz de trazabilidad creciera junto con el catálogo; la matriz quedó corta en la fila TR-22. Lo detectamos en la PE5 al recorrer la matriz fila a fila contra la plantilla de diez columnas exigida, comparando los identificadores presentes contra el catálogo completo de 42 requisitos: esa comparación directa es la que hizo visible el faltante. La lección que dejamos registrada es que cada alta de requisito debe arrastrar su fila de matriz en el mismo commit, no en una pasada posterior.
+
+\medskip
+\noindent\textbf{12. ¿Cómo saben que las correcciones no introdujeron nuevos defectos?}\\
+Porque la re-inspección incluyó una pasada completa posterior sobre lo corregido. Primero, las cuatro correcciones de texto son acotadas y verificables por diff: el criterio reescrito de RF-25, la referencia actualizada de RNF-05 y la enumeración de métricas de RNF-15 están en commits revisables del repositorio. Segundo, recalculamos las dos métricas afectadas sobre la versión corregida (M5 bajó de 3,50 a 3,00 y M6 de 0,119 a 0,024) usando los conteos publicados antes de calcular en \texttt{conteos\_base\_auditoria.csv}, así que cualquier regresión habría aparecido como inconsistencia entre conteo y texto al re-auditar.
+
+\subsection*{Métricas}
+
+\noindent\textbf{19. ¿Qué métrica salió peor y qué hicieron al respecto?}\\
+La primera medición dejó dos métricas fuera de referencia. M6 (corrección) dio 0,119 defectos residuales por requisito contra un máximo de 0,05: aplicamos las correcciones DR-02 a DR-04, justificamos DR-05 y quedó 0,024 con un único residual gestionado. M5 (modificabilidad) dio 3,50 requisitos afectados por cambio contra un máximo de 3,0: reespecificamos RF-12, RF-18 y RF-27 como vistas derivadas de la consulta por período RF-07 para quitarles dependencia directa de RF-05, y la re-medición sobre la misma muestra dio 3,00. Ambas con aritmética completa en la Sección 8 del informe. La única que sigue sin cumplir es M4 (trazabilidad), cuya solución es estructural y está asignada al Paso 2.
+
+\medskip
+\noindent\textbf{20. Enséñenme los conteos con los que calcularon la verificabilidad.}\\
+Están publicados en \texttt{09\_Cierre\_PE5/conteos\_base\_auditoria.csv} y coinciden con el Anexo A del informe: 42 requisitos en total (27 funcionales RF-01 a RF-27 y 15 no funcionales RNF-01 a RNF-15), de los cuales los 42 tienen criterio de verificación con métrica, unidad, valor objetivo y método de medición tras la corrección LB-01, lo que da $42/42 = 100\%$ contra una referencia de $\geq 90\%$. De esos 42, los dieciséis requisitos de prioridad Debe tener tienen además criterios de aceptación en formato Gherkin en la Sección 3.4 del ERS.

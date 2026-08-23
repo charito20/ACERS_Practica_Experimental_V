@@ -1,0 +1,103 @@
+% ============================================================
+% SECCION 8 - METRICAS DE CALIDAD (Maria Escudero - PE5)
+% Fragmento para \input en el informe final
+% ============================================================
+\section{Métricas de calidad}
+\label{sec:metricas-calidad}
+
+\subsection{Instrumento y conteos base}
+\label{sec:conteos-base}
+
+La auditoría aplica las seis métricas derivadas de ISO/IEC 25010:2023 definidas en la guía, cada una como fracción sobre un total contable. Todos los conteos se publicaron antes de calcular y están disponibles en \texttt{09\_Cierre\_PE5/conteos\_base\_auditoria.csv}; los principales son: 27 requisitos funcionales, 15 requisitos no funcionales, 42 requisitos en total, 16 casos de uso identificados y especificados, 2 actores operativos del sistema, 16 historias de usuario en el ERS, 42 filas de datos en la matriz vigente y 861 pares de requisitos analizados ($n(n-1)/2$ con $n=42$).
+
+\subsection{Tabla de auditoría}
+\label{sec:tabla-auditoria}
+
+\begin{center}
+\begin{longtable}{|p{2.4cm}|p{3.0cm}|p{2.2cm}|p{1.9cm}|p{1.2cm}|p{2.8cm}|}
+\hline
+\textbf{Métrica} & \textbf{Valor obtenido} & \textbf{Referencia} & \textbf{Norma} & \textbf{Cumple} & \textbf{Acción de mejora} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Métrica} & \textbf{Valor obtenido} & \textbf{Referencia} & \textbf{Norma} & \textbf{Cumple} & \textbf{Acción de mejora} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+M1 Completitud & M1a = 100~\% (42/42); M1b = 100~\% (16/16); M1c = 100~\% (2/2) & $\geq$95~\%; $=$100~\%; $=$100~\% & ISO 25010; 29148 & Sí & Sin acción \\
+\hline
+M2 Consistencia & $1 - 1/861 = 0{,}9988$ & $\geq$0,98 y cero abiertos & ISO 25010 & Sí & El único conflicto detectado (DR-02) quedó cerrado \\
+\hline
+M3 Verificabilidad & 100~\% (42/42 con umbral, unidad y método) & $\geq$90~\% & ISO 29148 & Sí & Sin acción \\
+\hline
+M4 Trazabilidad & 28/42 requisitos con fila vigente (66,7~\%) & $\geq$90~\%; $=$100~\% & ISO 29148 & No (en cierre) & Filas de RF-17 a RF-27 con las diez columnas --- Paso 2 \\
+\hline
+M5 Modificabilidad & 3,50 antes; 3,00 después & $\leq$3,0 & ISO 25010 & Sí tras corrección & Reespecificación de vistas (Subsección~\ref{sec:m5-modificabilidad}) \\
+\hline
+M6 Corrección & 0,119 antes; 0,024 después & $\leq$0,05 & ISO 25010 & Sí tras corrección & Correcciones DR-02 a DR-04 (Sección~\ref{sec:correcciones-reinspeccion}) \\
+\hline
+\end{longtable}
+\label{tab:auditoria-metricas}
+\end{center}
+
+\noindent Los valores de M1 a M4 se consolidan sobre los conteos del Paso 1; la aritmética desarrollada de M5 y M6 está en las Subsecciones~\ref{sec:m5-modificabilidad} y~\ref{sec:m6-correccion}. Para M1c se cuentan como actores los dos actores operativos del sistema (Administrador y Trabajador agrícola), ambos con al menos un RF asociado; las otras dos partes interesadas del mapa (Equipo de desarrollo y Docente) no interactúan con el sistema.
+
+\subsection{M5 --- Modificabilidad}
+\label{sec:m5-modificabilidad}
+
+Regla operativa declarada: un requisito se cuenta como afectado al modificar otro cuando su ficha lo referencia explícitamente en entradas, salidas, precondiciones o criterio de verificación. La tabla completa de dependencias, con la línea del documento que respalda cada enlace, está en \texttt{09\_Cierre\_PE5/calculo\_M5\_modificabilidad.csv}. La muestra de seis requisitos cubre los módulos de acceso, tareas, cosechas, inventario, registro fitosanitario e IA:
+
+\begin{center}
+\begin{longtable}{|p{2.0cm}|p{9.0cm}|p{1.7cm}|}
+\hline
+\textbf{Modificado} & \textbf{Requisitos afectados} & \textbf{Cantidad} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Modificado} & \textbf{Requisitos afectados} & \textbf{Cantidad} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+RF-01 & RF-14 (permisos por rol); RNF-10 (bloqueo sobre inicio de sesión) & 2 \\
+\hline
+RF-04 & RF-10 (consulta de actividades); RF-24 (historial incluye labores) & 2 \\
+\hline
+RF-05 & RF-03, RF-07, RF-11, RF-12, RF-17, RF-18, RF-24, RF-27 & 8 \\
+\hline
+RF-06 & RF-21 (insumo del calendario); RF-22 (descuento de inventario); RF-25 (alerta por disponibilidad crítica) & 3 \\
+\hline
+RF-16 & RF-03, RF-19, RF-20, RF-25 & 4 \\
+\hline
+RF-26 & RF-15 (mismo módulo de IA); RNF-15 (explicabilidad de la alerta temprana) & 2 \\
+\hline
+\end{longtable}
+\label{tab:m5-muestra}
+\end{center}
+
+\noindent Aritmética de la medición inicial:
+\[ M5 = \frac{2+2+8+3+4+2}{6} = \frac{21}{6} = 3{,}50 \]
+El valor excede la referencia ($\leq$ 3,0). El recorrido muestra que el acoplamiento se concentra en RF-05, punto único de captura de producción consumido directamente por cuatro consultas y reportes.
+
+Acción de mejora aplicada: RF-12, RF-18 y RF-27 se reespecifican como vistas derivadas de la consulta de producción por período (RF-07), de modo que consumen su resultado en lugar de los registros crudos de RF-05. Desaparecen tres enlaces directos hacia RF-05 y la re-medición sobre la misma muestra da:
+\[ M5' = \frac{2+2+5+3+4+2}{6} = \frac{18}{6} = 3{,}00 \]
+El valor cumple la referencia. Queda registrada como recomendación no aplicada la fusión eventual de RF-17 dentro de RF-05 como atributos opcionales del registro de cosecha, que reduciría el acoplamiento medio a $17/6 \approx 2{,}83$.
+
+\subsection{M6 --- Corrección}
+\label{sec:m6-correccion}
+
+El numerador corresponde a los defectos residuales hallados en la re-inspección de la PE5 sobre el ERS ya corregido entre entregas (Sección~\ref{sec:validacion}); el denominador es el total de requisitos. Medición inicial, sobre los cinco hallazgos del registro:
+\[ M6_{antes} = \frac{5}{42} = 0{,}119 \]
+El valor excede la referencia ($\leq$ 0,05). Tras aplicar las correcciones DR-02 a DR-04, cerrar documentalmente DR-05 y quedar DR-01 como acción asignada con responsable y plazo dentro del Paso 2, la re-medición sobre defectos abiertos da:
+\[ M6_{despues} = \frac{1}{42} = 0{,}024 \]
+El valor cumple la referencia. El único residual abierto es de trazabilidad de la matriz y su cierre está comprometido en esta misma práctica.
+
+\subsection{Comparación global}
+\label{sec:comparacion-global}
+
+De las seis métricas, cuatro cumplieron su referencia en la primera medición y dos requirieron corrección documental aplicada durante la práctica (M5 y M6), ambas re-medidas con aritmética visible y par antes/después registrado. La métrica aún no cumplida al cierre es M4, cuya solución es estructural (ampliación de la matriz en el Paso 2) y está asignada; la auditoría se recalcula sobre la línea base consolidada que cierra la entrega.

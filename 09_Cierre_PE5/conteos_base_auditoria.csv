@@ -1,0 +1,15 @@
+Conteo;Valor;Fuente de verificacion
+Total de requisitos funcionales (RF);27;01_ERS/ERS_SRS_2A_v1.0.tex seccion 3.1 (RF-01 a RF-27)
+Total de requisitos no funcionales (RNF);15;01_ERS/ERS_SRS_2A_v1.0.tex secciones 3.2 y 3.3 (RNF-01 a RNF-15)
+Total de requisitos (RF+RNF);42;suma anterior
+Casos de uso identificados;16;UC-01 a UC-16 en 03_Modelado/Diagramas_UML y matriz_trazabilidad.csv
+Casos de uso especificados textualmente;16;especificaciones UC en 03_Modelado/Diagramas_UML
+Actores del sistema (operativos);2;Administrador y Trabajador agricola/Jornalero (seccion 2.2 del ERS)
+Partes interesadas no operativas;2;Equipo de desarrollo y Docente (sin RF asociado)
+Historias de usuario en el ERS;16;HU para los 16 RF de prioridad Debe tener (seccion 3.4)
+HU en archivo de backlog;12;04_Trazabilidad/HU_criterios_aceptacion.md (nota: sincronizacion backlog-ERS pendiente, la cierra el Paso 2)
+Filas de datos de la matriz de trazabilidad;42;04_Trazabilidad/matriz_trazabilidad.csv (43 lineas con cabecera)
+Requisitos con criterio de verificacion cuantificado (umbral+unidad+metodo);42;revision ficha por ficha de la re-inspeccion del 22-08-2026
+Pares de requisitos analizados (M2);861;n(n-1)/2 con n=42 - conteo base para Robinson (Paso 1)
+Defectos de la linea base corregida (ciclo Entrega 2 a Entrega 3);9;registro_defectos_lineabase_1B_2A.csv
+Hallazgos de la re-inspeccion PE5 (22-08-2026);5;registro_reinspeccion_PE5.csv

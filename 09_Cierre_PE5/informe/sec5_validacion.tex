@@ -1,0 +1,108 @@
+% ============================================================
+% SECCION 5 - VALIDACION (María Escudero - PE5)
+% Fragmento para \input en el informe final
+% ============================================================
+\section{Validación}
+\label{sec:validacion}
+
+\subsection{Estrategia de validación aplicada}
+\label{sec:estrategia-validacion}
+
+La validación del ERS del SGA se ejecutó en dos ciclos sucesivos. El primer ciclo correspondió a la revisión de la Entrega 2 (1B) y la aplicación de sus correcciones en la Entrega 3 (2A), cuyo resultado constituye la línea base corregida sobre la que se mide esta unidad. El segundo ciclo es la re-inspección interna de la PE5, realizada el 22 de agosto de 2026 sobre la versión vigente del documento (\texttt{ERS\_SRS\_2A\_v1.0.tex}), con el método e instrumentos de inspección formal trabajados en la práctica de la Unidad IV: recorrido independiente del documento, registro consolidado de hallazgos con tipo y severidad, prohibición de discutir soluciones durante la detección y corrección posterior verificable. La clasificación de tipos utilizada (ambigüedad, completitud, consistencia, verificabilidad, trazabilidad y factibilidad) es la misma empleada como columna de clasificación en dicha práctica, lo que permite comparar los registros entre ciclos.
+
+Conforme a la definición operativa de la métrica M6 (Sección~\ref{sec:m6-correccion}), se consideran defectos residuales los hallazgos que sobreviven al ciclo de revisión ya aplicado; por ello la línea de comparación no es un documento sin revisar, sino la versión corregida entre entregas, registrada en el repositorio con commits verificables.
+
+\subsection{Ciclo de revisión y corrección Entrega 2 --- Entrega 3}
+\label{sec:ciclo-correcciones}
+
+El propio documento declara las correcciones aplicadas respecto de la entrega anterior y cada una cuenta con commit asociado en el historial del repositorio. La Tabla~\ref{tab:correcciones-baseline} resume las nueve observaciones corregidas; el registro completo, con la referencia textual de cada declaración dentro del ERS, está en \texttt{09\_Cierre\_PE5/registro\_defectos\_lineabase\_1B\_2A.csv}.
+
+\begin{center}
+\begin{longtable}{|p{1.2cm}|p{4.2cm}|p{5.2cm}|p{2.9cm}|}
+\hline
+\textbf{ID} & \textbf{Observación} & \textbf{Corrección aplicada} & \textbf{Commit} \\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Observación} & \textbf{Corrección aplicada} & \textbf{Commit} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+LB-01 & Criterios de RNF-01 a RNF-06 sin umbral cuantificable & Reformulación con métrica, valor objetivo y método de medición & 9eed9fd \\
+\hline
+LB-02 & Categoría ``Usabilidad'' desactualizada frente a ISO/IEC 25010:2023 & Renombrada a Interacción de usuario & 9eed9fd \\
+\hline
+LB-03 & Fichas de RF migrados con atributos incompletos & Plantilla de ocho atributos aplicada & 4183dc2 \\
+\hline
+LB-04 & Capacidades de campo sin requisito asociado & Once requisitos nuevos (RF-17 a RF-27) con respaldo EV & ca64976 \\
+\hline
+LB-05 & Sin requisito de explicabilidad del componente de IA & RNF-15 incorporado con decisiones automáticas y ficha completa & b67d93c \\
+\hline
+LB-06 & Requisitos funcionales sin HU ni criterios BDD & Dieciséis HU Connextra con escenarios Gherkin & 9b76643 \\
+\hline
+LB-07 & Falta diagrama de contexto y límite del sistema & Diagrama y descripción incorporados en la Sección 2.1 & 64014ba \\
+\hline
+LB-08 & Partes interesadas sin análisis poder/interés & Mapa y estrategia por cuadrante en la Sección 2.2 & b532572 \\
+\hline
+LB-09 & Sin modelado organizacional & Modelado i* (SD y SR) en la Sección 2.3 & 38de5bc \\
+\hline
+\end{longtable}
+\label{tab:correcciones-baseline}
+\end{center}
+
+\subsection{Re-inspección de la PE5}
+\label{sec:reinspeccion-pe5}
+
+La re-inspección cubrió las tres secciones de requisitos del documento (catálogos de RF y RNF, sección de explicabilidad e historias de usuario) más la matriz de trazabilidad vigente, recorrida fila a fila contra la plantilla de columnas exigida. El registro consolidado contiene cinco hallazgos únicos: uno crítico, uno mayor y tres menores (Tabla~\ref{tab:hallazgos-reinspeccion}). El registro completo está en \texttt{09\_Cierre\_PE5/registro\_reinspeccion\_PE5.csv}.
+
+\begin{center}
+\begin{longtable}{|p{1.2cm}|p{1.7cm}|p{2.2cm}|p{6.3cm}|p{2.2cm}|}
+\hline
+\textbf{ID} & \textbf{Severidad} & \textbf{Tipo} & \textbf{Descripción} & \textbf{Estado} \\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Severidad} & \textbf{Tipo} & \textbf{Descripción} & \textbf{Estado} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+DR-01 & Crítico & Trazabilidad & La matriz no tiene filas para los once requisitos añadidos en la Entrega 3 (la última fila de RF es TR-22, con RF-16) & En corrección (Paso 2) \\
+\hline
+DR-02 & Mayor & Consistencia & El criterio de verificación de RF-25 duplica textualmente el de RF-16 y omite la fuente de insumos críticos declarada en su propia descripción & Corregido \\
+\hline
+DR-03 & Menor & Trazabilidad & RNF-05 referencia ``CU-01 a CU-06 de la Entrega 2 (1B)'', referencia obsoleta dentro del documento final & Corregido \\
+\hline
+DR-04 & Menor & Verificabilidad & RNF-15 concentra cuatro métricas independientes en un solo campo de la ficha & Corregido \\
+\hline
+DR-05 & Menor & Trazabilidad & Fila TR-19 sin mockup para un requisito del componente de IA & Justificado \\
+\hline
+\end{longtable}
+\label{tab:hallazgos-reinspeccion}
+\end{center}
+
+\subsection{Correcciones aplicadas y verificación}
+\label{sec:correcciones-reinspeccion}
+
+De los cinco hallazgos, cuatro se cerraron durante la misma práctica y uno quedó gestionado como acción asignada. Los cambios de texto aplicados sobre el ERS fueron los siguientes:
+
+\begin{itemize}
+\item \textbf{DR-02 (RF-25):} el criterio pasó de repetir el enunciado de RF-16 a cubrir las dos fuentes del requisito, con verificación separada por tipo: ``El 100~\% de las condiciones que requieren atención inmediata (enfermedades con gravedad alta registradas vía RF-16 e insumos con disponibilidad crítica registrados vía RF-06) generan una alerta visible en $\leq$ 5,0 s desde su registro, verificada cada fuente por separado sobre una muestra de 30 casos por tipo.''
+\item \textbf{DR-03 (RNF-05 y RNF-10):} las dos referencias obsoletas a la entrega anterior se actualizaron a los casos de uso vigentes (UC-01 a UC-06 en el método de medición de RNF-05; UC-01 en el campo origen de RNF-10).
+\item \textbf{DR-04 (RNF-15):} las cuatro métricas se enumeraron como M15.1 a M15.4 conservando los umbrales ya fijados, de modo que cada una pueda comprobarse por separado.
+\item \textbf{DR-05 (TR-19):} se cierra documentalmente porque RF-15 tiene prioridad Could Have en MoSCoW; su interfaz queda supeditada a la priorización de la siguiente iteración.
+\end{itemize}
+
+El hallazgo DR-01 no se corrige en esta sección porque su solución es la propia ampliación de la matriz de trazabilidad con las diez columnas de la plantilla, tarea liderada en el Paso 2; el estado queda registrado como abierto con responsable y fecha de cierre comprometida antes de la entrega.
+
+Para verificar que las correcciones no introdujeron defectos nuevos, la re-inspección incluyó una pasada completa posterior sobre las fichas modificadas y sobre las métricas afectadas (M5 y M6 se recalculan sobre la versión corregida; véase la Sección~\ref{sec:metricas-calidad}). Los conteos base publicados en el anexo de auditoría corresponden todos a la versión corregida entregada.
+
+\subsection{Veredicto de validación}
+\label{sec:veredicto-validacion}
+
+Tras el segundo ciclo, el ERS queda sin defectos críticos o mayores abiertos en su texto: el único hallazgo pendiente (DR-01) es de integración de artefactos, no de especificación, y tiene responsable y plazo. La tasa de defectos residuales resultante se reporta como M6 en la Sección~\ref{sec:metricas-calidad}, con el par antes/después exigido. Los cambios descritos quedan incorporados a la versión final consolidada del SRS que cierra esta práctica, con número de versión, fecha y commit asociado.
