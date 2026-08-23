@@ -52,3 +52,18 @@ Resultados de la auditoría estadística (M1–M4), medida sobre
 | M4atr Trazabilidad atrás | 42/42 = 100 % | = 100 % | Sí |
 
 El detalle completo está en `09_Cierre_PE5/analisis_estadistico/`.
+
+## Cómo reproducir la auditoría estadística
+
+Requisitos: PowerShell 5.1 o superior (Windows nativo; en Linux/macOS, PowerShell
+Core). No requiere dependencias adicionales.
+
+```powershell
+# desde la raiz del repositorio
+powershell -ExecutionPolicy Bypass -File .\09_Cierre_PE5\analisis_estadistico\conteo_requisitos.ps1
+powershell -ExecutionPolicy Bypass -File .\09_Cierre_PE5\analisis_estadistico\generar_pares_m2.ps1
+```
+
+Las salidas se regeneran en `09_Cierre_PE5/analisis_estadistico/salidas/` y son
+deterministas para una misma versión del ERS (verificado por hash SHA-256,
+ver `verificacion_reproducibilidad.md`).
