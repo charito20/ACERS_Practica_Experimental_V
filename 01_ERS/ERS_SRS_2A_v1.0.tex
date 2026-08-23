@@ -1,0 +1,2071 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+
+\graphicspath{{../03_Modelado/Diagramas_UML/}}
+
+\title{Especificación de Requisitos de Software\\Secciones 2 y 3 --- Bloque individual}
+\author{Calle Delgado Kamila Annabella}
+\date{}
+
+\begin{document}
+\maketitle
+\setcounter{section}{1}
+
+% Seccion 2: Descripcion general
+\section{Descripción general}
+\label{sec:descripcion-general}
+
+% Subseccion 2.1: Perspectiva del producto y limite del sistema
+\subsection{Perspectiva del producto y límite del sistema}
+\label{sec:perspectiva-producto}
+
+El Sistema de Gestión Agrícola con Inteligencia Artificial para Cultivos de Verde y Cacao (SGA) es una aplicación orientada a centralizar el registro y la consulta de la información generada por las actividades agrícolas de la finca, sustituyendo el bloc de datos y la bitácora en papel que describe el administrador (EV-01 [03:34]). El sistema administra la información correspondiente a parcelas, cultivos, trabajadores, labores, cosechas e inventario de insumos, e incorpora un módulo de Inteligencia Artificial que analiza los registros históricos para generar alertas y recomendaciones relacionadas con el manejo de los cultivos.
+
+La finca donde se levantó la evidencia de campo mantiene un policultivo de palma, verde y cacao (EV-01 [03:18]). El administrador señala que la labor que más le interesaría automatizar es la cosecha de palma africana (EV-01 [07:28]); no obstante, el alcance de este proyecto se limita a los cultivos de verde y cacao. Esta delimitación es una decisión de alcance del proyecto: la gestión de palma queda fuera del sistema en la presente versión.
+
+El límite del sistema separa lo que el SGA administra internamente de las entidades externas con las que intercambia información. El módulo de Inteligencia Artificial se representa dentro de ese límite, ya que la Sección 5 no evidencia que dependa de ningún servicio de terceros.
+
+% Subseccion 2.1.1: Diagrama de contexto
+\subsubsection{Diagrama de contexto}
+\label{sec:diagrama-contexto-texto}
+
+La Figura~\ref{fig:diagrama-contexto} muestra el diagrama de contexto del SGA. Hacia el sistema, el Administrador registra parcelas, trabajadores, cultivos, actividades, inventario y cosechas; el sistema le devuelve reportes, alertas, recomendaciones de IA y estadísticas. El Jornalero recibe del sistema las tareas, la parcela asignada y las actividades, y registra hacia el sistema las labores realizadas, la cosecha y las incidencias. El Centro de acopio se incorpora como entidad externa adicional respecto del diagrama de la Entrega 1B: el peso y el comprobante que entrega respaldan el registro de cada cosecha (EV-01 [04:32]). Las otras dos entidades candidatas evaluadas, proveedor de insumos (EV-01 [05:50]) y contador externo (EV-01 [06:23], [06:37]), no muestran intercambio de datos con el sistema y no se incorporan.
+
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth,height=0.4\textheight,keepaspectratio]{diagrama_contexto.png}
+\caption{Diagrama de contexto del SGA}
+\label{fig:diagrama-contexto}
+\end{figure}
+
+% Subseccion 2.2: Mapa de partes interesadas con matriz poder/interes
+\subsection{Mapa de partes interesadas con matriz poder/interés}
+\label{sec:mapa-stakeholders}
+
+La identificación de partes interesadas del SGA parte de la Tabla A.1 del Anexo A del ERS de la Entrega 1B, que reconoce cuatro actores: el administrador de la finca, el jornalero, el equipo de desarrollo y el docente de la asignatura.
+
+% Subseccion 2.2.1: Identificacion de partes interesadas
+\subsubsection{Identificación de partes interesadas}
+\label{sec:identificacion-stakeholders}
+
+\begin{center}
+\begin{longtable}{|p{1.1cm}|p{2.7cm}|p{2.8cm}|p{1.3cm}|p{1.3cm}|p{2.1cm}|p{1.1cm}|}
+\hline
+\textbf{ID} & \textbf{Actor} & \textbf{Rol} & \textbf{Poder} & \textbf{Interés} & \textbf{Cuadrante} & \textbf{ID-EV} \\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Actor} & \textbf{Rol} & \textbf{Poder} & \textbf{Interés} & \textbf{Cuadrante} & \textbf{ID-EV} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+PI-01 & Administrador de la finca & Cliente principal & Alto & Alto & Gestionar de cerca & EV-01 \\
+\hline
+PI-02 & Jornalero & Usuario final & Medio-bajo & Bajo & Monitorear & EV-02 \\
+\hline
+PI-03 & Equipo de desarrollo & Desarrolladores & Alto & Alto & Gestionar de cerca & --- \\
+\hline
+PI-04 & Docente de la asignatura & Supervisor académico & Medio & Medio & Cruce, sin inclinación & --- \\
+\hline
+\end{longtable}
+\label{tab:identificacion-stakeholders}
+\end{center}
+
+% Subseccion 2.2.2: Matriz poder/interes
+\subsubsection{Matriz poder/interés}
+\label{sec:matriz-poder-interes-texto}
+
+La Figura~\ref{fig:matriz-poder-interes} ubica a los cuatro actores en la matriz poder/interés. El Docente de la asignatura se representa con un marcador distinto (rombo) exactamente en el cruce de los dos ejes, ya que la Tabla A.1 declara su poder e interés como medios, sin evidencia en la Sección 5 que lo incline hacia un cuadrante específico.
+
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth,height=0.4\textheight,keepaspectratio]{mapa_stakeholders_poder_interes.png}
+\caption{Matriz poder/interés de las partes interesadas del SGA}
+\label{fig:matriz-poder-interes}
+\end{figure}
+
+% Subseccion 2.2.3: Estrategia de gestion por cuadrante
+\subsubsection{Estrategia de gestión por cuadrante}
+\label{sec:estrategia-cuadrante}
+
+Para el Administrador de la finca y el Equipo de desarrollo, ubicados en el cuadrante de gestionar de cerca, la estrategia es de comunicación directa y frecuente, con participación en la priorización de requisitos: el administrador es la única parte interesada con entrevista extensa (EV-01, 640,88 s) y el equipo de desarrollo tiene la responsabilidad operativa directa sobre el sistema, declarada en la Tabla A.1.
+
+Para el Jornalero, ubicado hacia el cuadrante de monitorear, la estrategia es de comunicación periódica y de baja carga, limitada a la información mínima necesaria para ejecutar sus tareas: su propia declaración (EV-02 [02:43]) describe una disposición pragmática, no proactiva, hacia el uso de herramientas digitales.
+
+Para el Docente de la asignatura, ubicado en el cruce de los dos ejes, la estrategia es de mantenerlo informado mediante los entregables periódicos del proyecto: su interés declarado en la Tabla A.1 corresponde a una supervisión académica periódica, no a una participación operativa diaria.
+
+% Subseccion 2.3: Modelado organizacional i estrella
+\subsection{Modelado organizacional en el lenguaje distribuido intencional (i*)}
+\label{sec:modelado-istar}
+
+El modelado organizacional del SGA utiliza la notación i* de Eric Yu para representar los actores del dominio, sus dependencias mutuas y el razonamiento interno que sostiene cada una de ellas.
+
+% Subseccion 2.3.1: Actores y dependencias del dominio
+\subsubsection{Actores y dependencias del dominio}
+\label{sec:actores-dependencias}
+
+Los actores del modelo i* coinciden exactamente con los identificados en la Sección~\ref{sec:mapa-stakeholders}: Administrador de la finca, Jornalero, Equipo de desarrollo y Docente de la asignatura. La Sección 5 del material fuente no registra ninguna mención al Equipo de desarrollo ni al Docente, por lo que ambos se representan como actores sin dependencias evidenciadas hacia o desde el dominio operativo de la finca.
+
+Entre el Administrador y el Jornalero se identifican cuatro dependencias, todas ancladas a la evidencia de campo:
+
+\begin{itemize}
+\item El Jornalero depende del Administrador para la asignación de la tarea diaria (EV-02 [01:01]).
+\item El Jornalero depende del Administrador para la entrega de insumos agrícolas (EV-02 [02:25]).
+\item El Administrador depende del Jornalero para el reporte de incidencias fitosanitarias (EV-02 [01:34]).
+\item El Administrador depende del Jornalero para el registro de la producción cosechada (EV-01 [05:18]).
+\end{itemize}
+
+% Subseccion 2.3.2: Diagrama de Dependencia Estrategica
+\subsubsection{Diagrama de Dependencia Estratégica (SD)}
+\label{sec:istar-sd-texto}
+
+La Figura~\ref{fig:istar-sd} representa las cuatro dependencias identificadas entre el Administrador y el Jornalero. El Equipo de desarrollo y el Docente de la asignatura se muestran como actores sin enlaces de dependencia, conforme a lo señalado en la Sección~\ref{sec:actores-dependencias}.
+
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth,height=0.4\textheight,keepaspectratio]{istar_sd.png}
+\caption{Diagrama de Dependencia Estratégica (SD) del SGA}
+\label{fig:istar-sd}
+\end{figure}
+
+% Subseccion 2.3.3: Diagrama de Razon Estrategica
+\subsubsection{Diagrama de Razón Estratégica (SR)}
+\label{sec:istar-sr-texto}
+
+La Figura~\ref{fig:istar-sr} abre el razonamiento interno de cada actor. El Administrador persigue el objetivo duro de gestionar eficientemente la producción de la finca, que se descompone en las tareas de planificar actividades semanalmente (EV-01 [06:51]), asignar tareas a los trabajadores (EV-01 [06:58]) y consultar reportes de producción (EV-01 [08:10]). Declara además dos objetivos blandos: confiar en las recomendaciones de la Inteligencia Artificial (EV-01 [09:02], [09:10]), sostenido por la tarea de verificar manualmente la alerta antes de actuar, y reducir el tiempo dedicado a labores manuales de control (EV-01 [01:36]), para el cual la Sección 5 no evidencia una tarea que contribuya directamente.
+
+El Jornalero persigue el objetivo duro de cumplir las tareas asignadas, descompuesto en ejecutar la labor correspondiente (EV-02 [00:54]) y reportar novedades al administrador (EV-02 [01:34]). Declara el objetivo blando de minimizar el uso de dispositivos nuevos (EV-02 [02:33], [02:43]), sin una tarea evidenciada que contribuya a él de forma específica.
+
+El Equipo de desarrollo persigue el objetivo duro de entregar el SGA conforme a los requisitos definidos, mediante la tarea de analizar, diseñar e implementar el sistema. El Docente de la asignatura persigue el objetivo duro de verificar el cumplimiento de la metodología y los objetivos de la asignatura, mediante la tarea de evaluar los entregables del proyecto.
+
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth,height=0.55\textheight,keepaspectratio]{istar_sr.png}
+\caption{Diagrama de Razón Estratégica (SR) del SGA}
+\label{fig:istar-sr}
+\end{figure}
+
+% Seccion 3: Requisitos especificos completos
+\section{Requisitos específicos completos}
+\label{sec:requisitos-especificos}
+
+\subsection{Requisitos funcionales}
+\label{sec:requisitos-funcionales}
+
+% Subseccion 3.1.1: Plantilla de especificacion
+\subsubsection{Plantilla de especificación}
+\label{sec:plantilla-rf}
+
+Los requisitos funcionales del Sistema de Gestión Agrícola con Inteligencia Artificial para Cultivos de Verde y Cacao (SGA) se documentan mediante la plantilla de ocho atributos que se describe en la Tabla~\ref{tab:plantilla-rf}. Esta plantilla amplía la utilizada en la Entrega 2 (1B), que incluía Identificador, Nombre, Descripción, Actor(es), Prioridad, Precondiciones, Flujo principal y Postcondiciones, incorporando un origen verificable por evidencia de campo, la especificación de entradas y salidas, y un criterio de verificación cuantificable.
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+\textbf{Atributo} & \textbf{Contenido} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Atributo} & \textbf{Contenido} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+Identificador & Código único con el formato RF-XX. \\
+\hline
+Nombre & Frase nominal breve que identifica la capacidad especificada. \\
+\hline
+Descripción & Enunciado en la forma «El sistema deberá\ldots», limitado a una única capacidad por ficha. \\
+\hline
+Actor / origen & Actor que origina o utiliza el requisito, junto con el identificador de evidencia EV-XX y la marca de tiempo que lo respalda, o la restricción normativa aplicable cuando el requisito no se origina en una cita directa. \\
+\hline
+Entradas & Datos que el sistema recibe para ejecutar la capacidad, con su tipo y su obligatoriedad. \\
+\hline
+Salidas & Datos o efectos que el sistema produce como resultado de la capacidad. \\
+\hline
+Prioridad (MoSCoW) & Clasificación en Debe tener, Debería tener, Podría tener o No tendrá. \\
+\hline
+Criterio de verificación & Condición cuantificable, con métrica, umbral y método de comprobación, que permite determinar si el requisito se cumple. \\
+\hline
+\end{longtable}
+\label{tab:plantilla-rf}
+\end{center}
+
+% Subseccion 3.1.2: Catalogo de requisitos funcionales
+\subsubsection{Catálogo de requisitos funcionales}
+\label{sec:catalogo-rf}
+
+El catálogo siguiente incorpora los dieciséis requisitos funcionales identificados en la Entrega 2 (1B), migrados a la plantilla de ocho atributos sin alterar su contenido sustantivo, y su ampliación hasta un total de veintisiete requisitos funcionales derivados de la evidencia de campo descrita en la Sección 5. Los identificadores RF-01 a RF-16 corresponden a los requisitos migrados; los identificadores RF-17 a RF-27 corresponden a los requisitos incorporados en esta entrega. En los requisitos migrados se conservan, como campos adicionales al cierre de la ficha, las Precondiciones, el Flujo principal y las Postcondiciones ya redactados en la Entrega 2 (1B).
+
+Los requisitos RF-01 y RF-14 no derivan de una cita textual de las entrevistas, ya que ninguna pregunta del guion abordó de forma directa el mecanismo de autenticación. Su origen se declara como la restricción R-02 sobre acceso diferenciado por rol, necesaria para sostener la distinción de responsabilidades entre Administrador y Trabajador agrícola evidenciada a lo largo de ambas entrevistas.
+
+\bigskip
+\noindent\textbf{RF-01. Inicio de sesión}
+\label{tab:RF-01}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-01 \\
+\hline
+Nombre & Inicio de sesión \\
+\hline
+Descripción & El sistema deberá permitir que el administrador y los trabajadores agrícolas inicien sesión mediante un usuario y una contraseña para acceder a las funcionalidades correspondientes a su rol. \\
+\hline
+Actor / origen & Administrador, Trabajador agrícola --- R-02 (el acceso a la información dependerá del rol asignado a cada usuario). \\
+\hline
+Entradas & Usuario (texto, obligatorio); contraseña (texto, obligatorio). \\
+\hline
+Salidas & Sesión iniciada con acceso a las funciones del rol correspondiente, o mensaje de error. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El sistema autentica al usuario y concede acceso según su rol en $\leq$ 2,0 s, verificado en el percentil 95 de 50 intentos de inicio de sesión. \\
+\hline
+Precondiciones & El usuario debe estar registrado en el sistema. \\
+\hline
+Flujo principal & 1. El usuario ingresa sus credenciales. 2. El sistema valida la información. 3. Si las credenciales son correctas, permite el acceso al sistema según el rol del usuario. \\
+\hline
+Postcondiciones & El usuario accede correctamente al sistema. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-02. Gestión de parcelas}
+\label{tab:RF-02}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-02 \\
+\hline
+Nombre & Gestión de parcelas \\
+\hline
+Descripción & El sistema deberá permitir registrar, consultar, actualizar y eliminar la información correspondiente a las parcelas o lotes que conforman la finca. \\
+\hline
+Actor / origen & Administrador --- EV-01 [04:02], [04:14]. \\
+\hline
+Entradas & Nombre o código de parcela (texto, obligatorio); ubicación (texto, obligatorio); área (numérico, obligatorio); estado (selección, obligatorio). \\
+\hline
+Salidas & Parcela registrada, actualizada o eliminada, disponible para su asociación con cultivos (RF-03). \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & La consulta de una parcela devuelve sus campos obligatorios en $\leq$ 2,0 s con 500 parcelas cargadas, verificado en el percentil 95 de 50 ejecuciones. \\
+\hline
+Precondiciones & El administrador debe haber iniciado sesión. \\
+\hline
+Flujo principal & 1. El administrador selecciona el módulo de parcelas. 2. Registra o modifica la información requerida. 3. El sistema valida y almacena los datos. \\
+\hline
+Postcondiciones & La información de la parcela queda registrada o actualizada correctamente. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-03. Gestión de cultivos}
+\label{tab:RF-03}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-03 \\
+\hline
+Nombre & Gestión de cultivos \\
+\hline
+Descripción & El sistema deberá permitir registrar y administrar los cultivos de verde y cacao asociados a cada parcela de la finca. \\
+\hline
+Actor / origen & Administrador --- EV-01 [03:05], [03:18]. \\
+\hline
+Entradas & Parcela asociada (selección, obligatorio); tipo de cultivo (selección: verde o cacao, obligatorio); variedad (texto, opcional); fecha de cultivo (fecha, obligatorio). \\
+\hline
+Salidas & Cultivo registrado y asociado a la parcela seleccionada. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El registro de un cultivo queda disponible para consulta asociado a su parcela en $\leq$ 2,0 s, verificado sobre 30 registros consecutivos. \\
+\hline
+Precondiciones & Debe existir al menos una parcela registrada. \\
+\hline
+Flujo principal & 1. El administrador selecciona una parcela. 2. Registra la información del cultivo. 3. El sistema almacena los datos asociados a la parcela seleccionada. \\
+\hline
+Postcondiciones & El cultivo queda asociado correctamente a la parcela correspondiente. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-04. Registro de actividades agrícolas}
+\label{tab:RF-04}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-04 \\
+\hline
+Nombre & Registro de actividades agrícolas \\
+\hline
+Descripción & El sistema deberá permitir registrar las actividades realizadas por los trabajadores agrícolas, indicando la fecha, la actividad ejecutada y la parcela donde fue desarrollada. \\
+\hline
+Actor / origen & Trabajador agrícola --- EV-02 [00:54]; EV-01 [07:11]. \\
+\hline
+Entradas & Fecha (fecha, obligatorio); tipo de actividad (selección, obligatorio); parcela (selección, obligatorio). \\
+\hline
+Salidas & Actividad registrada, disponible para consulta del administrador (RF-10) y para el historial de trabajador (RF-24). \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El 100~\% de las actividades registradas por un trabajador quedan disponibles para consulta del administrador en un máximo de 1 minuto, verificado sobre una muestra de 30 registros. \\
+\hline
+Precondiciones & El trabajador debe haber iniciado sesión. \\
+\hline
+Flujo principal & 1. El trabajador accede al módulo de actividades. 2. Registra la información solicitada. 3. El sistema valida y almacena el registro. \\
+\hline
+Postcondiciones & La actividad queda registrada correctamente en el sistema. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-05. Registro de cosechas}
+\label{tab:RF-05}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-05 \\
+\hline
+Nombre & Registro de cosechas \\
+\hline
+Descripción & El sistema deberá permitir registrar la producción obtenida en cada cosecha, especificando el cultivo, la parcela, la cantidad recolectada, la unidad de medida y la fecha del registro. \\
+\hline
+Actor / origen & Trabajador agrícola --- EV-01 [04:32], [04:47]; EV-02 [02:08]. \\
+\hline
+Entradas & Cultivo (selección, obligatorio); parcela (selección, obligatorio); cantidad (numérico, obligatorio); unidad de medida (selección, obligatorio); fecha (fecha, obligatorio). \\
+\hline
+Salidas & Producción registrada e incorporada al historial de producción. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El registro de una cosecha se incorpora al historial de producción en $\leq$ 2,0 s, verificado en el percentil 95 de 30 ejecuciones. \\
+\hline
+Precondiciones & Debe existir un cultivo previamente registrado en el sistema. \\
+\hline
+Flujo principal & 1. El trabajador selecciona el cultivo correspondiente. 2. Ingresa la información de la cosecha. 3. El sistema valida y almacena el registro. \\
+\hline
+Postcondiciones & La producción queda registrada y disponible para consultas y reportes. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-06. Gestión de inventario de insumos}
+\label{tab:RF-06}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-06 \\
+\hline
+Nombre & Gestión de inventario de insumos \\
+\hline
+Descripción & El sistema deberá permitir registrar, consultar, actualizar y eliminar la información correspondiente a los insumos agrícolas y herramientas utilizadas en la finca, incluyendo fertilizantes, fungicidas, herbicidas y herramientas de trabajo. \\
+\hline
+Actor / origen & Administrador --- EV-01 [05:36], [05:44], [05:58], [06:14]. \\
+\hline
+Entradas & Nombre del insumo (texto, obligatorio); tipo (selección: fertilizante, fungicida, herbicida o herramienta, obligatorio); cantidad disponible (numérico, obligatorio); unidad de medida (selección, obligatorio). \\
+\hline
+Salidas & Inventario actualizado, disponible para consulta y para el descuento por entregas (RF-22). \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El inventario refleja una actualización de cantidad disponible en $\leq$ 2,0 s tras el registro, verificado sobre 30 actualizaciones consecutivas. \\
+\hline
+Precondiciones & El administrador debe haber iniciado sesión. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de inventario. 2. Registra o actualiza la información del insumo. 3. El sistema valida y almacena los cambios realizados. \\
+\hline
+Postcondiciones & El inventario queda actualizado con la información registrada. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-07. Consulta de producción por período}
+\label{tab:RF-07}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-07 \\
+\hline
+Nombre & Consulta de producción por período \\
+\hline
+Descripción & El sistema deberá permitir consultar la producción agrícola registrada durante un período específico, facilitando el seguimiento del rendimiento de los cultivos. \\
+\hline
+Actor / origen & Administrador --- EV-01 [04:47], [04:54]. \\
+\hline
+Entradas & Fecha de inicio y fecha de fin del período (fecha, obligatorio). \\
+\hline
+Salidas & Listado de producción registrada dentro del período seleccionado. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & La consulta de producción por período con 500 registros cargados responde en $\leq$ 2,0 s, verificado en el percentil 95 de 50 ejecuciones, y presenta únicamente los registros del período seleccionado. \\
+\hline
+Precondiciones & Deben existir registros de producción almacenados en el sistema. \\
+\hline
+Flujo principal & 1. El administrador selecciona el período de consulta. 2. El sistema procesa la información registrada. 3. Se presenta el resultado de la consulta. \\
+\hline
+Postcondiciones & La información solicitada se muestra correctamente al usuario. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-08. Planificación de actividades agrícolas}
+\label{tab:RF-08}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-08 \\
+\hline
+Nombre & Planificación de actividades agrícolas \\
+\hline
+Descripción & El sistema deberá permitir planificar las actividades agrícolas indicando la tarea, la fecha programada y la parcela donde será ejecutada. \\
+\hline
+Actor / origen & Administrador --- EV-01 [06:51], [06:58]. \\
+\hline
+Entradas & Tarea (texto, obligatorio); fecha programada (fecha, obligatorio); parcela (selección, obligatorio). \\
+\hline
+Salidas & Actividad planificada, disponible para su posterior asignación (RF-09). \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & Una actividad planificada queda disponible para su asignación en $\leq$ 2,0 s desde su registro, verificado sobre 30 registros consecutivos. \\
+\hline
+Precondiciones & Deben existir parcelas registradas en el sistema. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de planificación. 2. Registra la actividad programada. 3. El sistema almacena la planificación. \\
+\hline
+Postcondiciones & La actividad queda programada para su posterior ejecución. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-09. Asignación de tareas}
+\label{tab:RF-09}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-09 \\
+\hline
+Nombre & Asignación de tareas \\
+\hline
+Descripción & El sistema deberá permitir asignar actividades específicas a los trabajadores agrícolas, indicando la tarea, la parcela y la fecha de ejecución. \\
+\hline
+Actor / origen & Administrador --- EV-01 [06:58]; EV-02 [01:01], [01:18]. \\
+\hline
+Entradas & Trabajador (selección, obligatorio); actividad (selección, obligatorio); parcela (selección, obligatorio); fecha de ejecución (fecha, obligatorio). \\
+\hline
+Salidas & Tarea asignada al trabajador seleccionado. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El 100~\% de las tareas asignadas quedan disponibles para consulta del trabajador correspondiente en $\leq$ 2,0 s, verificado sobre una muestra de 30 asignaciones. \\
+\hline
+Precondiciones & Deben existir trabajadores y actividades registrados en el sistema. \\
+\hline
+Flujo principal & 1. El administrador selecciona al trabajador. 2. Asigna la actividad correspondiente. 3. El sistema registra la asignación realizada. \\
+\hline
+Postcondiciones & La tarea queda asignada al trabajador seleccionado. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-10. Seguimiento del cumplimiento de tareas}
+\label{tab:RF-10}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-10 \\
+\hline
+Nombre & Seguimiento del cumplimiento de tareas \\
+\hline
+Descripción & El sistema deberá permitir consultar el estado de las actividades asignadas a los trabajadores, identificando aquellas pendientes, en proceso o finalizadas. \\
+\hline
+Actor / origen & Administrador --- EV-01 [07:11], [07:18]. \\
+\hline
+Entradas & Ninguna directa; opera sobre tareas previamente asignadas (RF-09). \\
+\hline
+Salidas & Estado de cada tarea asignada (pendiente, en proceso o finalizada). \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El estado de una tarea asignada se actualiza y refleja correctamente en $\leq$ 2,0 s desde el cambio registrado, verificado sobre 30 tareas de prueba. \\
+\hline
+Precondiciones & Deben existir tareas previamente asignadas. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de seguimiento. 2. El sistema consulta el estado de las tareas. 3. Se presenta la información correspondiente. \\
+\hline
+Postcondiciones & El administrador conoce el avance de las actividades programadas. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-11. Generación de reportes de producción}
+\label{tab:RF-11}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-11 \\
+\hline
+Nombre & Generación de reportes de producción \\
+\hline
+Descripción & El sistema deberá permitir generar reportes de producción por cultivo, parcela o período, facilitando el análisis de la información registrada. \\
+\hline
+Actor / origen & Administrador --- EV-01 [08:10]. \\
+\hline
+Entradas & Filtros de consulta: cultivo, parcela o período (selección, al menos uno obligatorio). \\
+\hline
+Salidas & Reporte de producción según los filtros seleccionados, disponible para consulta o descarga. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El sistema genera el reporte de producción solicitado en $\leq$ 3,0 s con 500 registros cargados, verificado en el percentil 95 de 30 ejecuciones. \\
+\hline
+Precondiciones & Deben existir registros de producción almacenados en el sistema. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de reportes. 2. Selecciona los filtros de consulta. 3. El sistema procesa la información y genera el reporte solicitado. \\
+\hline
+Postcondiciones & El reporte queda disponible para su consulta o descarga. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-12. Identificación de productividad por parcela}
+\label{tab:RF-12}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-12 \\
+\hline
+Nombre & Identificación de productividad por parcela \\
+\hline
+Descripción & El sistema deberá permitir identificar las parcelas con mayor y menor productividad mediante el análisis de la producción registrada. \\
+\hline
+Actor / origen & Administrador --- EV-01 [07:54], [08:02]. \\
+\hline
+Entradas & Período de análisis (fecha, obligatorio); vista derivada del resultado de la consulta de producción por período (RF-07). \\
+\hline
+Salidas & Listado de parcelas ordenado por producción, identificando la de mayor y la de menor productividad. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El sistema identifica correctamente la parcela de mayor y la de menor producción del período en el 100~\% de los casos, verificado sobre un conjunto de prueba de 20 parcelas con producción conocida. \\
+\hline
+Precondiciones & Deben existir registros históricos de producción por parcela. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de análisis. 2. El sistema procesa la información histórica. 3. Se presentan los resultados de productividad por parcela. \\
+\hline
+Postcondiciones & El administrador dispone de información para evaluar el rendimiento de las parcelas. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-13. Generación de estadísticas agrícolas}
+\label{tab:RF-13}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-13 \\
+\hline
+Nombre & Generación de estadísticas agrícolas \\
+\hline
+Descripción & El sistema deberá generar estadísticas basadas en la información registrada, permitiendo visualizar indicadores relacionados con la producción, las actividades realizadas y el rendimiento de los cultivos. \\
+\hline
+Actor / origen & Administrador --- EV-01 [07:28], [07:36], [07:43]. \\
+\hline
+Entradas & Ninguna directa; procesa la información ya registrada en el sistema. \\
+\hline
+Salidas & Gráficos e indicadores de producción, actividades y rendimiento. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El sistema presenta las estadísticas agrícolas en $\leq$ 3,0 s con la información de un período de 12 meses cargada, verificado en el percentil 95 de 20 ejecuciones. \\
+\hline
+Precondiciones & Debe existir información registrada en la base de datos. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de estadísticas. 2. El sistema procesa los datos disponibles. 3. Se muestran gráficos e indicadores estadísticos. \\
+\hline
+Postcondiciones & Las estadísticas quedan disponibles para apoyar la toma de decisiones. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-14. Gestión de usuarios}
+\label{tab:RF-14}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-14 \\
+\hline
+Nombre & Gestión de usuarios \\
+\hline
+Descripción & El sistema deberá permitir registrar, modificar, consultar y desactivar las cuentas de los usuarios autorizados, asignando el rol correspondiente a cada uno. \\
+\hline
+Actor / origen & Administrador --- R-02 (el acceso a la información dependerá del rol asignado a cada usuario); EV-01 [02:35]. \\
+\hline
+Entradas & Nombre de usuario (texto, obligatorio); rol (selección, obligatorio); estado (selección: activo o inactivo, obligatorio). \\
+\hline
+Salidas & Cuenta de usuario registrada, modificada o desactivada, con el rol correspondiente. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El 100~\% de los cambios de rol o estado de un usuario se reflejan en sus permisos de acceso en $\leq$ 2,0 s, verificado sobre una muestra de 20 cuentas de prueba. \\
+\hline
+Precondiciones & El administrador debe haber iniciado sesión. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de usuarios. 2. Registra o modifica la información del usuario. 3. El sistema valida los datos y guarda los cambios. \\
+\hline
+Postcondiciones & La información del usuario queda actualizada en el sistema. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-15. Consultar recomendaciones de IA}
+\label{tab:RF-15}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-15 \\
+\hline
+Nombre & Consultar recomendaciones de IA \\
+\hline
+Descripción & El sistema deberá analizar la información registrada sobre los cultivos de verde y cacao para generar recomendaciones que apoyen la planificación de actividades y la toma de decisiones por parte del administrador. \\
+\hline
+Actor / origen & Administrador --- EV-01 [09:26], [09:36]. \\
+\hline
+Entradas & Ninguna directa; el módulo de IA procesa los registros históricos existentes de producción, actividades e inventario. \\
+\hline
+Salidas & Recomendaciones relacionadas con la gestión de los cultivos, sujetas a la restricción R-05. \\
+\hline
+Prioridad (MoSCoW) & Podría tener. \\
+\hline
+Criterio de verificación & El sistema presenta recomendaciones fundamentadas en la información registrada en $\leq$ 5,0 s, sin modificar automáticamente los datos almacenados, verificado sobre 20 solicitudes de recomendación. \\
+\hline
+Precondiciones & Deben existir registros históricos suficientes de producción, actividades e inventario. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de Inteligencia Artificial. 2. El sistema analiza la información disponible. 3. Se generan recomendaciones relacionadas con la gestión de los cultivos. \\
+\hline
+Postcondiciones & Las recomendaciones quedan disponibles para su consulta por parte del administrador. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-16. Registro de enfermedades del cultivo}
+\label{tab:RF-16}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-16 \\
+\hline
+Nombre & Registro de enfermedades del cultivo \\
+\hline
+Descripción & El sistema deberá permitir registrar las enfermedades detectadas en los cultivos de verde y cacao, indicando el cultivo afectado, el nombre de la enfermedad, el nivel de gravedad y observaciones, con el fin de llevar un control fitosanitario y facilitar la generación de alertas cuando sea necesario. \\
+\hline
+Actor / origen & Administrador, Trabajador agrícola --- EV-02 [01:42]; EV-01 [01:16], [01:25]. \\
+\hline
+Entradas & Cultivo afectado (selección, obligatorio); nombre de la enfermedad (selección desde catálogo, RF-20, obligatorio); nivel de gravedad (selección, obligatorio); observaciones (texto, opcional). \\
+\hline
+Salidas & Enfermedad registrada y, si la gravedad es alta, alerta generada (RF-25). \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El 100~\% de los registros de enfermedad con nivel de gravedad alto generan una alerta en $\leq$ 5,0 s desde su registro, verificado sobre una muestra de 30 casos. \\
+\hline
+Precondiciones & Debe existir un cultivo previamente registrado en el sistema. \\
+\hline
+Flujo principal & 1. El usuario selecciona el cultivo afectado. 2. Registra la enfermedad detectada. 3. Ingresa el nivel de gravedad y observaciones. 4. El sistema valida y almacena la información. 5. Si la gravedad es alta, el sistema genera una alerta. \\
+\hline
+Postcondiciones & La enfermedad queda registrada y disponible para su consulta. \\
+\hline
+\end{longtable}
+\end{center}
+
+A continuación se incorporan los once requisitos funcionales adicionales (RF-17 a RF-27), derivados de las capacidades identificadas en la evidencia de campo que no quedaban cubiertas por los dieciséis requisitos migrados. Cada uno sigue estrictamente la plantilla de ocho atributos, sin campos adicionales.
+
+\bigskip
+\noindent\textbf{RF-17. Registro de peso y comprobante de acopio}
+\label{tab:RF-17}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-17 \\
+\hline
+Nombre & Registro de peso y comprobante de acopio \\
+\hline
+Descripción & El sistema deberá permitir registrar el peso entregado y el número de comprobante emitido por el centro de acopio para cada cosecha, como respaldo de la producción declarada. \\
+\hline
+Actor / origen & Trabajador agrícola, Administrador --- EV-01 [04:32], [04:47]. \\
+\hline
+Entradas & Peso entregado (numérico, kg o toneladas, obligatorio); número de comprobante (texto, obligatorio). \\
+\hline
+Salidas & Registro de cosecha (RF-05) con peso y comprobante asociados. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El 100~\% de los registros de cosecha con comprobante de acopio permiten recuperar el peso y el número de comprobante en una consulta posterior, verificado sobre una muestra de 30 registros. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-18. Comparación de producción entre periodos}
+\label{tab:RF-18}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-18 \\
+\hline
+Nombre & Comparación de producción entre periodos \\
+\hline
+Descripción & El sistema deberá permitir comparar la producción registrada entre dos periodos seleccionados por el administrador, para un mismo cultivo o parcela. \\
+\hline
+Actor / origen & Administrador --- EV-01 [04:47], [04:54]. \\
+\hline
+Entradas & Periodo 1, periodo 2, cultivo o parcela (selección, obligatorio); vista derivada del resultado de la consulta de producción por período (RF-07). \\
+\hline
+Salidas & Diferencia porcentual y absoluta de producción entre los dos periodos seleccionados. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & La comparación entre dos periodos con 500 registros de producción se presenta en $\leq$ 3,0 s, verificado en el percentil 95 de 30 ejecuciones. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-19. Reporte de pérdidas por plagas}
+\label{tab:RF-19}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-19 \\
+\hline
+Nombre & Reporte de pérdidas por plagas \\
+\hline
+Descripción & El sistema deberá generar un reporte de pérdidas de producción estimadas asociadas a plagas y enfermedades, por cultivo y por parcela. \\
+\hline
+Actor / origen & Administrador --- EV-01 [08:17], [08:22], [08:29] (reporte señalado como el más importante por el administrador). \\
+\hline
+Entradas & Periodo (fecha, obligatorio); cultivo o parcela (selección, opcional). \\
+\hline
+Salidas & Reporte con pérdida estimada por plaga o enfermedad, cultivo y parcela. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El reporte de pérdidas por plagas se genera en $\leq$ 3,0 s con 500 registros de enfermedad cargados, verificado en el percentil 95 de 30 ejecuciones. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-20. Catálogo de plagas y enfermedades por cultivo}
+\label{tab:RF-20}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-20 \\
+\hline
+Nombre & Catálogo de plagas y enfermedades por cultivo \\
+\hline
+Descripción & El sistema deberá mantener un catálogo de plagas y enfermedades asociadas a cada tipo de cultivo, con nombre normalizado, para estandarizar el registro de incidencias fitosanitarias. \\
+\hline
+Actor / origen & Administrador --- EV-02 [01:42]; EV-01 [01:16], [01:25]. \\
+\hline
+Entradas & Nombre de la plaga o enfermedad (texto, obligatorio); cultivo asociado (selección, obligatorio). \\
+\hline
+Salidas & Lista de plagas y enfermedades disponible para selección en el registro de enfermedades (RF-16). \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El 100~\% de los registros de enfermedad (RF-16) permiten seleccionar el nombre desde el catálogo sin ingreso de texto libre, verificado sobre una muestra de 30 registros. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-21. Planificación de compra de insumos por calendario}
+\label{tab:RF-21}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-21 \\
+\hline
+Nombre & Planificación de compra de insumos por calendario \\
+\hline
+Descripción & El sistema deberá permitir planificar la compra de insumos agrícolas asignando cantidades estimadas por cultivo a meses específicos del año. \\
+\hline
+Actor / origen & Administrador --- EV-01 [05:36], [05:44]. \\
+\hline
+Entradas & Insumo (selección, obligatorio); cultivo (selección, obligatorio); mes (selección, obligatorio); cantidad estimada (numérico, obligatorio). \\
+\hline
+Salidas & Calendario de compras planificadas por insumo y mes. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El sistema muestra el calendario de compras planificadas de los 12 meses en $\leq$ 2,0 s, verificado en el percentil 95 de 20 ejecuciones. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-22. Registro de entrega de insumos a trabajadores}
+\label{tab:RF-22}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-22 \\
+\hline
+Nombre & Registro de entrega de insumos a trabajadores \\
+\hline
+Descripción & El sistema deberá permitir registrar la entrega de insumos agrícolas del administrador a un trabajador, actualizando la disponibilidad del inventario. \\
+\hline
+Actor / origen & Administrador --- EV-02 [02:25]. \\
+\hline
+Entradas & Insumo (selección, obligatorio); cantidad entregada (numérico, obligatorio); trabajador receptor (selección, obligatorio); fecha (fecha, obligatorio). \\
+\hline
+Salidas & Actualización del inventario (RF-06) y registro de entrega asociado al trabajador. \\
+\hline
+Prioridad (MoSCoW) & Podría tener. \\
+\hline
+Criterio de verificación & El 100~\% de las entregas registradas descuentan correctamente la cantidad del inventario disponible, verificado sobre una muestra de 30 entregas. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-23. Registro de ingresos}
+\label{tab:RF-23}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-23 \\
+\hline
+Nombre & Registro de ingresos \\
+\hline
+Descripción & El sistema deberá permitir registrar los ingresos generados por la venta de la producción agrícola, asociados a cultivo y periodo. \\
+\hline
+Actor / origen & Administrador --- EV-01 [06:23], [06:28], [06:37]. \\
+\hline
+Entradas & Monto (numérico, obligatorio); cultivo (selección, obligatorio); periodo (fecha, obligatorio); fecha (fecha, obligatorio). \\
+\hline
+Salidas & Registro de ingreso disponible para consulta por periodo. \\
+\hline
+Prioridad (MoSCoW) & Podría tener (necesidad secundaria frente a las prioridades explícitas del administrador). \\
+\hline
+Criterio de verificación & El registro de un ingreso queda disponible para consulta en $\leq$ 2,0 s tras su ingreso, verificado sobre 20 registros consecutivos. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-24. Consulta de historial de registros por trabajador y fecha}
+\label{tab:RF-24}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-24 \\
+\hline
+Nombre & Consulta de historial de registros por trabajador y fecha \\
+\hline
+Descripción & El sistema deberá permitir consultar el historial de labores y cosechas registradas, filtrado por trabajador y por rango de fechas, para permitir la reconciliación de la información y evitar la desviación de datos identificada en el registro en papel. \\
+\hline
+Actor / origen & Administrador --- EV-01 [02:04], [02:17]. \\
+\hline
+Entradas & Trabajador (selección, opcional); rango de fechas (obligatorio). \\
+\hline
+Salidas & Listado de labores y cosechas registradas en el rango filtrado. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & La consulta del historial filtrado por trabajador y fecha con 500 registros se presenta en $\leq$ 2,0 s, verificado en el percentil 95 de 30 ejecuciones. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-25. Generación de alertas automáticas de atención inmediata}
+\label{tab:RF-25}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-25 \\
+\hline
+Nombre & Generación de alertas automáticas de atención inmediata \\
+\hline
+Descripción & El sistema deberá generar alertas automáticas visibles al administrador cuando se registre una condición que requiera atención inmediata, incluyendo enfermedades de gravedad alta e insumos con disponibilidad crítica. \\
+\hline
+Actor / origen & Administrador --- EV-01 [10:33]. \\
+\hline
+Entradas & Ninguna directa; se genera a partir de los registros de RF-16 y RF-06. \\
+\hline
+Salidas & Alerta con tipo, origen (parcela o insumo) y momento de generación. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El 100~\% de las condiciones que requieren atención inmediata (enfermedades con gravedad alta registradas vía RF-16 e insumos con disponibilidad crítica registrados vía RF-06) generan una alerta visible en $\leq$ 5,0 s desde su registro, verificada cada fuente por separado sobre una muestra de 30 casos por tipo. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-26. Detección temprana de señales de enfermedad en parcelas mediante IA}
+\label{tab:RF-26}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-26 \\
+\hline
+Nombre & Detección temprana de señales de enfermedad en parcelas mediante IA \\
+\hline
+Descripción & El sistema deberá analizar mediante IA la información histórica registrada de una parcela para generar una alerta temprana cuando se identifiquen patrones asociados a una posible enfermedad, antes de su confirmación visual por el usuario. \\
+\hline
+Actor / origen & Administrador --- EV-01 [09:02]. \\
+\hline
+Entradas & Registros históricos de la parcela (labores, cosechas, enfermedades previas). \\
+\hline
+Salidas & Alerta temprana de posible enfermedad, con parcela y nivel de confianza del modelo. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El módulo de IA genera la alerta temprana con una exactitud (accuracy) mínima del 70~\% sobre un conjunto de validación de al menos 30 casos etiquetados. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-27. Consulta de producción agregada por cultivo}
+\label{tab:RF-27}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-27 \\
+\hline
+Nombre & Consulta de producción agregada por cultivo \\
+\hline
+Descripción & El sistema deberá permitir consultar la producción total registrada agrupada por cultivo, sin necesidad de discriminar por parcela individual. \\
+\hline
+Actor / origen & Administrador --- EV-01 [09:57]. \\
+\hline
+Entradas & Cultivo (selección); periodo (opcional); vista derivada del resultado de la consulta de producción agregada del período (RF-07). \\
+\hline
+Salidas & Producción total agregada del cultivo seleccionado. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & La consulta de producción agregada por cultivo con 500 registros se presenta en $\leq$ 2,0 s, verificado en el percentil 95 de 30 ejecuciones. \\
+\hline
+\end{longtable}
+\end{center}
+
+\subsection{Requisitos no funcionales}
+\label{sec:requisitos-no-funcionales}
+
+% Subseccion 3.2.1: Criterio de cuantificacion ISO/IEC 25010:2023
+\subsubsection{Criterio de cuantificación ISO/IEC 25010:2023}
+\label{sec:criterio-cuantificacion-rnf}
+
+La cuantificación de los requisitos no funcionales del SGA sigue un criterio único: todo requisito no funcional debe expresarse mediante una métrica, un valor objetivo y un método de medición verificable, evitando criterios procedimentales que solo describan una actividad de prueba sin un umbral de aceptación. Este criterio se aplica sobre las nueve características del modelo de calidad de producto de la norma ISO/IEC 25010:2023~\cite{iso25010-2023}. La Tabla~\ref{tab:cobertura-rnf} resume la cobertura mínima exigida por característica y la cobertura alcanzada en el catálogo de la Sección~\ref{sec:catalogo-rnf}.
+
+\begin{center}
+\begin{longtable}{|p{5cm}|p{2.2cm}|p{6cm}|}
+\hline
+\textbf{Característica} & \textbf{Mínimo} & \textbf{RNF incluidos} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Característica} & \textbf{Mínimo} & \textbf{RNF incluidos} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+Adecuación funcional & 1 & RNF-07 \\
+\hline
+Eficiencia de desempeño & 2 & RNF-01, RNF-08 \\
+\hline
+Compatibilidad & 1 & RNF-05 \\
+\hline
+Interacción de usuario & 2 & RNF-04, RNF-12 \\
+\hline
+Fiabilidad & 2 & RNF-02, RNF-09 \\
+\hline
+Seguridad & 3 & RNF-03, RNF-10, RNF-11 \\
+\hline
+Mantenibilidad & 1 & RNF-06 \\
+\hline
+Portabilidad & 1 & RNF-13 \\
+\hline
+Flexibilidad & 1 & RNF-14 \\
+\hline
+Explicabilidad (Sección~\ref{sec:explicabilidad-ia}) & 1 & RNF-15 \\
+\hline
+\end{longtable}
+\label{tab:cobertura-rnf}
+\end{center}
+
+% Subseccion 3.2.2: Catalogo de requisitos no funcionales
+\subsubsection{Catálogo de requisitos no funcionales}
+\label{sec:catalogo-rnf}
+
+Cada requisito no funcional se documenta mediante la ficha de diez atributos descrita en la Tabla~\ref{tab:plantilla-rnf}.
+
+\begin{center}
+\begin{longtable}{|p{3.8cm}|p{10.4cm}|}
+\hline
+\textbf{Atributo} & \textbf{Contenido} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Atributo} & \textbf{Contenido} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+Identificador & Código único con el formato RNF-XX. \\
+\hline
+Nombre & Frase nominal breve que identifica la propiedad de calidad especificada. \\
+\hline
+Característica ISO/IEC 25010:2023 & Una de las nueve características del modelo de calidad de producto. \\
+\hline
+Subcaracterística & Subcaracterística específica dentro de la característica declarada. \\
+\hline
+Descripción & Enunciado en la forma «El sistema deberá\ldots», referido a una propiedad de calidad medible. \\
+\hline
+Métrica & Variable que se mide para verificar el cumplimiento del requisito. \\
+\hline
+Valor objetivo & Umbral numérico o condición que la métrica debe alcanzar. \\
+\hline
+Método de medición & Procedimiento, tamaño de muestra y condiciones bajo las cuales se mide la métrica. \\
+\hline
+Origen & Identificador de evidencia EV-XX con marca de tiempo, o referencia normativa cuando el requisito no se origina en una cita directa. \\
+\hline
+Prioridad & Alta, Media o Baja. \\
+\hline
+\end{longtable}
+\label{tab:plantilla-rnf}
+\end{center}
+
+Los requisitos RNF-01 a RNF-06 corresponden a los identificados en la Entrega 2 (1B), migrados a esta ficha y corregidos: sus criterios de verificación originales describían una actividad de prueba sin un umbral cuantificable, y se sustituyen aquí por una métrica con valor objetivo y método de medición explícitos. La categoría «Usabilidad» de la Entrega 2 (1B) se renombra a «Interacción de usuario», conforme a la nomenclatura de la edición 2023 de la norma. Los requisitos RNF-07 a RNF-14 se incorporan para cubrir las características y los mínimos exigidos en esta entrega. El requisito RNF-15 se desarrolla íntegramente en la Sección~\ref{sec:explicabilidad-ia}.
+
+\bigskip
+\noindent\textbf{RNF-01. Tiempo de respuesta en la consulta de parcelas}
+\label{tab:RNF-01}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-01 \\
+\hline
+Nombre & Tiempo de respuesta en la consulta de parcelas \\
+\hline
+Característica ISO/IEC 25010:2023 & Eficiencia de desempeño \\
+\hline
+Subcaracterística & Comportamiento temporal \\
+\hline
+Descripción & El sistema deberá responder a las consultas y operaciones del usuario dentro de un tiempo máximo bajo condiciones normales de uso. \\
+\hline
+Métrica & Tiempo de respuesta \\
+\hline
+Valor objetivo & El listado de parcelas responde en $\leq$ 2,0 s con 500 registros cargados. \\
+\hline
+Método de medición & Medición del percentil 95 de 50 ejecuciones. \\
+\hline
+Origen & ISO/IEC 25010:2023 (característica sin evidencia directa de campo); RF-02. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-02. Disponibilidad del sistema}
+\label{tab:RNF-02}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-02 \\
+\hline
+Nombre & Disponibilidad del sistema \\
+\hline
+Característica ISO/IEC 25010:2023 & Fiabilidad \\
+\hline
+Subcaracterística & Disponibilidad \\
+\hline
+Descripción & El sistema deberá estar disponible durante el horario de operación de la finca. \\
+\hline
+Métrica & Porcentaje de tiempo disponible (uptime) \\
+\hline
+Valor objetivo & Disponibilidad $\geq$ 99,0~\% mensual en horario 06:00--18:00. \\
+\hline
+Método de medición & Medida como uptime registrado durante 30 días. \\
+\hline
+Origen & ISO/IEC 25010:2023 (característica sin evidencia directa de campo). \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-03. Control de acceso por rol}
+\label{tab:RNF-03}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-03 \\
+\hline
+Nombre & Control de acceso por rol \\
+\hline
+Característica ISO/IEC 25010:2023 & Seguridad \\
+\hline
+Subcaracterística & Autenticidad \\
+\hline
+Descripción & El sistema deberá permitir el acceso únicamente a usuarios autenticados mediante credenciales válidas y controlar los permisos según el rol asignado. \\
+\hline
+Métrica & Porcentaje de intentos de acceso fuera de rol rechazados \\
+\hline
+Valor objetivo & El 100~\% de los intentos de acceso a funciones fuera del rol asignado son rechazados. \\
+\hline
+Método de medición & Verificado sobre una matriz de 12 casos rol-función. \\
+\hline
+Origen & R-02, RD-04. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-04. Curva de aprendizaje de usuarios nuevos}
+\label{tab:RNF-04}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-04 \\
+\hline
+Nombre & Curva de aprendizaje de usuarios nuevos \\
+\hline
+Característica ISO/IEC 25010:2023 & Interacción de usuario \\
+\hline
+Subcaracterística & Capacidad de aprendizaje \\
+\hline
+Descripción & Las interfaces del sistema deberán ser suficientemente intuitivas para que un usuario nuevo realice las funciones básicas tras una capacitación breve. \\
+\hline
+Métrica & Porcentaje de usuarios de prueba que completan las funciones básicas tras la capacitación \\
+\hline
+Valor objetivo & El 100~\% de los usuarios de prueba completan las funciones básicas tras una capacitación de 30 minutos. \\
+\hline
+Método de medición & Prueba con al menos 5 usuarios nuevos, midiendo el tiempo necesario para ejecutar las tareas principales. \\
+\hline
+Origen & ISO/IEC 25010:2023, motivado por el perfil de usuario sin experiencia digital previa declarado en EV-02 [00:24]. \\
+\hline
+Prioridad & Media \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-05. Compatibilidad con navegadores}
+\label{tab:RNF-05}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-05 \\
+\hline
+Nombre & Compatibilidad con navegadores \\
+\hline
+Característica ISO/IEC 25010:2023 & Compatibilidad \\
+\hline
+Subcaracterística & Coexistencia \\
+\hline
+Descripción & El sistema deberá funcionar correctamente en los navegadores Google Chrome, Microsoft Edge y Mozilla Firefox en sus versiones actuales. \\
+\hline
+Métrica & Proporción de casos de uso ejecutados sin error funcional, por navegador \\
+\hline
+Valor objetivo & 18 de 18 ejecuciones exitosas (6 casos de uso $\times$ 3 navegadores), 0 errores funcionales. \\
+\hline
+Método de medición & Ejecución de los seis casos de uso principales (UC-01 a UC-06) en cada uno de los tres navegadores compatibles. \\
+\hline
+Origen & RD-03. \\
+\hline
+Prioridad & Media \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-06. Modularidad de la arquitectura}
+\label{tab:RNF-06}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-06 \\
+\hline
+Nombre & Modularidad de la arquitectura \\
+\hline
+Característica ISO/IEC 25010:2023 & Mantenibilidad \\
+\hline
+Subcaracterística & Modularidad \\
+\hline
+Descripción & El sistema deberá estar desarrollado utilizando una arquitectura modular que facilite la incorporación de nuevas funcionalidades y la corrección de errores. \\
+\hline
+Métrica & Número de módulos modificados al incorporar una funcionalidad de complejidad equivalente a un módulo existente \\
+\hline
+Valor objetivo & Una nueva funcionalidad (por ejemplo, un nuevo tipo de reporte) se incorpora modificando como máximo 3 módulos del sistema. \\
+\hline
+Método de medición & Revisión de la arquitectura documentada por un desarrollador independiente al cambio. \\
+\hline
+Origen & RD-05. \\
+\hline
+Prioridad & Media \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-07. Cobertura de unidades de medida por cultivo}
+\label{tab:RNF-07}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-07 \\
+\hline
+Nombre & Cobertura de unidades de medida por cultivo \\
+\hline
+Característica ISO/IEC 25010:2023 & Adecuación funcional \\
+\hline
+Subcaracterística & Completitud funcional \\
+\hline
+Descripción & El sistema deberá permitir registrar la cosecha en la unidad de medida correspondiente a cada cultivo (racimos para plátano, tachos o quintales para cacao), sin forzar una unidad única para todos los cultivos. \\
+\hline
+Métrica & Porcentaje de registros de cosecha con la unidad de medida correcta según el cultivo \\
+\hline
+Valor objetivo & 100~\%. \\
+\hline
+Método de medición & Verificación sobre una muestra de 30 registros de cosecha de al menos dos cultivos distintos. \\
+\hline
+Origen & EV-02 [02:08]; EV-01 [04:47]. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-08. Tiempo de generación de reportes de pérdidas}
+\label{tab:RNF-08}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-08 \\
+\hline
+Nombre & Tiempo de generación de reportes de pérdidas \\
+\hline
+Característica ISO/IEC 25010:2023 & Eficiencia de desempeño \\
+\hline
+Subcaracterística & Comportamiento temporal \\
+\hline
+Descripción & El sistema deberá generar el reporte de pérdidas por plagas (RF-19) dentro de un tiempo máximo, con un volumen representativo de registros cargados. \\
+\hline
+Métrica & Tiempo de respuesta \\
+\hline
+Valor objetivo & $\leq$ 3,0 s con 500 registros de enfermedad cargados. \\
+\hline
+Método de medición & Medición del percentil 95 de 30 ejecuciones. \\
+\hline
+Origen & ISO/IEC 25010:2023 (característica sin evidencia directa de campo). \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-09. Tolerancia a interrupciones durante el registro}
+\label{tab:RNF-09}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-09 \\
+\hline
+Nombre & Tolerancia a interrupciones durante el registro \\
+\hline
+Característica ISO/IEC 25010:2023 & Fiabilidad \\
+\hline
+Subcaracterística & Tolerancia a fallos \\
+\hline
+Descripción & El sistema deberá conservar sin pérdida los datos ingresados en un formulario de registro (cosecha, labor o enfermedad) ante una interrupción de conexión durante el envío, permitiendo su reintento. \\
+\hline
+Métrica & Porcentaje de registros recuperados tras una interrupción simulada de conexión \\
+\hline
+Valor objetivo & 100~\%. \\
+\hline
+Método de medición & Prueba de interrupción de conexión simulada sobre 20 intentos de registro. \\
+\hline
+Origen & ISO/IEC 25010:2023, motivado por la pérdida de datos declarada en EV-01 [02:04], [02:17]. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-10. Bloqueo por intentos fallidos de acceso}
+\label{tab:RNF-10}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-10 \\
+\hline
+Nombre & Bloqueo por intentos fallidos de acceso \\
+\hline
+Característica ISO/IEC 25010:2023 & Seguridad \\
+\hline
+Subcaracterística & Resistencia \\
+\hline
+Descripción & El sistema deberá bloquear temporalmente una cuenta de usuario tras un número determinado de intentos fallidos consecutivos de inicio de sesión. \\
+\hline
+Métrica & Número de intentos fallidos permitidos antes del bloqueo, y duración del bloqueo \\
+\hline
+Valor objetivo & 5 intentos; bloqueo mínimo de 15 minutos. \\
+\hline
+Método de medición & Prueba de 5 intentos fallidos consecutivos sobre 10 cuentas de prueba. \\
+\hline
+Origen & UC-01; RD-04. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-11. Cifrado de credenciales almacenadas}
+\label{tab:RNF-11}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-11 \\
+\hline
+Nombre & Cifrado de credenciales almacenadas \\
+\hline
+Característica ISO/IEC 25010:2023 & Seguridad \\
+\hline
+Subcaracterística & Confidencialidad \\
+\hline
+Descripción & El sistema deberá almacenar las contraseñas de los usuarios mediante una función de cifrado unidireccional, sin conservar la contraseña en texto plano en ningún medio de almacenamiento. \\
+\hline
+Métrica & Porcentaje de contraseñas almacenadas en formato cifrado \\
+\hline
+Valor objetivo & 100~\%. \\
+\hline
+Método de medición & Revisión técnica del esquema de almacenamiento de credenciales en la base de datos. \\
+\hline
+Origen & ISO/IEC 25010:2023; R-04. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-12. Accesibilidad para usuarios sin experiencia digital previa}
+\label{tab:RNF-12}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-12 \\
+\hline
+Nombre & Accesibilidad para usuarios sin experiencia digital previa \\
+\hline
+Característica ISO/IEC 25010:2023 & Interacción de usuario \\
+\hline
+Subcaracterística & Inclusividad \\
+\hline
+Descripción & El sistema deberá permitir que un usuario sin experiencia previa en aplicaciones móviles complete el registro de una cosecha sin asistencia de un tercero. \\
+\hline
+Métrica & Porcentaje de usuarios de prueba sin experiencia previa que completan el registro sin asistencia \\
+\hline
+Valor objetivo & $\geq$ 80~\%. \\
+\hline
+Método de medición & Prueba de usabilidad con al menos 5 usuarios de prueba sin experiencia previa en aplicaciones. \\
+\hline
+Origen & EV-02 [00:24], [02:33], [02:43]. \\
+\hline
+Prioridad & Media \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-13. Acceso desde dispositivo móvil}
+\label{tab:RNF-13}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-13 \\
+\hline
+Nombre & Acceso desde dispositivo móvil \\
+\hline
+Característica ISO/IEC 25010:2023 & Portabilidad \\
+\hline
+Subcaracterística & Adaptabilidad \\
+\hline
+Descripción & El sistema deberá ser accesible y operable desde un navegador móvil en un teléfono inteligente, sin requerir instalación de una aplicación nativa. \\
+\hline
+Métrica & Porcentaje de funciones principales operables desde un navegador móvil \\
+\hline
+Valor objetivo & 100~\% de las funciones de RF-01, RF-04 y RF-05. \\
+\hline
+Método de medición & Prueba funcional sobre un navegador móvil en al menos 2 tamaños de pantalla. \\
+\hline
+Origen & EV-01 [08:42]. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RNF-14. Incorporación de nuevos cultivos sin modificar código}
+\label{tab:RNF-14}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-14 \\
+\hline
+Nombre & Incorporación de nuevos cultivos sin modificar código \\
+\hline
+Característica ISO/IEC 25010:2023 & Flexibilidad \\
+\hline
+Subcaracterística & Adaptabilidad \\
+\hline
+Descripción & El sistema deberá permitir agregar un nuevo tipo de cultivo y su unidad de medida asociada sin requerir modificaciones al código fuente de la aplicación. \\
+\hline
+Métrica & Tiempo requerido para incorporar un nuevo tipo de cultivo mediante configuración \\
+\hline
+Valor objetivo & $\leq$ 30 minutos, sin intervención de un desarrollador. \\
+\hline
+Método de medición & Prueba de incorporación de un cultivo de prueba por parte de un administrador capacitado. \\
+\hline
+Origen & ISO/IEC 25010:2023; RD-05. \\
+\hline
+Prioridad & Media \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent RNF-15, correspondiente a la explicabilidad de las alertas y recomendaciones del módulo de IA, se documenta íntegramente en la Sección~\ref{sec:explicabilidad-ia}, ficha de la Tabla~\ref{tab:RNF-15}.
+
+\subsection{Requisito de explicabilidad del componente de IA o AA}
+\label{sec:explicabilidad-ia}
+
+El módulo de Inteligencia Artificial del SGA genera alertas y recomendaciones que inciden en decisiones sobre el manejo de los cultivos. Por tratarse de un componente de IA, el sistema incorpora un requisito de explicabilidad, entendida como la capacidad del sistema de proporcionar información comprensible sobre cómo y por qué llegó a una salida determinada~\cite{chazette2020}. El marco de referencia utilizado es el modelo de explicabilidad de Chazette, Brunotte y Speith~\cite{chazette2021,chazette2022}.
+
+La evidencia central proviene de EV-01 [09:02] y [09:10]: el administrador condiciona su confianza en el sistema a la posibilidad de verificar la información antes de actuar, y reconoce explícitamente que la Inteligencia Artificial tiene margen de error. De esta evidencia se derivan cuatro rasgos de la necesidad de explicación: el usuario exige poder \textbf{verificar} la salida antes de actuar; debe comunicarse la \textbf{incertidumbre} asociada, no solo el resultado; el tipo de explicación requerido es \textbf{causal y por evidencia}, referida a los datos en que se basó la alerta para poder contrastarla en campo; y el momento de la explicación debe ser \textbf{simultáneo a la alerta}, no posterior. El perfil del jornalero, que no utiliza aplicaciones (EV-02 [02:33]), exige explicaciones de menor densidad que las del administrador. Este requisito se enlaza con la restricción R-05 de la Entrega 2 (1B): las recomendaciones de la IA apoyan la decisión y no sustituyen el criterio del usuario.
+
+% Subseccion 3.3.1: Decisiones automaticas del modulo de IA
+\subsubsection{Decisiones automáticas del módulo de IA}
+\label{sec:decisiones-ia}
+
+\begin{center}
+\begin{longtable}{|p{1.6cm}|p{5.5cm}|p{2.3cm}|p{4.3cm}|}
+\hline
+\textbf{ID} & \textbf{Decisión automática} & \textbf{RF asociado} & \textbf{Nivel de autonomía} \\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Decisión automática} & \textbf{RF asociado} & \textbf{Nivel de autonomía} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+D-01 & Generación de alerta temprana de posible enfermedad en una parcela & RF-26 & Sugerencia; requiere confirmación humana (R-05) \\
+\hline
+D-02 & Generación de recomendación de manejo del cultivo & RF-15 & Sugerencia; requiere confirmación humana (R-05) \\
+\hline
+D-03 & Cálculo del nivel de confianza asociado a una alerta o recomendación & RF-26, RF-15 & Automático; informativo, no accionable por sí solo \\
+\hline
+\end{longtable}
+\label{tab:decisiones-ia}
+\end{center}
+
+% Subseccion 3.3.2: Necesidades de explicacion por tipo de usuario
+\subsubsection{Necesidades de explicación por tipo de usuario}
+\label{sec:necesidades-explicacion}
+
+\begin{center}
+\begin{longtable}{|p{2cm}|p{2.3cm}|p{5.3cm}|p{3.6cm}|}
+\hline
+\textbf{Decisión} & \textbf{Usuario afectado} & \textbf{Tipo de explicación requerida} & \textbf{Momento} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Decisión} & \textbf{Usuario afectado} & \textbf{Tipo de explicación requerida} & \textbf{Momento} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+D-01 & Administrador & Causal y por evidencia: datos históricos y patrón que motivaron la alerta, con nivel de incertidumbre explícito & Simultáneo a la alerta --- EV-01 [09:02] \\
+\hline
+D-02 & Administrador & Causal y por evidencia, con nivel de incertidumbre explícito & Simultáneo a la recomendación --- EV-01 [09:10] \\
+\hline
+D-01, D-02 (tarea derivada) & Jornalero & Instructiva, de baja densidad: qué tarea ejecutar y en qué parcela, sin el detalle causal del modelo & Al recibir la tarea asignada, RF-09 --- EV-02 [02:33] \\
+\hline
+\end{longtable}
+\label{tab:necesidades-explicacion}
+\end{center}
+
+% Subseccion 3.3.3: Ficha del requisito de explicabilidad
+\subsubsection{Ficha del requisito de explicabilidad}
+\label{sec:ficha-explicabilidad}
+
+\bigskip
+\noindent\textbf{RNF-15. Explicabilidad de las alertas y recomendaciones del módulo de IA}
+\label{tab:RNF-15}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-15 \\
+\hline
+Nombre & Explicabilidad de las alertas y recomendaciones del módulo de IA \\
+\hline
+Característica ISO/IEC 25010:2023 & Interacción de usuario \\
+\hline
+Subcaracterística & Autodescriptividad \\
+\hline
+Descripción & El sistema deberá presentar, junto con cada alerta o recomendación generada por el módulo de IA, una explicación de los datos y el patrón que la originaron, junto con el nivel de incertidumbre asociado, para permitir que el administrador la verifique antes de actuar sobre ella. \\
+\hline
+Métrica & Cuatro métricas independientes: M15.1 proporción de alertas y recomendaciones que incluyen explicación causal y nivel de incertidumbre en su presentación; M15.2 tiempo adicional de presentación de la explicación; M15.3 extensión de la explicación; M15.4 comprensión reportada por el usuario. \\
+\hline
+Valor objetivo & M15.1 = 100~\% de las alertas y recomendaciones incluyen explicación causal y nivel de incertidumbre; M15.2 $\leq$ 1,0 s adicional respecto a la alerta; M15.3 extensión máxima de 3 líneas de texto; M15.4 comprensión reportada $\geq$ 4 sobre 5 en escala Likert. \\
+\hline
+Método de medición & Cada métrica se verifica por separado: M15.1 a M15.3 sobre una muestra de 20 alertas o recomendaciones generadas, y M15.4 mediante encuesta de comprensión en escala Likert de 5 puntos aplicada al administrador tras presentarle 10 alertas. \\
+\hline
+Origen & EV-01 [09:02], [09:10]; Chazette y Schneider (2020)~\cite{chazette2020}; Chazette, Brunotte y Speith (2021, 2022)~\cite{chazette2021,chazette2022}; R-05. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{longtable}
+\end{center}
+
+\subsection{Historias de usuario}
+\label{sec:historias-usuario}
+
+Esta sección presenta las historias de usuario en formato Connextra para cada requisito funcional de prioridad Debe tener, con su verificación según los criterios INVEST y al menos un escenario de aceptación en notación Gherkin. Los roles utilizados son Administrador y Jornalero, conforme al perfil evidenciado en las entrevistas EV-01 y EV-02. No se redactan historias de usuario para los requisitos de prioridad Debería tener, Podría tener o No tendrá, conforme al alcance definido para este bloque. El identificador de cada historia coincide con el del requisito funcional del que deriva.
+
+\bigskip
+\noindent\textbf{HU-01 \textperiodcentered\ deriva de RF-01}
+
+\smallskip
+\noindent Como usuario del sistema (administrador o jornalero), quiero iniciar sesión con mi usuario y contraseña, para acceder únicamente a las funciones correspondientes a mi rol, conforme a la restricción de seguridad R-02.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: no depende de otra historia de usuario para implementarse.
+\item \textbf{Negociable}: el mecanismo de recuperación de contraseña puede definirse en diseño.
+\item \textbf{Valiosa}: sin ella ningún otro módulo puede diferenciar administrador de jornalero; origen normativo (R-02), sin evidencia de entrevista posible.
+\item \textbf{Estimable}: alcance acotado a autenticación y redirección por rol.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el sistema autentica y concede acceso según el rol en $\leq$ 2,0 s (RF-01).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-01.1
+\begin{itemize}
+\item[] \textbf{Dado} que el usuario está registrado en el sistema
+\item[] \textbf{Cuando} ingresa un usuario y una contraseña válidos
+\item[] \textbf{Entonces} el sistema concede acceso a las funciones correspondientes a su rol
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-02 \textperiodcentered\ deriva de RF-02}
+
+\smallskip
+\noindent Como administrador, quiero registrar y consultar las parcelas de la finca, para contar con un registro estructurado que complemente la identificación visual que utiliza actualmente.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: no depende de otra historia de usuario.
+\item \textbf{Negociable}: los campos exactos de ubicación pueden ajustarse en diseño.
+\item \textbf{Valiosa}: complementa con un registro estructurado la identificación visual que el administrador ya domina (EV-01 [04:02]).
+\item \textbf{Estimable}: alcance acotado a un CRUD de parcelas.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si la consulta de una parcela responde en $\leq$ 2,0 s con 500 parcelas cargadas (RF-02).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-02.1
+\begin{itemize}
+\item[] \textbf{Dado} que el administrador inició sesión
+\item[] \textbf{Cuando} registra una parcela con nombre, ubicación, área y estado
+\item[] \textbf{Entonces} la parcela queda disponible para su consulta y para asociarle cultivos
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-03 \textperiodcentered\ deriva de RF-03}
+
+\smallskip
+\noindent Como administrador, quiero registrar los cultivos de verde y cacao de cada parcela, para registrar en el sistema los cultivos correspondientes a la distribución real de la finca entre palma, verde y cacao.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende únicamente de que exista una parcela (RF-02), no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: la lista de variedades puede ampliarse en diseño.
+\item \textbf{Valiosa}: sin esto no se puede diferenciar verde de cacao en ningún reporte posterior (EV-01 [03:18]).
+\item \textbf{Estimable}: alcance acotado a un CRUD de cultivos asociados a parcela.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el cultivo queda disponible para consulta asociado a su parcela en $\leq$ 2,0 s (RF-03).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-03.1
+\begin{itemize}
+\item[] \textbf{Dado} que existe al menos una parcela registrada
+\item[] \textbf{Cuando} el administrador registra un cultivo de tipo verde o cacao para esa parcela
+\item[] \textbf{Entonces} el cultivo queda asociado correctamente a la parcela
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-04 \textperiodcentered\ deriva de RF-04}
+
+\smallskip
+\noindent Como jornalero, quiero registrar las labores que realizo cada día, para dejar un registro de las actividades ejecutadas, además de la comunicación verbal que mantengo con el administrador.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que el trabajador tenga una cuenta registrada (RF-14), no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el catálogo exacto de tipos de actividad puede ajustarse en diseño.
+\item \textbf{Valiosa}: añade un registro consultable a la comunicación verbal que hoy predomina (EV-02 [00:54]).
+\item \textbf{Estimable}: alcance acotado a un formulario de registro.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el 100~\% de las actividades quedan disponibles para consulta del administrador en máximo 1 minuto (RF-04).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-04.1
+\begin{itemize}
+\item[] \textbf{Dado} que el jornalero inició sesión
+\item[] \textbf{Cuando} registra una actividad indicando fecha, tipo y parcela
+\item[] \textbf{Entonces} la actividad queda disponible para consulta del administrador
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-05 \textperiodcentered\ deriva de RF-05}
+
+\smallskip
+\noindent Como jornalero, quiero registrar la cantidad cosechada en la unidad que corresponde a cada cultivo, para mantener en el sistema la misma unidad de medida que utilizo actualmente según se trate de plátano o cacao.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que exista un cultivo registrado (RF-03), no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: la lista de unidades puede ampliarse en diseño (RNF-14).
+\item \textbf{Valiosa}: es la base de todo reporte de producción posterior (EV-02 [02:08]).
+\item \textbf{Estimable}: alcance acotado a un formulario de registro de cosecha.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el registro se incorpora al historial de producción en $\leq$ 2,0 s (RF-05).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-05.1
+\begin{itemize}
+\item[] \textbf{Dado} que existe un cultivo previamente registrado
+\item[] \textbf{Cuando} el jornalero registra una cosecha con cultivo, parcela, cantidad, unidad y fecha
+\item[] \textbf{Entonces} la producción queda registrada y disponible en el historial
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-06 \textperiodcentered\ deriva de RF-06}
+
+\smallskip
+\noindent Como administrador, quiero registrar y consultar el inventario de insumos y herramientas, para dejar de operar sin un inventario real.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: no depende de otra historia de usuario.
+\item \textbf{Negociable}: los tipos de insumo pueden ampliarse en diseño.
+\item \textbf{Valiosa}: resuelve la ausencia de inventario reconocida por el propio administrador (EV-01 [06:14]).
+\item \textbf{Estimable}: alcance acotado a un CRUD de insumos.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el inventario refleja la actualización en $\leq$ 2,0 s (RF-06).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-06.1
+\begin{itemize}
+\item[] \textbf{Dado} que el administrador inició sesión
+\item[] \textbf{Cuando} registra o actualiza un insumo con nombre, tipo, cantidad y unidad
+\item[] \textbf{Entonces} el inventario queda actualizado con la información registrada
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-07 \textperiodcentered\ deriva de RF-07}
+
+\smallskip
+\noindent Como administrador, quiero consultar la producción registrada en un período específico, para saber si la diferencia entre un mes y otro es más alta o más baja.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que existan registros de cosecha (RF-05), no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: los filtros adicionales pueden ampliarse en diseño.
+\item \textbf{Valiosa}: apoya la comparación de rendimiento entre periodos (EV-01 [04:47]).
+\item \textbf{Estimable}: alcance acotado a una consulta filtrada por fecha.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si la consulta responde en $\leq$ 2,0 s con 500 registros (RF-07).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-07.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen registros de producción almacenados
+\item[] \textbf{Cuando} el administrador selecciona un período de consulta
+\item[] \textbf{Entonces} el sistema presenta únicamente la producción de ese período
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-08 \textperiodcentered\ deriva de RF-08}
+
+\smallskip
+\noindent Como administrador, quiero planificar las actividades agrícolas con anticipación, para mantener la práctica de organizar el trabajo con una semana de adelanto.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que existan parcelas (RF-02), no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el horizonte de planificación puede ajustarse en diseño.
+\item \textbf{Valiosa}: digitaliza una práctica de planificación que ya existe pero es informal (EV-01 [06:51]).
+\item \textbf{Estimable}: alcance acotado a un formulario de planificación.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si la actividad planificada queda disponible para asignación en $\leq$ 2,0 s (RF-08).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-08.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen parcelas registradas
+\item[] \textbf{Cuando} el administrador registra una actividad con tarea, fecha programada y parcela
+\item[] \textbf{Entonces} la actividad queda disponible para su posterior asignación
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-09 \textperiodcentered\ deriva de RF-09}
+
+\smallskip
+\noindent Como administrador, quiero asignar tareas específicas a cada trabajador, para dejar un registro formal de la planificación y dirección del trabajo que realizo directamente con cada uno.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de RF-14 y RF-08, no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el nivel de detalle de la tarea puede ajustarse en diseño.
+\item \textbf{Valiosa}: deja registro formal de la coordinación que hoy realiza directamente el administrador (EV-02 [01:01]).
+\item \textbf{Estimable}: alcance acotado a una asignación trabajador-tarea-parcela-fecha.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el 100~\% de las tareas asignadas quedan disponibles para el trabajador en $\leq$ 2,0 s (RF-09).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-09.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen trabajadores y actividades registradas
+\item[] \textbf{Cuando} el administrador asigna una actividad a un trabajador con parcela y fecha
+\item[] \textbf{Entonces} la tarea queda asignada y disponible para consulta del trabajador
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-10 \textperiodcentered\ deriva de RF-10}
+
+\smallskip
+\noindent Como administrador, quiero consultar el estado de las tareas asignadas, para contar con un registro consultable del seguimiento que realizo actualmente de forma directa con cada trabajador.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de RF-09, no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: los estados intermedios pueden ampliarse en diseño.
+\item \textbf{Valiosa}: deja un registro consultable del seguimiento que hoy realiza el administrador de forma directa (EV-01 [07:11]).
+\item \textbf{Estimable}: alcance acotado a una consulta de estado.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el estado se refleja correctamente en $\leq$ 2,0 s desde el cambio (RF-10).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-10.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen tareas previamente asignadas
+\item[] \textbf{Cuando} el administrador consulta el módulo de seguimiento
+\item[] \textbf{Entonces} el sistema muestra el estado actualizado de cada tarea asignada
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-11 \textperiodcentered\ deriva de RF-11}
+
+\smallskip
+\noindent Como administrador, quiero generar reportes de producción por cultivo, parcela o período, para analizar el rendimiento de la finca sin calcularlo manualmente.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que existan registros de producción, no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el formato de exportación puede ajustarse en diseño.
+\item \textbf{Valiosa}: responde al tipo de reporte que el administrador identificó como necesario (EV-01 [08:10]).
+\item \textbf{Estimable}: alcance acotado a un generador de reportes con filtros.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el reporte se genera en $\leq$ 3,0 s con 500 registros (RF-11).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-11.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen registros de producción almacenados
+\item[] \textbf{Cuando} el administrador selecciona los filtros de cultivo, parcela o período
+\item[] \textbf{Entonces} el sistema genera el reporte correspondiente disponible para consulta o descarga
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-14 \textperiodcentered\ deriva de RF-14}
+
+\smallskip
+\noindent Como administrador, quiero registrar y administrar las cuentas de los usuarios del sistema con su rol correspondiente, para administrar el acceso del equipo de siete personas conforme al rol de cada una.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: no depende de otra historia de usuario.
+\item \textbf{Negociable}: los campos adicionales del perfil pueden ampliarse en diseño.
+\item \textbf{Valiosa}: sostiene el control de acceso diferenciado del que depende todo el sistema (EV-01 [02:35]; R-02).
+\item \textbf{Estimable}: alcance acotado a un CRUD de usuarios y roles.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el cambio de rol o estado se refleja en los permisos en $\leq$ 2,0 s (RF-14).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-14.1
+\begin{itemize}
+\item[] \textbf{Dado} que el administrador inició sesión
+\item[] \textbf{Cuando} registra un usuario con su rol correspondiente
+\item[] \textbf{Entonces} la cuenta queda disponible con los permisos de ese rol
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-19 \textperiodcentered\ deriva de RF-19}
+
+\smallskip
+\noindent Como administrador, quiero un reporte de las pérdidas de producción por plagas y enfermedades, para tener la información que considero la más importante de analizar.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que existan registros de enfermedad (RF-16), no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el desglose exacto (por cultivo, por parcela) puede ajustarse en diseño.
+\item \textbf{Valiosa}: responde al reporte que el propio administrador señaló como el más importante (EV-01 [08:17]).
+\item \textbf{Estimable}: alcance acotado a un reporte con filtros.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el reporte se genera en $\leq$ 3,0 s con 500 registros (RF-19).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-19.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen registros de enfermedad con pérdida estimada
+\item[] \textbf{Cuando} el administrador solicita el reporte de pérdidas por plagas
+\item[] \textbf{Entonces} el sistema presenta la pérdida estimada por plaga, cultivo y parcela
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-24 \textperiodcentered\ deriva de RF-24}
+
+\smallskip
+\noindent Como administrador, quiero consultar el historial de labores y cosechas filtrado por trabajador y fecha, para no volver a perder el control de los datos como ocurrió cuando no se llevaba bitácora de las fundas semanales.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que existan registros de RF-04 y RF-05, no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: los filtros adicionales pueden ampliarse en diseño.
+\item \textbf{Valiosa}: previene la desviación de datos ya ocurrida una vez (EV-01 [02:04], [02:17]).
+\item \textbf{Estimable}: alcance acotado a una consulta filtrada.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si la consulta con 500 registros responde en $\leq$ 2,0 s (RF-24).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-24.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen labores y cosechas registradas
+\item[] \textbf{Cuando} el administrador filtra el historial por trabajador y rango de fechas
+\item[] \textbf{Entonces} el sistema presenta únicamente los registros que cumplen ese filtro
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-25 \textperiodcentered\ deriva de RF-25}
+
+\smallskip
+\noindent Como administrador, quiero recibir alertas automáticas cuando algo requiera atención inmediata, para tomar decisiones sin tener que revisar todo el sistema manualmente.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de RF-06 y RF-16 como origen de la alerta, no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el canal de notificación puede definirse en diseño.
+\item \textbf{Valiosa}: es la forma de apoyo a la decisión que el administrador priorizó explícitamente (EV-01 [10:33]).
+\item \textbf{Estimable}: alcance acotado a un motor de alertas sobre condiciones ya definidas.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el 100~\% de las enfermedades de gravedad alta generan alerta en $\leq$ 5,0 s (RF-25).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-25.1
+\begin{itemize}
+\item[] \textbf{Dado} que se registra una enfermedad con nivel de gravedad alto
+\item[] \textbf{Cuando} el sistema procesa el registro
+\item[] \textbf{Entonces} genera una alerta visible al administrador en menos de 5 segundos
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-26 \textperiodcentered\ deriva de RF-26}
+
+\smallskip
+\noindent Como administrador, quiero que el sistema me avise automáticamente cuando una parcela muestre señales de enfermedad antes de que yo lo note visualmente, para intervenir a tiempo.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que existan registros históricos suficientes, no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el algoritmo específico de detección puede definirse en diseño técnico.
+\item \textbf{Valiosa}: es la funcionalidad de IA con la que el administrador se mostró explícitamente de acuerdo (EV-01 [09:02]).
+\item \textbf{Estimable}: alcance acotado a la generación de una alerta temprana con nivel de confianza.
+\item \textbf{Pequeña}: cabe en una iteración, asumiendo el modelo de IA como componente ya disponible.
+\item \textbf{Verificable}: cumple si el módulo alcanza una exactitud mínima del 70~\% sobre el conjunto de validación (RF-26).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-26.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen registros históricos suficientes de una parcela
+\item[] \textbf{Cuando} el módulo de IA detecta un patrón asociado a una posible enfermedad
+\item[] \textbf{Entonces} el sistema genera una alerta temprana con el nivel de confianza del modelo
+\end{itemize}
+
+% Bibliografia
+\bibliographystyle{ieeetr}
+\bibliography{referencias}
+
+\end{document}
