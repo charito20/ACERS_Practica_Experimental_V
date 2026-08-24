@@ -1,0 +1,30 @@
+% Sección 3 del informe final PE5: ERS/SRS final (redacta: Kamila Calle)
+\section{ERS/SRS final}
+\label{sec:informe-ers}
+
+\subsection{Estructura conforme a ISO/IEC/IEEE 29148:2018}
+
+La versión final de la Especificación de Requisitos de Software del SGA (ERS v2.0) se estructura conforme a ISO/IEC/IEEE 29148:2018: descripción general con perspectiva del producto y límite del sistema, mapa de partes interesadas con matriz poder/interés, modelado organizacional i*, requisitos funcionales con plantilla de ocho atributos, requisitos no funcionales cuantificados sobre el modelo de calidad ISO/IEC 25010:2023, requisitos de los componentes de inteligencia artificial e historias de usuario con criterios de aceptación en notación Gherkin. Cada requisito cumple los cuatro atributos que exige la métrica de completitud M1 de la guía de la PE5: identificador único, prioridad MoSCoW o escala Alta/Media/Baja, fuente verificable por evidencia de campo (EV-XX con marca de tiempo, o restricción normativa cuando no hay cita directa) y criterio de verificación cuantificable.
+
+\subsection{Evolución de la línea base: de v1.0 a v2.0}
+
+La versión 2.0 incorpora los cambios exigidos por el Paso 3 de esta práctica sin alterar el contenido sustantivo de los 42 requisitos ya existentes en la línea base (27 RF y 15 RNF):
+
+\begin{itemize}
+  \item \textbf{Requisitos funcionales: de 27 a 31.} Se incorpora RF-28, que completa el componente IA-01 (ya existente como RF-15 y RF-26) con el mecanismo de confirmación o descarte que exige la restricción R-05; y RF-29 a RF-31, que especifican el segundo componente de inteligencia artificial del sistema (IA-02): clasificación de una fotografía de una incidencia fitosanitaria, registro de la clase confirmada y alerta por incidencia acumulada por parcela.
+  \item \textbf{Requisitos no funcionales: de 15 a 26.} Se incorporan RNF-16 a RNF-26: tres de rendimiento y dos de equidad para el componente IA-01, y tres de rendimiento, dos de equidad y uno de explicabilidad para el componente IA-02. Con ello, cada uno de los dos componentes de inteligencia artificial cumple el mínimo exigido por la Sección 4.4 de la guía de la PE5: 3~RF, 3~RNF de rendimiento, 2~RNF de equidad y 1~RNF de explicabilidad.
+  \item \textbf{Sección de componentes de inteligencia artificial (Sección 3.4 del ERS).} Se añade una sección dedicada con la ficha completa de siete campos por componente (identificador y tipo de tarea, entradas y salidas, datos de entrenamiento, métricas de éxito, equidad, explicabilidad, riesgos y \emph{fallback}, clasificación de riesgo y plan de monitoreo), la ampliación de la tabla de decisiones automáticas del módulo de IA (D-04, D-05) y la clasificación de riesgo conforme al Reglamento (UE) 2024/1689, con el análisis de la normativa ecuatoriana de protección de datos personales.
+  \item \textbf{Tabla de cobertura ISO/IEC 25010:2023 actualizada}, con las categorías de corrección funcional del componente de IA y equidad, ampliadas a los ocho requisitos de rendimiento y a los cuatro de equidad del catálogo.
+\end{itemize}
+
+\subsection{Requisitos clave del sistema}
+
+Los requisitos que definen el valor del sistema para la organización son: RF-01 y RF-14 (control de acceso por rol y gestión de usuarios, base de la protección de datos personales), RF-16 (registro de enfermedades, insumo de todos los análisis fitosanitarios), RF-19 (reporte de pérdidas por plagas, el reporte que el administrador declara más importante de analizar, EV-01 [08:17]), RF-15/RF-26/RF-28 (componente IA-01) y RF-29 a RF-31 (componente IA-02, detector de plagas por imagen). Sobre los no funcionales, los críticos son RNF-03/RNF-10/RNF-11 (seguridad), RNF-15/RNF-26 (explicabilidad de las salidas de los dos componentes de IA, condición de confianza que el administrador expresa explícitamente en EV-01 [09:02]) y los cuatro RNF de equidad (RNF-19, RNF-20, RNF-24, RNF-25), que garantizan que el desempeño de los componentes de IA no perjudique sistemáticamente a ningún cultivo, parcela, condición de captura o gama de dispositivo.
+
+\subsection{Verificabilidad}
+
+Todo requisito del catálogo expresa métrica, valor objetivo y método de medición; ningún criterio usa términos no medibles sin umbral, incluidos los quince requisitos incorporados en esta práctica. Los criterios de aceptación de las historias de usuario están en formato Dado--Cuando--Entonces, lo que habilita la cadena de trazabilidad end-to-end hasta el caso de prueba conceptual que se verifica en la Sección de gestión y trazabilidad de este informe.
+
+\subsection{Alcance y límites de este cierre}
+
+Dos verificaciones de la métrica M1 de completitud quedan fuera del alcance de este bloque porque dependen de artefactos que no gestiona la responsable de esta sección: la cobertura de casos de uso (M1b) exige que el catálogo de casos de uso del equipo incluya y especifique CU para RF-28 a RF-31, tarea del Paso 2 (trazabilidad, a cargo de Danela); y la incorporación de las quince filas nuevas de la matriz de trazabilidad final corresponde al mismo Paso. La cobertura de actores (M1c) y de atributos (M1a) sí se verificaron directamente sobre el ERS v2.0 y llegan a 100~\,\%: los dos actores operativos (Administrador, Trabajador agrícola) tienen al menos un RF asociado, y los 57 requisitos del catálogo tienen sus cuatro atributos obligatorios completos.
