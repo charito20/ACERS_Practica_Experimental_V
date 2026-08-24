@@ -1,0 +1,53 @@
+% ============================================================
+% SECCION 4 - MODELOS UML (Danela Arteaga - PE5)
+% Fragmento para \input en el informe final
+% ============================================================
+\section{Modelos UML}
+\label{sec:modelos-uml}
+
+El sistema se modeló con el conjunto de diagramas UML disponible en
+\texttt{03\_Modelado/Diagramas\_UML/}: un diagrama de casos de uso general (UC-01) con
+dieciséis casos de uso especificados (UC-01 a UC-16), doce diagramas de secuencia
+(SEQ-01 a SEQ-12) que cubren los flujos de los requisitos funcionales de prioridad
+\emph{Debe tener} migrados de la Entrega 2 (1B), un diagrama de clases refinado (CD-01) con
+las once clases del dominio (\texttt{User}, \texttt{Administrator}, \texttt{Farmworker},
+\texttt{Plot}, \texttt{Crop}, \texttt{Harvest}, \texttt{Disease}, \texttt{Labor},
+\texttt{InventoryItem}, \texttt{Report}, \texttt{AIRecommendation}, \texttt{Alert}), un
+diagrama de estados (SD-01) para el ciclo de vida de las tareas de campo, tres diagramas de
+actividad (AD-01 a AD-03), un diagrama de despliegue (DEP-01) y un diagrama de componentes
+(COMP-01). El equipo complementó el análisis con el marco i* (\texttt{istar\_sr},
+\texttt{istar\_sd}) para representar la racionalidad estratégica de los actores, en lugar de un
+Diagrama de Flujo de Datos formal.
+
+\subsection{Diagrama de clases y su relación con el módulo de IA}
+\label{sec:cd01-interpretacion}
+
+Dos relaciones del diagrama de clases (CD-01) son las que sostienen el componente de
+inteligencia artificial del sistema. Primero, \texttt{AIRecommendation} y \texttt{Alert} se
+asocian con \texttt{Disease} e \texttt{InventoryItem} respectivamente: una recomendación de
+manejo (RF-15) y una alerta temprana de enfermedad (RF-26) se generan a partir de un registro de
+\texttt{Disease}, mientras que una alerta por disponibilidad crítica (RF-25) se genera a partir de
+un \texttt{InventoryItem} por debajo de su umbral mínimo. Esta doble fuente es la razón por la que
+el criterio de verificación de RF-25 se corrigió durante la re-inspección de esta práctica
+(hallazgo DR-02, \texttt{09\_Cierre\_PE5/registro\_reinspeccion\_PE5.csv}): al provenir de dos
+clases distintas, la verificación no puede tratarse como un único conteo, sino como dos
+verificaciones separadas por tipo de origen.
+
+Segundo, el diagrama de clases no contiene ninguna clase para representar ingresos económicos
+(\texttt{Income} o equivalente). El requisito RF-23 (registro de ingresos), incorporado en la
+Entrega 3 (2A) junto con los otros diez requisitos funcionales nuevos, queda así sin una clase de
+dominio a la que asociarse. Se reporta como un hallazgo abierto de esta unidad y no como un error
+de trazabilidad: la matriz (Sección~\ref{sec:gestion-trazabilidad}) documenta explícitamente esta
+ausencia para que se resuelva en el modelado antes del cierre del proyecto.
+
+\subsection{Ciclo de vida de las tareas de campo}
+\label{sec:sd01-interpretacion}
+
+El único diagrama de estados del proyecto (SD-01) modela el ciclo \emph{Pending
+$\rightarrow$ InProgress $\rightarrow$ Completed} de una tarea de campo (\texttt{Labor}), con
+\emph{Blocked} como sub-estado operativo de \emph{InProgress} —no un cuarto valor del enumerado
+\texttt{TaskStatus} del diagrama de clases, que conserva solo tres valores—, introducido para
+trazabilidad con el mockup de tablero kanban de la Entrega 2. Este diagrama aplica únicamente a
+los requisitos que gobiernan el ciclo de una tarea asignada (RF-04, RF-08, RF-09, RF-10); el resto
+de los requisitos del sistema no tiene un ciclo de vida propio y así se declara en la matriz de
+trazabilidad.

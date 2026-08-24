@@ -1,0 +1,83 @@
+% ============================================================
+% SECCION 6 - GESTION Y TRAZABILIDAD (Danela Arteaga - PE5)
+% Fragmento para \input en el informe final
+% ============================================================
+\section{Gestión y trazabilidad}
+\label{sec:gestion-trazabilidad}
+
+\subsection{Cierre del hallazgo DR-01}
+\label{sec:cierre-dr01}
+
+La re-inspección interna de esta práctica (22-08-2026) registró como hallazgo crítico DR-01 que
+la matriz de trazabilidad no contenía filas para los once requisitos funcionales incorporados en
+la Entrega 3 (2A): la última fila de tipo RF llegaba hasta RF-16, mientras que el ERS vigente
+declara requisitos hasta RF-27
+(\texttt{09\_Cierre\_PE5/registro\_reinspeccion\_PE5.csv}). Esta unidad cierra dicho hallazgo.
+
+La matriz de trazabilidad final (\texttt{04\_Trazabilidad/matriz\_trazabilidad.csv}) recorre la
+cadena Fuente/Stakeholder $\rightarrow$ RF/RNF $\rightarrow$ Caso de Uso $\rightarrow$ Clase UML
+$\rightarrow$ Estado $\rightarrow$ Criterio de aceptación $\rightarrow$ Caso de prueba conceptual
+$\rightarrow$ Historia de usuario, y pasa de 42 a 62 filas: las 42 originales (TR-01 a TR-42),
+correspondientes a los dieciséis RF y quince RNF+RD migrados o corregidos en entregas anteriores,
+más 20 filas nuevas (TR-43 a TR-62) que trazan los once RF (RF-17 a RF-27) y las nueve
+características de calidad restantes (RNF-07 a RNF-15) del ERS vigente.
+
+\subsection{Huérfanos y cadenas cerradas}
+\label{sec:huerfanos}
+
+\begin{center}
+\begin{longtable}{|p{2.6cm}|p{5.5cm}|p{5cm}|}
+\hline
+\textbf{Identificador} & \textbf{Causa} & \textbf{Acción tomada} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Identificador} & \textbf{Causa} & \textbf{Acción tomada} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+TR-19 (RF-15) & Mockup marcado como pendiente para un requisito del componente de IA &
+Cerrado como DR-05: RF-15 tiene prioridad \emph{Could Have} en MoSCoW; su interfaz queda
+justificada y diferida a la siguiente iteración, sin bloquear el cierre de esta entrega \\
+\hline
+RF-19, RF-24, RF-25, RF-26 & Prioridad \emph{Debe tener} sin historia de usuario en el backlog &
+Enlazadas: se redactaron HU-13 a HU-16 con sus criterios de aceptación en formato Gherkin
+(adenda a \texttt{04\_Trazabilidad/HU\_criterios\_aceptacion.md}) \\
+\hline
+RF-17, RF-18, RF-20, RF-21, RF-22, RF-23, RF-27 & Prioridad menor a \emph{Debe tener}, sin
+historia de usuario en el backlog & Justificado por escrito: al ser \emph{Debería/Podría tener},
+se difiere su historia formal a una iteración futura; se deja el criterio de verificación
+detallado en la matriz para no perder el trabajo de especificación ya hecho \\
+\hline
+RF-23 & Sin clase de dominio asociada en el diagrama de clases (CD-01) & Reportado como hallazgo
+abierto de modelado, no de trazabilidad; ver Sección~\ref{sec:cd01-interpretacion} \\
+\hline
+UC-20 (diagrama) & Caso de uso \emph{Consult Assigned Tasks} sin ningún RF asociado en el ERS
+vigente & Reportado para revisión del equipo; se evitó reutilizar el identificador UC-20 al
+proponer los nuevos casos de uso, asignando UC-28 al que hubiera correspondido a RF-20 \\
+\hline
+\end{longtable}
+\end{center}
+
+\subsection{Sincronización backlog $\leftrightarrow$ ERS}
+\label{sec:sincronizacion}
+
+En dirección Historia $\rightarrow$ RF, las dieciséis historias del backlog (HU-01 a HU-16, tras
+esta unidad) tienen cada una su RF de origen: $16/16 = 100\,\%$. En dirección RF
+$\rightarrow$ Historia, de los veintisiete RF del ERS, dieciséis tienen historia asociada:
+$16/27 \approx 59{,}3\,\%$. Restringido a los RF de prioridad \emph{Debe tener} —el subconjunto
+que la guía exige sincronizar por completo—, el resultado es $16/16 = 100\,\%$, frente al
+$12/16 = 75\,\%$ con el que cerró la Entrega 3 (2A).
+
+\subsection{Efecto sobre la métrica M4 (trazabilidad)}
+\label{sec:efecto-m4}
+
+La primera medición de M4 (Sección~\ref{sec:m1-m4}) dio $28/42$ requisitos con fila vigente en la
+matriz ($66{,}7\,\%$), por debajo de la referencia de $\geq 90\,\%$. Con las 20 filas nuevas de
+esta unidad, la matriz cubre los 42 requisitos declarados en el ERS: $42/42 = 100\,\%$,
+cumpliendo la referencia. El detalle de qué columnas de cada fila nueva quedan completas y cuáles
+quedan pendientes de un artefacto visual (mockup, diagrama de caso de uso dibujado) se documenta
+fila por fila en la columna \texttt{Estado\_de\_la\_traza} de la matriz.

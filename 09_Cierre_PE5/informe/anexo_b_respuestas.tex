@@ -1,12 +1,12 @@
 % ============================================================
-% ANEXO B - Respuestas preparadas (Maria Escudero - PE5)
-% Bloques asignados: Validacion (10-12) y Metricas (19-20)
+% ANEXO B - Respuestas preparadas
+% Bloques: Validacion y Metricas (Maria Escudero) + Especificacion y Gestion (Danela Arteaga)
 % Fragmento para \input en el informe final
 % ============================================================
 \subsection*{Validación}
 
 \noindent\textbf{10. ¿Cuántos defectos halló la inspección y cuáles siguen abiertos?}\\
-Entre el ciclo de revisión de la Entrega 2 y la re-inspección interna registramos nueve observaciones corregidas entre entregas (LB-01 a LB-09, en \texttt{registro\_defectos\_lineabase\_1B\_2A.csv}) y cinco hallazgos únicos en la re-inspección de esta práctica (DR-01 a DR-05, en \texttt{registro\_reinspeccion\_PE5.csv}). De estos últimos siguen abiertos uno: DR-01, crítico de trazabilidad, porque la matriz aún no tiene filas para RF-17 a RF-27; quedó con responsable y plazo dentro del Paso 2. Los otros cuatro quedaron cerrados: tres corregidos sobre el texto (RF-25, RNF-05, RNF-15) y uno justificado documentalmente (TR-19, requisito Could Have).
+Entre el ciclo de revisión de la Entrega 2 y la re-inspección interna registramos nueve observaciones corregidas entre entregas (LB-01 a LB-09, en \texttt{registro\_defectos\_lineabase\_1B\_2A.csv}) y cinco hallazgos únicos en la re-inspección de esta práctica (DR-01 a DR-05, en \texttt{registro\_reinspeccion\_PE5.csv}). De estos últimos, los cinco quedaron cerrados al final de la práctica: DR-01 (crítico de trazabilidad) se cerró con las 20 filas nuevas de la matriz y las cuatro historias de usuario faltantes; los otros cuatro quedaron cerrados antes: tres corregidos sobre el texto (RF-25, RNF-05, RNF-15) y uno justificado documentalmente (TR-19, requisito Could Have).
 
 \medskip
 \noindent\textbf{11. ¿Qué defecto crítico se les escapó y cómo lo detectaron después?}\\
@@ -14,13 +14,39 @@ El más grave que se nos pasó fue DR-01: añadimos once requisitos funcionales 
 
 \medskip
 \noindent\textbf{12. ¿Cómo saben que las correcciones no introdujeron nuevos defectos?}\\
-Porque la re-inspección incluyó una pasada completa posterior sobre lo corregido. Primero, las cuatro correcciones de texto son acotadas y verificables por diff: el criterio reescrito de RF-25, la referencia actualizada de RNF-05 y la enumeración de métricas de RNF-15 están en commits revisables del repositorio. Segundo, recalculamos las dos métricas afectadas sobre la versión corregida (M5 bajó de 3,50 a 3,00 y M6 de 0,119 a 0,024) usando los conteos publicados antes de calcular en \texttt{conteos\_base\_auditoria.csv}, así que cualquier regresión habría aparecido como inconsistencia entre conteo y texto al re-auditar.
+Porque la re-inspección incluyó una pasada completa posterior sobre lo corregido. Primero, las cuatro correcciones de texto son acotadas y verificables por diff: el criterio reescrito de RF-25, la referencia actualizada de RNF-05 y la enumeración de métricas de RNF-15 están en commits revisables del repositorio. Segundo, recalculamos las dos métricas afectadas sobre la versión corregida (M5 bajó de 3,50 a 3,00 y M6 de 0,119 a 0,024) usando los conteos publicados antes de calcular en \texttt{conteos\_base\_auditoria.csv}, así que cualquier regresión habría aparecido como inconsistencia entre conteo y texto al re-auditar. Tercero, el cierre de DR-01 (matriz ampliada a 62 filas) se hizo sin tocar ninguna de las 42 filas originales de contenido, solo se les agregaron columnas nuevas; un diff del archivo lo confirma.
 
 \subsection*{Métricas}
 
 \noindent\textbf{19. ¿Qué métrica salió peor y qué hicieron al respecto?}\\
-La primera medición dejó dos métricas fuera de referencia. M6 (corrección) dio 0,119 defectos residuales por requisito contra un máximo de 0,05: aplicamos las correcciones DR-02 a DR-04, justificamos DR-05 y quedó 0,024 con un único residual gestionado. M5 (modificabilidad) dio 3,50 requisitos afectados por cambio contra un máximo de 3,0: reespecificamos RF-12, RF-18 y RF-27 como vistas derivadas de la consulta por período RF-07 para quitarles dependencia directa de RF-05, y la re-medición sobre la misma muestra dio 3,00. Ambas con aritmética completa en la Sección 8 del informe. La única que sigue sin cumplir es M4 (trazabilidad), cuya solución es estructural y está asignada al Paso 2.
+La primera medición dejó dos métricas fuera de referencia. M6 (corrección) dio 0,119 defectos residuales por requisito contra un máximo de 0,05: aplicamos las correcciones DR-02 a DR-04, justificamos DR-05 y quedó 0,024 con un único residual gestionado. M5 (modificabilidad) dio 3,50 requisitos afectados por cambio contra un máximo de 3,0: reespecificamos RF-12, RF-18 y RF-27 como vistas derivadas de la consulta por período RF-07 para quitarles dependencia directa de RF-05, y la re-medición sobre la misma muestra dio 3,00. La que quedó peor al inicio fue M4 (trazabilidad), en 66,7\,\% frente a un mínimo de 90\,\%; su cierre era estructural y quedó completado en el Paso 2 (ver bloque Gestión más abajo): la matriz pasó a cubrir el 100\,\% de los 42 requisitos del ERS.
 
 \medskip
 \noindent\textbf{20. Enséñenme los conteos con los que calcularon la verificabilidad.}\\
-Están publicados en \texttt{09\_Cierre\_PE5/conteos\_base\_auditoria.csv} y coinciden con el Anexo A del informe: 42 requisitos en total (27 funcionales RF-01 a RF-27 y 15 no funcionales RNF-01 a RNF-15), de los cuales los 42 tienen criterio de verificación con métrica, unidad, valor objetivo y método de medición tras la corrección LB-01, lo que da $42/42 = 100\%$ contra una referencia de $\geq 90\%$. De esos 42, los dieciséis requisitos de prioridad Debe tener tienen además criterios de aceptación en formato Gherkin en la Sección 3.4 del ERS.
+Están publicados en \texttt{09\_Cierre\_PE5/conteos\_base\_auditoria.csv} y coinciden con el Anexo A del informe: 42 requisitos en total (27 funcionales RF-01 a RF-27 y 15 no funcionales RNF-01 a RNF-15), de los cuales los 42 tienen criterio de verificación con métrica, unidad, valor objetivo y método de medición tras la corrección LB-01, lo que da $42/42 = 100\%$ contra una referencia de $\geq 90\%$. De esos 42, los dieciséis requisitos de prioridad Debe tener tienen además criterios de aceptación en formato Gherkin en la Sección 3.4 del ERS y en \texttt{04\_Trazabilidad/HU\_criterios\_aceptacion.md}.
+
+\subsection*{Especificación}
+
+\noindent\textbf{7. Elijan un RNF y expliquen cómo se comprueba objetivamente.}\\
+Tomamos RNF-09 (Tolerancia a interrupciones durante el registro). Su verificación es objetiva porque no depende de una opinión: se simula una interrupción de conexión durante el envío de un formulario de registro (cosecha, labor o enfermedad) en 20 intentos, y se cuenta el porcentaje de esos intentos en que el sistema conserva sin pérdida los datos ya ingresados y permite reintentar. El valor objetivo es 100\,\%. Dos personas evaluadoras que ejecuten la misma prueba sobre los mismos 20 intentos deben llegar al mismo veredicto, porque el criterio no exige interpretación: los datos están o no están tras la interrupción.
+
+\medskip
+\noindent\textbf{8. ¿Qué requisito les costó más redactar de forma verificable?}\\
+RF-26 (detección temprana de enfermedad mediante IA). A diferencia de un requisito transaccional como RF-01, aquí el resultado es probabilístico: no se puede exigir 100\,\% de acierto porque el propio administrador reconoce que la inteligencia artificial tiene margen de error (EV-01 [09:10]). Tuvimos que fijar un umbral realista (exactitud mínima del 70\,\% sobre un conjunto de validación de al menos 30 casos etiquetados) y, sobre todo, enlazarlo con RNF-15 (explicabilidad): sin la explicación causal simultánea a la alerta, el requisito sería verificable en el papel pero inútil en la práctica, porque el administrador condiciona su confianza a poder verificar la alerta antes de actuar.
+
+\medskip
+\noindent\textbf{9. ¿Por qué este caso de uso incluye a aquel y no lo extiende?}\\
+En el diagrama general (UC-01), UC-15 (Consultar recomendaciones de IA) incluye \emph{Generate Crop Recommendations}, que a su vez incluye \emph{Analyze Crop Data}: es una relación \texttt{include} porque analizar los datos del cultivo es un paso obligatorio y siempre presente para producir una recomendación, no un comportamiento opcional. En cambio, UC-16 (Registrar enfermedad del cultivo) se relaciona con \emph{Generate Alert} mediante \texttt{extend}: generar una alerta solo ocurre condicionalmente, cuando la enfermedad registrada tiene gravedad alta; en el resto de los casos, el flujo de UC-16 se completa sin ese paso adicional. La diferencia es esa: \texttt{include} para un paso siempre necesario, \texttt{extend} para un comportamiento condicional que se activa solo bajo una regla de negocio específica.
+
+\subsection*{Gestión}
+
+\noindent\textbf{13. Tomen un RF y digan qué se rompería si cambia mañana.}\\
+Tomamos RF-06 (gestión de inventario). Según la matriz de dependencias usada para calcular M5 (\texttt{09\_Cierre\_PE5/calculo\_M5\_modificabilidad.csv}), RF-06 es entrada directa de otros tres requisitos: RF-21 (planificación de compra, que selecciona el insumo del inventario), RF-22 (entrega de insumo, que descuenta cantidad del inventario) y RF-25 (alerta por disponibilidad crítica, que se dispara cuando un insumo cae bajo su umbral mínimo). Cambiar la estructura de datos de \texttt{InventoryItem} —por ejemplo, el campo de umbral mínimo— obligaría a revisar los tres RF dependientes, no solo el propio RF-06.
+
+\medskip
+\noindent\textbf{14. ¿Qué RFC rechazó el CCB?}\\
+El registro de defectos de línea base (\texttt{registro\_defectos\_lineabase\_1B\_2A.csv}) documenta cuatro observaciones corregidas entre la Entrega 2 y la Entrega 3 (LB-01 a LB-04), todas aceptadas y aplicadas; no consta ningún RFC rechazado por el Comité de Control de Cambios en ese ciclo. Si el docente pregunta por una propuesta específicamente rechazada, hay que confirmarlo con María, que es quien recuperó y versionó ese registro.
+
+\medskip
+\noindent\textbf{15. ¿Cuál es la línea base vigente y dónde está etiquetada?}\\
+La línea base vigente al momento de esta práctica es \texttt{ERS\_SRS\_2A\_v1.0.tex}, corregida el 22-08-2026 con los cinco hallazgos de la re-inspección (DR-01 a DR-05) y ampliada con las 20 filas nuevas de trazabilidad. La versión de cierre de la PE5 será \texttt{ERS\_SRS\_2B\_v2.0}, que consolida Robinson; su etiqueta de Git y el commit exacto deben confirmarse el día de la defensa, una vez subida esa versión final.
