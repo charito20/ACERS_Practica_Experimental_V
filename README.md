@@ -104,9 +104,9 @@ La salida es `main.pdf`. El nombre para la subida al SGA es:
 (confirmar con el docente el manejo del quinto apellido).
 
 **Secciones pendientes de integración:** `sec1_introduccion.tex`,
-`sec2_metodologia_ir.tex`, `sec4_modelos_uml.tex`,
-`sec6_gestion_trazabilidad.tex` y `anexo_a_instrumento.tex`. El documento
-compila sin ellas dejando un marcador visible; basta con que cada responsable
+`sec2_metodologia_ir.tex` y `anexo_a_instrumento.tex` (`sec4_modelos_uml.tex` y
+`sec6_gestion_trazabilidad.tex`, de Danela, ya fueron integradas). El documento
+compila sin las pendientes dejando un marcador visible; basta con que cada responsable
 agregue su archivo en `09_Cierre_PE5/informe/` con ese nombre.
 
 **Presentación de defensa:**

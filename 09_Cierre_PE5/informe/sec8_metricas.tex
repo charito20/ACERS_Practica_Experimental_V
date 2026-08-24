@@ -1,5 +1,7 @@
 % ============================================================
 % SECCION 8 - METRICAS DE CALIDAD (Maria Escudero - PE5)
+% Integra el fragmento M1-M4 de la auditoria estadistica
+% (Robinson Jeanpierre) y desarrolla M5-M6 (Maria Escudero).
 % Fragmento para \input en el informe final
 % ============================================================
 \section{Métricas de calidad}
@@ -8,7 +10,7 @@
 \subsection{Instrumento y conteos base}
 \label{sec:conteos-base}
 
-La auditoría aplica las seis métricas derivadas de ISO/IEC 25010:2023 definidas en la guía, cada una como fracción sobre un total contable. Todos los conteos se publicaron antes de calcular y están disponibles en \texttt{09\_Cierre\_PE5/conteos\_base\_auditoria.csv}; los principales son: 27 requisitos funcionales, 15 requisitos no funcionales, 42 requisitos en total, 16 casos de uso identificados y especificados, 2 actores operativos del sistema, 16 historias de usuario en el ERS, 42 filas de datos en la matriz vigente y 861 pares de requisitos analizados ($n(n-1)/2$ con $n=42$).
+La auditoría aplica las seis métricas derivadas de ISO/IEC 25010:2023 definidas en la guía, cada una como fracción sobre un total contable, en dos olas de medición. La primera ola se midió sobre la línea base corregida del documento (42 requisitos: 27 funcionales RF-01 a RF-27 y 15 no funcionales RNF-01 a RNF-15), con conteos publicados antes de calcular en \texttt{09\_Cierre\_PE5/conteos\_base\_auditoria.csv}; entre ellos, 16 casos de uso identificados y especificados, 2 actores operativos, 16 historias de usuario y 861 pares de requisitos ($n(n-1)/2$ con $n=42$). Las métricas M1 a M4 fueron medidas por la auditoría estadística reproducible cuyo método, scripts y salidas constan en \texttt{09\_Cierre\_PE5/analisis\_estadistico/} (Subsección~\ref{subsec:m1-m4}); para M2 el análisis trabajó los 116 pares intra-ámbito conforme a las reglas documentadas en sus notas metodológicas. La segunda ola corresponde a la expansión del documento con los componentes de IA (RF-28 a RF-31 y RNF-16 a RNF-26, hasta 57 requisitos); los conteos actualizados están en \texttt{conteos\_base\_auditoria\_actualizado.csv}: los 57 requisitos tienen criterio de verificación cuantificado (57/57) y el equivalente del conteo de pares para $n=57$ es 1596. M5 y M6 se midieron sobre la línea base corregida de 42 requisitos en la fecha de la re-inspección, con la muestra y el denominador declarados explícitamente en cada caso.
 
 \subsection{Tabla de auditoría}
 \label{sec:tabla-auditoria}
@@ -27,13 +29,13 @@ La auditoría aplica las seis métricas derivadas de ISO/IEC 25010:2023 definida
 \endfoot
 \hline
 \endlastfoot
-M1 Completitud & M1a = 100~\% (42/42); M1b = 100~\% (16/16); M1c = 100~\% (2/2) & $\geq$95~\%; $=$100~\%; $=$100~\% & ISO 25010; 29148 & Sí & Sin acción \\
+M1 Completitud & M1a = 100~\% (42/42); M1b = N/D en este repositorio; M1c = 100~\% (2/2 operativos) & $\geq$95~\%; $=$100~\%; $=$100~\% & ISO 25010; 29148 & Sí (M1b con causa y acción) & Verificación cruzada de M1b contra el catálogo de casos de uso del equipo \\
 \hline
-M2 Consistencia & $1 - 1/861 = 0{,}9988$ & $\geq$0,98 y cero abiertos & ISO 25010 & Sí & El único conflicto detectado (DR-02) quedó cerrado \\
+M2 Consistencia & $1 - 0/116 = 1{,}00$ (pares intra-ámbito) & $\geq$0,98 y cero conflictos abiertos & ISO 25010 & Sí & Dos observaciones de solapamiento registradas sin conflicto (RF-07/RF-11/RF-13; RF-25/RF-26) \\
 \hline
-M3 Verificabilidad & 100~\% (42/42 con umbral, unidad y método) & $\geq$90~\% & ISO 29148 & Sí & Sin acción \\
+M3 Verificabilidad & 100~\% (42/42 con umbral, unidad y método) & $\geq$90~\% & ISO 29148 & Sí & Recomendación menor de redacción en RNF-07, RNF-09 y RNF-11 \\
 \hline
-M4 Trazabilidad & 28/42 requisitos con fila vigente (66,7~\%) & $\geq$90~\%; $=$100~\% & ISO 29148 & No (en cierre) & Filas de RF-17 a RF-27 con las diez columnas --- Paso 2 \\
+M4 Trazabilidad & Adelante 16/16 en alcance Debe tener = 100~\%; atrás 42/42 = 100~\% & $\geq$90~\%; $=$100~\% & ISO 29148 & Sí & Tramo CU$\rightarrow$clase$\rightarrow$CP pendiente de verificación cruzada \\
 \hline
 M5 Modificabilidad & 3,50 antes; 3,00 después & $\leq$3,0 & ISO 25010 & Sí tras corrección & Reespecificación de vistas (Subsección~\ref{sec:m5-modificabilidad}) \\
 \hline
@@ -43,7 +45,9 @@ M6 Corrección & 0,119 antes; 0,024 después & $\leq$0,05 & ISO 25010 & Sí tras
 \label{tab:auditoria-metricas}
 \end{center}
 
-\noindent Los valores de M1 a M4 se consolidan sobre los conteos del Paso 1; la aritmética desarrollada de M5 y M6 está en las Subsecciones~\ref{sec:m5-modificabilidad} y~\ref{sec:m6-correccion}. Para M1c se cuentan como actores los dos actores operativos del sistema (Administrador y Trabajador agrícola), ambos con al menos un RF asociado; las otras dos partes interesadas del mapa (Equipo de desarrollo y Docente) no interactúan con el sistema.
+\noindent La única componente sin valor al cierre es M1b, porque el catálogo completo de casos de uso vive en el modelado del equipo y no en este repositorio; se declara como no medible con causa y acción registradas, conforme al formato del instrumento. Para M1c se cuentan como actores los dos actores operativos del sistema (Administrador y Trabajador agrícola), ambos con al menos un requisito funcional asociado; las otras dos partes interesadas del mapa (Equipo de desarrollo y Docente) no interactúan con el sistema, lectura justificada con el modelo i* y documentada en \texttt{m1\_completitud.md}.
+
+\input{sec8_fragmento_m1_m4}
 
 \subsection{M5 --- Modificabilidad}
 \label{sec:m5-modificabilidad}
@@ -91,13 +95,13 @@ El valor cumple la referencia. Queda registrada como recomendación no aplicada 
 \subsection{M6 --- Corrección}
 \label{sec:m6-correccion}
 
-El numerador corresponde a los defectos residuales hallados en la re-inspección de la PE5 sobre el ERS ya corregido entre entregas (Sección~\ref{sec:validacion}); el denominador es el total de requisitos. Medición inicial, sobre los cinco hallazgos del registro:
+El numerador corresponde a los defectos residuales hallados en la re-inspección del 22-08-2026 sobre el ERS ya corregido entre entregas (Sección~\ref{sec:validacion}); el denominador es el total de requisitos de esa línea base (42). Medición inicial, sobre los cinco hallazgos del registro:
 \[ M6_{antes} = \frac{5}{42} = 0{,}119 \]
-El valor excede la referencia ($\leq$ 0,05). Tras aplicar las correcciones DR-02 a DR-04, cerrar documentalmente DR-05 y quedar DR-01 como acción asignada con responsable y plazo dentro del Paso 2, la re-medición sobre defectos abiertos da:
+El valor excede la referencia ($\leq$ 0,05). Tras aplicar las correcciones DR-02 a DR-04 y cerrar documentalmente DR-05, la re-medición sobre defectos abiertos da:
 \[ M6_{despues} = \frac{1}{42} = 0{,}024 \]
-El valor cumple la referencia. El único residual abierto es de trazabilidad de la matriz y su cierre está comprometido en esta misma práctica.
+El valor cumple la referencia. El residual restante (DR-01, filas de la matriz) quedó cerrado el 23-08-2026 dentro del Paso 2 con la ampliación de la matriz de trazabilidad a 62 filas de datos con las diez columnas de la plantilla, con lo que el residual final del ciclo es $0/42 = 0{,}00$; el par oficial de la corrección se mantiene en 0,119 $\rightarrow$ 0,024 por ser el medido al cierre del ciclo documental.
 
 \subsection{Comparación global}
 \label{sec:comparacion-global}
 
-De las seis métricas, cuatro cumplieron su referencia en la primera medición y dos requirieron corrección documental aplicada durante la práctica (M5 y M6), ambas re-medidas con aritmética visible y par antes/después registrado. La métrica aún no cumplida al cierre es M4, cuya solución es estructural (ampliación de la matriz en el Paso 2) y está asignada; la auditoría se recalcula sobre la línea base consolidada que cierra la entrega.
+Al cierre de la práctica las seis métricas alcanzan su valor de referencia: cuatro cumplieron en la primera medición y dos requirieron corrección documental aplicada durante la práctica (M5 y M6), ambas re-medidas con aritmética visible y par antes/después registrado. La única componente declarada sin valor es M1b, por perímetro del repositorio y con causa y acción registradas. La auditoría de la segunda ola respalda que la expansión a 57 requisitos nació sin degradar los indicadores: los 57 tienen criterio cuantificado y la trazabilidad de los nuevos componentes se consolida en la matriz del Paso 2.
