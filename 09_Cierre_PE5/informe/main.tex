@@ -1,0 +1,130 @@
+% ============================================================
+% INFORME FINAL PE5 - Integracion, Metricas y Defensa del
+% Proyecto Integrador de Ingenieria de Requisitos (ISR-401)
+% Equipo ACERS - PFC AgroMoreira (SGA verde y cacao)
+% Responsable de estructura, ensamblaje y compilacion: Roselyn Sanchez
+%
+% Compilacion: ver README.md de la raiz del repositorio.
+%   pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
+%
+% Secciones pendientes de integracion por el equipo:
+%   sec1_introduccion.tex        (Robinson Jeanpierre)
+%   sec2_metodologia_ir.tex      (Robinson Jeanpierre)
+%   sec4_modelos_uml.tex         (Danela Arteaga)
+%   sec6_gestion_trazabilidad.tex(Danela Arteaga)
+%   anexo_a_instrumento.tex      (Robinson Jeanpierre)
+% El documento compila aun sin esos archivos (deja un marcador).
+% ============================================================
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[letterpaper,top=2.5cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\usepackage{enumitem}
+
+\title{Informe Final PE5 --- Integraci\'on, M\'etricas y Defensa del Proyecto Integrador de Ingenier\'ia de Requisitos}
+\author{Equipo ACERS --- PFC AgroMoreira}
+\date{Agosto de 2026}
+
+\begin{document}
+
+% ------------------------------------------------------------
+% Portada y resumen bilingue (Roselyn Sanchez)
+% ------------------------------------------------------------
+\input{portada}
+\input{resumen_bilingue}
+
+% ------------------------------------------------------------
+% Indices
+% ------------------------------------------------------------
+\clearpage
+\tableofcontents
+\clearpage
+\listoffigures
+\addcontentsline{toc}{section}{\'Indice de figuras}
+\listoftables
+\addcontentsline{toc}{section}{\'Indice de tablas}
+
+% ------------------------------------------------------------
+% Cuerpo del informe
+% ------------------------------------------------------------
+\clearpage
+\InputIfFileExists{sec1_introduccion}{%
+}{%
+\section{Introducci\'on}\label{sec:introduccion}
+\textit{(Secci\'on pendiente de integraci\'on: archivo \texttt{sec1\_introduccion.tex}, responsable Robinson Jeanpierre.)}}
+
+\InputIfFileExists{sec2_metodologia_ir}{%
+}{%
+\section{Metodolog\'ia de IR}\label{sec:metodologia-ir}
+\textit{(Secci\'on pendiente de integraci\'on: archivo \texttt{sec2\_metodologia\_ir.tex}, responsable Robinson Jeanpierre.)}}
+
+\clearpage
+\input{sec3_ers_final}
+
+\InputIfFileExists{sec4_modelos_uml}{%
+}{%
+\section{Modelos UML}\label{sec:modelos-uml}
+\textit{(Secci\'on pendiente de integraci\'on: archivo \texttt{sec4\_modelos\_uml.tex}, responsable Danela Arteaga.)}}
+
+\clearpage
+\input{sec5_validacion}
+
+\InputIfFileExists{sec6_gestion_trazabilidad}{%
+}{%
+\section{Gesti\'on y trazabilidad}\label{sec:gestion-trazabilidad}
+\textit{(Secci\'on pendiente de integraci\'on: archivo \texttt{sec6\_gestion\_trazabilidad.tex}, responsable Danela Arteaga.)}}
+
+\clearpage
+\input{sec7_requisitos_ia}
+
+\input{sec8_metricas}
+
+\clearpage
+\input{sec9_retrospectiva}
+
+\input{sec10_conclusiones}
+
+% ------------------------------------------------------------
+% Referencias (formato IEEE)
+% ------------------------------------------------------------
+\clearpage
+\bibliographystyle{IEEEtran}
+\bibliography{referencias}
+
+% ------------------------------------------------------------
+% Anexos
+% ------------------------------------------------------------
+\clearpage
+\appendix
+
+\InputIfFileExists{anexo_a_instrumento}{%
+}{%
+\section*{Anexo A. Instrumento de auditor\'ia de calidad del ERS}
+\addcontentsline{toc}{section}{Anexo A. Instrumento de auditor\'ia de calidad del ERS}
+\textit{(Pendiente de integraci\'on: archivo \texttt{anexo\_a\_instrumento.tex}, responsable Robinson Jeanpierre. El contenido vigente est\'a en \texttt{09\_Cierre\_PE5/analisis\_estadistico/tabla\_auditoria\_consolidada.md}.)}}
+
+\clearpage
+\section*{Anexo B. Banco de preguntas del tribunal y respuestas preparadas}
+\addcontentsline{toc}{section}{Anexo B. Banco de preguntas del tribunal y respuestas preparadas}
+\input{anexo_b_ia_etica_kamila}
+\clearpage
+\input{anexo_b_respuestas}
+
+\clearpage
+\input{anexo_c_aporte_individual}
+
+\clearpage
+\input{anexo_d_retrospectiva_ssc}
+
+\clearpage
+\input{anexoE_declaracion_ia}
+
+\end{document}
