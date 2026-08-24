@@ -1,0 +1,141 @@
+﻿ID;Ley;Articulo;Objetivo;Stakeholder;ID-EV;ID-RF_RNF_RD;Tipo;ID-CU;ID-HU;ID-CA;ID-Componente;ID-Mockup;Clase_UML;Estado_SD01;CP_conceptual;Criterio_verificacion_detallado;Estado_de_la_traza
+TR-01;LOPDP;Art. 9 - Seguridad de los datos;Transversal (control de acceso para todas las FP);Administrador;EV-01;RF-01;RF;UC-01;HU-01;CA-01;AuthModule;MU-01;User, Administrator, Farmworker;N-A;CP-RF-01;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-02;LOPDP;Art. 5 - Principios de tratamiento;FP-03 Gestion de trabajadores;Administrador;EV-01;RF-14;RF;UC-14;HU-12;CA-12;AuthModule + UserModule;MU-09;User, Administrator;N-A;CP-RF-14;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-03;N-A;N-A;FP-02 Gestion de parcelas;Administrador;EV-01;RF-02;RF;UC-02;HU-02;CA-02;PlotCropModule;MU-02;Plot, Crop;N-A;CP-RF-02;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-04;N-A;N-A;FP-01 Gestion de cultivos;Administrador;EV-01;RF-03;RF;UC-03;HU-03;CA-03;PlotCropModule;MU-03;Plot, Crop;N-A;CP-RF-03;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-05;N-A;N-A;FP-04 Registro de actividades;Jornalero;EV-04;RF-04;RF;UC-04;HU-04;CA-04;TaskModule;MU-04;Labor;Pending -> InProgress -> (Blocked) -> Completed [SD-01];CP-RF-04;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-06;N-A;N-A;FP-04 Registro de actividades;Jornalero;EV-06;RF-04;RF;UC-04;HU-04;CA-04;TaskModule;MU-04;Labor;Pending -> InProgress -> (Blocked) -> Completed [SD-01];CP-RF-04;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-07;N-A;N-A;FP-06 Control de produccion;Administrador;EV-01;RF-05;RF;UC-05;HU-05;CA-05;ReportModule;MU-05;Report;N-A;CP-RF-05;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-08;N-A;N-A;FP-06 Control de produccion;Jornalero;EV-04;RF-05;RF;UC-05;HU-05;CA-05;ReportModule;MU-05;Report;N-A;CP-RF-05;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-09;N-A;N-A;FP-05 Gestion de inventario;Administrador;EV-03;RF-06;RF;UC-06;HU-06;CA-06;InventoryModule;MU-06;InventoryItem;N-A;CP-RF-06;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-10;N-A;N-A;FP-05 Gestion de inventario;Administrador;EV-07;RF-06;RF;UC-06;HU-06;CA-06;InventoryModule;MU-06;InventoryItem;N-A;CP-RF-06;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-11;N-A;N-A;FP-06 Control de produccion;Administrador;EV-01;RF-07;RF;UC-07;HU-07;CA-07;ReportModule;MU-05;Report;N-A;CP-RF-07;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-12;N-A;N-A;FP-04 Registro de actividades;Administrador;EV-01;RF-08;RF;UC-08;HU-08;CA-08;TaskModule;MU-07;Labor;Pending -> InProgress -> (Blocked) -> Completed [SD-01];CP-RF-08;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-13;N-A;N-A;FP-03 Gestion de trabajadores;Administrador;EV-01;RF-09;RF;UC-09;HU-09;CA-09;TaskModule;MU-07;Labor;Pending -> InProgress -> (Blocked) -> Completed [SD-01];CP-RF-09;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-14;N-A;N-A;FP-04 Registro de actividades;Jornalero;EV-04;RF-10;RF;UC-10;HU-10;CA-10;TaskModule;MU-07;Labor;Pending -> InProgress -> (Blocked) -> Completed [SD-01];CP-RF-10;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-15;N-A;N-A;FP-04 Registro de actividades;Administrador;EV-01;RF-10;RF;UC-10;HU-10;CA-10;TaskModule;MU-07;Labor;Pending -> InProgress -> (Blocked) -> Completed [SD-01];CP-RF-10;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-16;N-A;N-A;FP-07 Generacion de reportes;Administrador;EV-03;RF-11;RF;UC-11;HU-11;CA-11;ReportModule;MU-08;Report;N-A;CP-RF-11;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-17;N-A;N-A;FP-07 Generacion de reportes;Administrador;EV-01;RF-12;RF;UC-12;N-A;N-A;ReportModule;MU-08;Report;N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);INCOMPLETA - falta HU/CA en backlog (DR-01)
+TR-18;N-A;N-A;FP-07 Generacion de reportes;Administrador;EV-01;RF-13;RF;UC-13;N-A;N-A;ReportModule;MU-08;Report;N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);INCOMPLETA - falta HU/CA en backlog (DR-01)
+TR-19;N-A;N-A;FP-08 Alertas inteligentes;Administrador;EV-01;RF-15;RF;UC-15;N-A;N-A;AIIntegrationModule;N-A (pendiente - Could Have);AIRecommendation, Alert;N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA (justificada -- DR-05, 22-08-2026: RF-15 es Could Have, interfaz diferida a proxima iteracion)
+TR-20;LOPDP;Art. 7 - Consentimiento (datos del reportante);FP-08 Alertas inteligentes;Jornalero;EV-07;RF-16;RF;UC-16;N-A;N-A;AIIntegrationModule;MU-06;AIRecommendation, Alert;N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);INCOMPLETA - falta HU/CA en backlog (DR-01)
+TR-21;LOPDP;Art. 7 - Consentimiento (datos del reportante);FP-08 Alertas inteligentes;Administrador;EV-01;RF-16;RF;UC-16;N-A;N-A;AIIntegrationModule;MU-06;AIRecommendation, Alert;N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);INCOMPLETA - falta HU/CA en backlog (DR-01)
+TR-22;LOPDP;Art. 7 - Consentimiento (datos del reportante);FP-08 Alertas inteligentes;Jornalero;EV-04;RF-16;RF;UC-16;N-A;N-A;AIIntegrationModule;MU-06;AIRecommendation, Alert;N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);INCOMPLETA - falta HU/CA en backlog (DR-01)
+TR-23;N-A;N-A;Transversal - calidad;Administrador;EV-02;RNF-01;RNF;N-A;N-A;N-A;ReportModule;N-A;Report;N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);PARCIAL - RNF transversal, criterio cuantificado ya en ERS (LB-01), sin CU/mockup por naturaleza
+TR-24;N-A;N-A;Transversal - calidad;Administrador;EV-01;RNF-02;RNF;N-A;N-A;N-A;Backend API (todos);N-A;N-A (transversal);N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);PARCIAL - RNF transversal, criterio cuantificado ya en ERS (LB-01), sin CU/mockup por naturaleza
+TR-25;LOPDP;Art. 9 - Seguridad de los datos;Transversal - calidad;Administrador;EV-01;RNF-03;RNF;N-A;N-A;N-A;AuthModule;N-A;User, Administrator, Farmworker;N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);PARCIAL - RNF transversal, criterio cuantificado ya en ERS (LB-01), sin CU/mockup por naturaleza
+TR-26;N-A;N-A;Transversal - calidad;Jornalero;EV-04;RNF-04;RNF;N-A;N-A;N-A;Web Client (SPA);N-A;N-A (transversal);N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);PARCIAL - RNF transversal, criterio cuantificado ya en ERS (LB-01), sin CU/mockup por naturaleza
+TR-27;N-A;N-A;Transversal - calidad;Administrador;EV-01;RNF-05;RNF;N-A;N-A;N-A;Web Client (SPA);N-A;N-A (transversal);N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);PARCIAL - RNF transversal, criterio cuantificado ya en ERS (LB-01), sin CU/mockup por naturaleza
+TR-28;N-A;N-A;Transversal - calidad;Equipo de desarrollo;EV-01;RNF-06;RNF;N-A;N-A;N-A;Backend API (todos);N-A;N-A (transversal);N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);PARCIAL - RNF transversal, criterio cuantificado ya en ERS (LB-01), sin CU/mockup por naturaleza
+TR-29;N-A;N-A;Transversal - calidad;Administrador;EV-01;RD-01;RD;N-A;N-A;N-A;Web Client (SPA);N-A;N-A (transversal);N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA (RD - requisito de diseno, no requiere CU/HU por naturaleza)
+TR-30;N-A;N-A;Transversal - calidad;Equipo de desarrollo;EV-03;RD-02;RD;N-A;N-A;N-A;Database Server;N-A;N-A (infraestructura);N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA (RD - requisito de diseno, no requiere CU/HU por naturaleza)
+TR-31;N-A;N-A;Transversal - calidad;Jornalero;EV-04;RD-03;RD;N-A;N-A;N-A;Web Client (SPA);N-A;N-A (transversal);N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA (RD - requisito de diseno, no requiere CU/HU por naturaleza)
+TR-32;N-A;N-A;Transversal - calidad;Administrador;EV-01;RD-04;RD;N-A;N-A;N-A;AuthModule;N-A;User, Administrator, Farmworker;N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA (RD - requisito de diseno, no requiere CU/HU por naturaleza)
+TR-33;N-A;N-A;Transversal - calidad;Equipo de desarrollo;EV-01;RD-05;RD;N-A;N-A;N-A;Backend API (todos);N-A;N-A (transversal);N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA (RD - requisito de diseno, no requiere CU/HU por naturaleza)
+TR-34;N-A;N-A;Transversal - calidad;Administrador;EV-01;RD-06;RD;N-A;N-A;N-A;AIIntegrationModule;N-A;AIRecommendation, Alert;N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA (RD - requisito de diseno, no requiere CU/HU por naturaleza)
+TR-35;LOPDP;Art. 7 - Consentimiento (datos del reportante);FP-08 Alertas inteligentes;Administrador;EV-06;RF-16;RF;UC-16;N-A;N-A;AIIntegrationModule;MU-06;AIRecommendation, Alert;N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);INCOMPLETA - falta HU/CA en backlog (DR-01)
+TR-36;N-A;N-A;FP-07 Generacion de reportes;Administrador;EV-03;RF-13;RF;UC-13;N-A;N-A;ReportModule;MU-08;Report;N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);INCOMPLETA - falta HU/CA en backlog (DR-01)
+TR-37;N-A;N-A;FP-05 Gestion de inventario;Administrador;EV-06;RF-06;RF;UC-06;HU-06;CA-06;InventoryModule;MU-06;InventoryItem;N-A;CP-RF-06;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-38;N-A;N-A;FP-03 Gestion de trabajadores;Jornalero;EV-04;RF-09;RF;UC-09;HU-09;CA-09;TaskModule;MU-07;Labor;Pending -> InProgress -> (Blocked) -> Completed [SD-01];CP-RF-09;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-39;N-A;N-A;FP-04 Registro de actividades;Jornalero;EV-04;RF-08;RF;UC-08;HU-08;CA-08;TaskModule;MU-07;Labor;Pending -> InProgress -> (Blocked) -> Completed [SD-01];CP-RF-08;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-40;N-A;N-A;FP-04 Registro de actividades;Jornalero;EV-07;RF-04;RF;UC-04;HU-04;CA-04;TaskModule;MU-04;Labor;Pending -> InProgress -> (Blocked) -> Completed [SD-01];CP-RF-04;Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA
+TR-41;N-A;N-A;Transversal - calidad;Administrador;EV-02;RNF-02;RNF;N-A;N-A;N-A;Backend API (todos);N-A;N-A (transversal);N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);PARCIAL - RNF transversal, criterio cuantificado ya en ERS (LB-01), sin CU/mockup por naturaleza
+TR-42;N-A;N-A;Transversal - calidad;Equipo de desarrollo;EV-06;RD-02;RD;N-A;N-A;N-A;Database Server;N-A;N-A (infraestructura);N-A;N-A (falta CA/HU);Ver ID-CA / HU_criterios_aceptacion.md (RF) o ficha RNF en el ERS (RNF/RD);COMPLETA (RD - requisito de diseno, no requiere CU/HU por naturaleza)
+TR-43;N-A;N-A;FP-06 Control de produccion (propuesto);Trabajador agricola, Administrador;EV-01;RF-17;RF;UC-17 (nuevo);N-A;N-A;PlotCropModule;PENDIENTE - no existe (Mockups solo llega a MU-09);Plot, Crop;N-A (no es tarea de campo con ciclo Pending/InProgress/Completed);N-A (falta CA/HU formal);"Escenario: Registro de peso y comprobante en una cosecha existente
+  Dado que el Jornalero o Administrador registra una cosecha (RF-05)
+  Cuando ingresa el peso entregado y el numero de comprobante del centro de acopio
+  Entonces el sistema asocia ambos datos al registro y quedan disponibles en consultas posteriores
+Escenario: Verificacion de integridad del comprobante
+  Dado 30 registros de cosecha con comprobante de acopio
+  Cuando se consulta cualquiera de ellos
+  Entonces el sistema recupera peso y comprobante correctamente en el 100% de los casos";"EN CONSTRUCCION - CU/Clase/Proceso/BDD propuestos; sin HU formal (prioridad < Debe tener, diferido)"
+TR-44;N-A;N-A;FP-07 Generacion de reportes (propuesto);Administrador;EV-01;RF-18;RF;UC-18 (nuevo);N-A;N-A;ReportModule;PENDIENTE - no existe (Mockups solo llega a MU-09);Report;N-A (no es tarea de campo con ciclo Pending/InProgress/Completed);N-A (falta CA/HU formal);"Escenario: Comparacion exitosa entre dos periodos
+  Dado que el Administrador selecciona cultivo/parcela y dos periodos con registros
+  Cuando solicita la comparacion
+  Entonces el sistema muestra la diferencia porcentual y absoluta en <= 3,0 s (percentil 95, 500 registros)
+Escenario: Periodo sin registros
+  Dado que uno de los periodos no tiene registros de produccion
+  Cuando el Administrador solicita la comparacion
+  Entonces el sistema informa que no hay datos suficientes para ese periodo";"EN CONSTRUCCION - CU/Clase/Proceso/BDD propuestos; sin HU formal (prioridad < Debe tener, diferido)"
+TR-45;N-A;N-A;FP-07 Generacion de reportes (propuesto);Administrador;EV-01;RF-19;RF;UC-19 (nuevo);HU-13;CA-13;ReportModule;PENDIENTE - no existe (Mockups solo llega a MU-09);Report;N-A (no es tarea de campo con ciclo Pending/InProgress/Completed);CP-RF-19;"Escenario: Generacion del reporte de perdidas por plagas
+  Dado registros de enfermedad cargados para un periodo y, opcionalmente, un cultivo o parcela
+  Cuando el Administrador genera el reporte de perdidas
+  Entonces el sistema presenta la perdida estimada por plaga, cultivo y parcela en <= 3,0 s con 500 registros (percentil 95, 30 ejecuciones)
+Escenario: Periodo sin incidencias
+  Dado que no existen registros de enfermedad en el periodo
+  Cuando el Administrador genera el reporte
+  Entonces el sistema informa que no hay perdidas registradas";"EN CONSTRUCCION - CU/Clase/Proceso/BDD propuestos; HU creada, falta mockup y validacion del equipo"
+TR-46;N-A;N-A;FP-09 Gestion fitosanitaria (nuevo, propuesto);Administrador;EV-02/EV-01;RF-20;RF;"UC-28 (nuevo; se evita 'UC-20', ya usado por 'Consult Assigned Tasks')";N-A;N-A;AIIntegrationModule;PENDIENTE - no existe (Mockups solo llega a MU-09);AIRecommendation, Alert;N-A (no es tarea de campo con ciclo Pending/InProgress/Completed);N-A (falta CA/HU formal);"Escenario: Seleccion de plaga/enfermedad desde catalogo
+  Dado que el catalogo contiene nombres normalizados de plagas y enfermedades por cultivo
+  Cuando el Administrador registra una enfermedad (RF-16)
+  Entonces puede seleccionar el nombre desde el catalogo sin texto libre, en el 100% de 30 registros de muestra
+Escenario: Registro de nueva entrada al catalogo
+  Dado que una plaga o enfermedad no existe aun en el catalogo
+  Cuando el Administrador la registra indicando nombre y cultivo asociado
+  Entonces queda disponible para seleccion en futuros registros";"EN CONSTRUCCION - CU/Clase/Proceso/BDD propuestos; sin HU formal (prioridad < Debe tener, diferido)"
+TR-47;N-A;N-A;FP-05 Gestion de inventario (propuesto);Administrador;EV-01;RF-21;RF;UC-21 (nuevo);N-A;N-A;InventoryModule;PENDIENTE - no existe (Mockups solo llega a MU-09);InventoryItem;N-A (no es tarea de campo con ciclo Pending/InProgress/Completed);N-A (falta CA/HU formal);"Escenario: Planificacion de compra por mes y cultivo
+  Dado que el Administrador selecciona insumo, cultivo, mes y cantidad estimada
+  Cuando guarda la planificacion
+  Entonces el sistema la agrega al calendario de compras planificadas
+Escenario: Consulta del calendario anual
+  Dado planificaciones registradas en varios meses
+  Cuando el Administrador consulta el calendario de los 12 meses
+  Entonces el sistema lo muestra en <= 2,0 s (percentil 95, 20 ejecuciones)";"EN CONSTRUCCION - CU/Clase/Proceso/BDD propuestos; sin HU formal (prioridad < Debe tener, diferido)"
+TR-48;N-A;N-A;FP-05 Gestion de inventario (propuesto);Administrador;EV-02;RF-22;RF;UC-22 (nuevo);N-A;N-A;InventoryModule;PENDIENTE - no existe (Mockups solo llega a MU-09);InventoryItem;N-A (no es tarea de campo con ciclo Pending/InProgress/Completed);N-A (falta CA/HU formal);"Escenario: Entrega de insumo con descuento correcto de inventario
+  Dado que el Administrador registra la entrega de un insumo a un trabajador con cantidad y fecha
+  Cuando confirma la entrega
+  Entonces el sistema descuenta correctamente del inventario en el 100% de 30 entregas de muestra
+Escenario: Cantidad mayor al stock disponible
+  Dado que la cantidad solicitada supera el stock disponible
+  Cuando el Administrador intenta confirmar la entrega
+  Entonces el sistema muestra advertencia y no permite completar el registro";"EN CONSTRUCCION - CU/Clase/Proceso/BDD propuestos; sin HU formal (prioridad < Debe tener, diferido)"
+TR-49;N-A;N-A;FP-10 Gestion financiera (nuevo, propuesto);Administrador;EV-01;RF-23;RF;UC-23 (nuevo);N-A;N-A;"FinanceModule (NUEVO - no existia; revisar con equipo de arquitectura)";PENDIENTE - no existe (Mockups solo llega a MU-09);"FinanceModule (NUEVO - no existia; revisar con equipo de arquitectura) (nuevo modulo, revisar con equipo)";N-A (no es tarea de campo con ciclo Pending/InProgress/Completed);N-A (falta CA/HU formal);"Escenario: Registro de un ingreso por venta
+  Dado que el Administrador ingresa monto, cultivo, periodo y fecha de un ingreso
+  Cuando guarda el registro
+  Entonces el sistema lo deja disponible para consulta por periodo en <= 2,0 s (20 registros consecutivos)
+Escenario: Monto invalido
+  Dado que el Administrador ingresa un monto <= 0
+  Cuando intenta guardar el registro
+  Entonces el sistema muestra advertencia y no guarda el registro
+NOTA GAP: no existe clase Income en CD-01 -- avisar al equipo de modelado.";"EN CONSTRUCCION - CU/Clase/Proceso/BDD propuestos; sin HU formal (prioridad < Debe tener, diferido)"
+TR-50;N-A;N-A;FP-04 Registro de actividades / FP-07 (hibrido, propuesto);Administrador;EV-01;RF-24;RF;UC-24 (nuevo);HU-14;CA-14;ReportModule;PENDIENTE - no existe (Mockups solo llega a MU-09);Report;N-A (no es tarea de campo con ciclo Pending/InProgress/Completed);CP-RF-24;"Escenario: Consulta de historial filtrado por trabajador y fecha
+  Dado labores y cosechas registradas para uno o mas trabajadores
+  Cuando el Administrador filtra por trabajador (opcional) y rango de fechas (obligatorio)
+  Entonces el sistema presenta el listado filtrado en <= 2,0 s con 500 registros (percentil 95, 30 ejecuciones)
+Escenario: Filtro sin coincidencias
+  Dado que no existen registros para el filtro seleccionado
+  Cuando el Administrador realiza la consulta
+  Entonces el sistema informa que no hay registros";"EN CONSTRUCCION - CU/Clase/Proceso/BDD propuestos; HU creada, falta mockup y validacion del equipo"
+TR-51;N-A;N-A;FP-08 Alertas inteligentes;Administrador;EV-01;RF-25;RF;"UC-25 (nuevo; formalizar ovalo 'Generate Alert' de UC-01, extend desde UC-16)";HU-15;CA-15;AIIntegrationModule;PENDIENTE - no existe (Mockups solo llega a MU-09);AIRecommendation, Alert;N-A (no es tarea de campo con ciclo Pending/InProgress/Completed);CP-RF-25;"Escenario: Alerta automatica por enfermedad de gravedad alta
+  Dado que se registra una enfermedad con gravedad alta (RF-16)
+  Cuando el sistema procesa el registro
+  Entonces genera alerta visible en <= 5,0 s, en el 100% de una muestra de 30 casos (verificado por tipo)
+Escenario: Alerta por insumo con disponibilidad critica
+  Dado que un insumo cae bajo su umbral minimo (RF-06)
+  Cuando el sistema recalcula el stock
+  Entonces genera alerta con tipo, origen y momento de generacion, verificado por separado sobre 30 casos de este tipo";"EN CONSTRUCCION - CU/Clase/Proceso/BDD propuestos; HU creada, falta mockup y validacion del equipo"
+TR-52;N-A;N-A;FP-08 Alertas inteligentes (patron historico, componente IA-01);Administrador;EV-01;RF-26;RF;"UC-26 (nuevo; formalizar ovalos 'Analyze Crop Data' de UC-01)";HU-16;CA-16;AIIntegrationModule;PENDIENTE - no existe (Mockups solo llega a MU-09);AIRecommendation, Alert;N-A (no es tarea de campo con ciclo Pending/InProgress/Completed);CP-RF-26;"Escenario: Deteccion temprana con exactitud minima aceptada
+  Dado un conjunto de validacion de al menos 30 casos etiquetados con historial de una parcela
+  Cuando el modulo de IA analiza los patrones de la parcela
+  Entonces genera alerta temprana con exactitud minima del 70% sobre ese conjunto
+Escenario: Explicabilidad de la alerta (enlaza RNF-15, decision D-01)
+  Dado que el modulo genera una alerta temprana
+  Cuando la muestra al Administrador
+  Entonces incluye datos historicos, patron e incertidumbre, de forma simultanea a la alerta";"EN CONSTRUCCION - CU/Clase/Proceso/BDD propuestos; HU creada, falta mockup y validacion del equipo"
+TR-53;N-A;N-A;FP-07 Generacion de reportes (propuesto);Administrador;EV-01;RF-27;RF;UC-27 (nuevo);N-A;N-A;ReportModule;PENDIENTE - no existe (Mockups solo llega a MU-09);Report;N-A (no es tarea de campo con ciclo Pending/InProgress/Completed);N-A (falta CA/HU formal);"Escenario: Consulta de produccion agregada por cultivo
+  Dado registros de cosecha para un cultivo, sin discriminar por parcela
+  Cuando el Administrador consulta la produccion agregada (periodo opcional)
+  Entonces el sistema presenta el total agregado en <= 2,0 s con 500 registros (percentil 95, 30 ejecuciones)
+Escenario: Cultivo sin registros
+  Dado que el cultivo no tiene registros de cosecha
+  Cuando el Administrador realiza la consulta
+  Entonces el sistema informa que no hay produccion registrada";"EN CONSTRUCCION - CU/Clase/Proceso/BDD propuestos; sin HU formal (prioridad < Debe tener, diferido)"
+TR-54;N-A;N-A;Transversal - calidad;Administrador;N-A;RNF-07;RNF;N-A;N-A;N-A;AuthModule;N-A;User, Administrator, Farmworker;N-A;CP-RNF-07;Adecuacion funcional/Completitud: 100% de 30 registros con unidad correcta segun cultivo (verificado en 2+ cultivos);"COMPLETA (criterio ya cuantificado en el ERS -- LB-01; fila de matriz nueva, sin CU/mockup por naturaleza RNF)"
+TR-55;N-A;N-A;Transversal - calidad;Administrador;N-A;RNF-08;RNF;N-A;N-A;N-A;ReportModule;N-A;Report;N-A;CP-RNF-08;Eficiencia/Comportamiento temporal: reporte de perdidas (RF-19) <= 3,0 s percentil 95, 500 registros, 30 ejecuciones;"COMPLETA (criterio ya cuantificado en el ERS -- LB-01; fila de matriz nueva, sin CU/mockup por naturaleza RNF)"
+TR-56;N-A;N-A;Transversal - calidad;Administrador;N-A;RNF-09;RNF;N-A;N-A;N-A;Backend API (todos);N-A;N-A (transversal);N-A;CP-RNF-09;Fiabilidad/Tolerancia a fallos: 100% de datos recuperados tras interrupcion simulada, 20 intentos;"COMPLETA (criterio ya cuantificado en el ERS -- LB-01; fila de matriz nueva, sin CU/mockup por naturaleza RNF)"
+TR-57;N-A;N-A;Transversal - calidad;Administrador;N-A;RNF-10;RNF;N-A;N-A;N-A;AuthModule;N-A;User, Administrator, Farmworker;N-A;CP-RNF-10;Seguridad/Resistencia: bloqueo tras 5 intentos fallidos, minimo 15 min, verificado en 10 cuentas;"COMPLETA (criterio ya cuantificado en el ERS -- LB-01; fila de matriz nueva, sin CU/mockup por naturaleza RNF)"
+TR-58;N-A;N-A;Transversal - calidad;Administrador;N-A;RNF-11;RNF;N-A;N-A;N-A;Database Server;N-A;N-A (infraestructura);N-A;CP-RNF-11;Seguridad/Confidencialidad: 100% de contrasenas cifradas unidireccionalmente, revision tecnica del esquema;"COMPLETA (criterio ya cuantificado en el ERS -- LB-01; fila de matriz nueva, sin CU/mockup por naturaleza RNF)"
+TR-59;N-A;N-A;Transversal - calidad;Administrador;N-A;RNF-12;RNF;N-A;N-A;N-A;Web Client (SPA);N-A;N-A (transversal);N-A;CP-RNF-12;Interaccion de usuario/Inclusividad: >=80% de 5 usuarios sin experiencia completan registro sin ayuda;"COMPLETA (criterio ya cuantificado en el ERS -- LB-01; fila de matriz nueva, sin CU/mockup por naturaleza RNF)"
+TR-60;N-A;N-A;Transversal - calidad;Administrador;N-A;RNF-13;RNF;N-A;N-A;N-A;Web Client (SPA);N-A;N-A (transversal);N-A;CP-RNF-13;Portabilidad/Adaptabilidad: 100% de funciones de RF-01,04,05 operables desde navegador movil, 2 tamanos de pantalla;"COMPLETA (criterio ya cuantificado en el ERS -- LB-01; fila de matriz nueva, sin CU/mockup por naturaleza RNF)"
+TR-61;N-A;N-A;Transversal - calidad;Administrador;N-A;RNF-14;RNF;N-A;N-A;N-A;Database Server;N-A;N-A (infraestructura);N-A;CP-RNF-14;Flexibilidad/Adaptabilidad: incorporar cultivo nuevo <= 30 min sin desarrollador;"COMPLETA (criterio ya cuantificado en el ERS -- LB-01; fila de matriz nueva, sin CU/mockup por naturaleza RNF)"
+TR-62;N-A;N-A;Transversal - calidad;Administrador;N-A;RNF-15;RNF;N-A;N-A;N-A;AIIntegrationModule;N-A;AIRecommendation, Alert;N-A;CP-RNF-15;"Explicabilidad (4 metricas M15.1-M15.4): 100% alertas con explicacion causal+incertidumbre; <=1,0s adicional; <=3 lineas; Likert >=4/5";"COMPLETA (criterio ya cuantificado en el ERS -- LB-01; fila de matriz nueva, sin CU/mockup por naturaleza RNF)"
