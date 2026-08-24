@@ -10,9 +10,9 @@
 
 \graphicspath{{../03_Modelado/Diagramas_UML/}}
 
-\title{Especificación de Requisitos de Software\\Secciones 2 y 3 --- Bloque individual}
-\author{Calle Delgado Kamila Annabella}
-\date{}
+\title{Especificación de Requisitos de Software\\Secciones 2 y 3: Bloque individual\\[2mm]\large Versión 2.0 (PE5): cierre del ERS con los componentes de inteligencia artificial}
+\author{Calle Delgado Kamila Anabella}
+\date{23 de agosto de 2026}
 
 \begin{document}
 \maketitle
@@ -38,8 +38,7 @@ El límite del sistema separa lo que el SGA administra internamente de las entid
 
 La Figura~\ref{fig:diagrama-contexto} muestra el diagrama de contexto del SGA. Hacia el sistema, el Administrador registra parcelas, trabajadores, cultivos, actividades, inventario y cosechas; el sistema le devuelve reportes, alertas, recomendaciones de IA y estadísticas. El Jornalero recibe del sistema las tareas, la parcela asignada y las actividades, y registra hacia el sistema las labores realizadas, la cosecha y las incidencias. El Centro de acopio se incorpora como entidad externa adicional respecto del diagrama de la Entrega 1B: el peso y el comprobante que entrega respaldan el registro de cada cosecha (EV-01 [04:32]). Las otras dos entidades candidatas evaluadas, proveedor de insumos (EV-01 [05:50]) y contador externo (EV-01 [06:23], [06:37]), no muestran intercambio de datos con el sistema y no se incorporan.
 
-\clearpage
-\begin{figure}[htbp]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.85\textwidth,height=0.4\textheight,keepaspectratio]{diagrama_contexto.png}
 \caption{Diagrama de contexto del SGA}
@@ -74,9 +73,9 @@ PI-01 & Administrador de la finca & Cliente principal & Alto & Alto & Gestionar 
 \hline
 PI-02 & Jornalero & Usuario final & Medio-bajo & Bajo & Monitorear & EV-02 \\
 \hline
-PI-03 & Equipo de desarrollo & Desarrolladores & Alto & Alto & Gestionar de cerca & --- \\
+PI-03 & Equipo de desarrollo & Desarrolladores & Alto & Alto & Gestionar de cerca & N/D \\
 \hline
-PI-04 & Docente de la asignatura & Supervisor académico & Medio & Medio & Cruce, sin inclinación & --- \\
+PI-04 & Docente de la asignatura & Supervisor académico & Medio & Medio & Cruce, sin inclinación & N/D \\
 \hline
 \end{longtable}
 \label{tab:identificacion-stakeholders}
@@ -88,14 +87,6 @@ PI-04 & Docente de la asignatura & Supervisor académico & Medio & Medio & Cruce
 
 La Figura~\ref{fig:matriz-poder-interes} ubica a los cuatro actores en la matriz poder/interés. El Docente de la asignatura se representa con un marcador distinto (rombo) exactamente en el cruce de los dos ejes, ya que la Tabla A.1 declara su poder e interés como medios, sin evidencia en la Sección 5 que lo incline hacia un cuadrante específico.
 
-\clearpage
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.6\textwidth,height=0.4\textheight,keepaspectratio]{mapa_stakeholders_poder_interes.png}
-\caption{Matriz poder/interés de las partes interesadas del SGA}
-\label{fig:matriz-poder-interes}
-\end{figure}
-
 % Subseccion 2.2.3: Estrategia de gestion por cuadrante
 \subsubsection{Estrategia de gestión por cuadrante}
 \label{sec:estrategia-cuadrante}
@@ -105,6 +96,13 @@ Para el Administrador de la finca y el Equipo de desarrollo, ubicados en el cuad
 Para el Jornalero, ubicado hacia el cuadrante de monitorear, la estrategia es de comunicación periódica y de baja carga, limitada a la información mínima necesaria para ejecutar sus tareas: su propia declaración (EV-02 [02:43]) describe una disposición pragmática, no proactiva, hacia el uso de herramientas digitales.
 
 Para el Docente de la asignatura, ubicado en el cruce de los dos ejes, la estrategia es de mantenerlo informado mediante los entregables periódicos del proyecto: su interés declarado en la Tabla A.1 corresponde a una supervisión académica periódica, no a una participación operativa diaria.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.6\textwidth,height=0.4\textheight,keepaspectratio]{mapa_stakeholders_poder_interes.png}
+\caption{Matriz poder/interés de las partes interesadas del SGA}
+\label{fig:matriz-poder-interes}
+\end{figure}
 
 % Subseccion 2.3: Modelado organizacional i estrella
 \subsection{Modelado organizacional en el lenguaje distribuido intencional (i*)}
@@ -133,8 +131,7 @@ Entre el Administrador y el Jornalero se identifican cuatro dependencias, todas 
 
 La Figura~\ref{fig:istar-sd} representa las cuatro dependencias identificadas entre el Administrador y el Jornalero. El Equipo de desarrollo y el Docente de la asignatura se muestran como actores sin enlaces de dependencia, conforme a lo señalado en la Sección~\ref{sec:actores-dependencias}.
 
-\clearpage
-\begin{figure}[htbp]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.9\textwidth,height=0.4\textheight,keepaspectratio]{istar_sd.png}
 \caption{Diagrama de Dependencia Estratégica (SD) del SGA}
@@ -151,8 +148,7 @@ El Jornalero persigue el objetivo duro de cumplir las tareas asignadas, descompu
 
 El Equipo de desarrollo persigue el objetivo duro de entregar el SGA conforme a los requisitos definidos, mediante la tarea de analizar, diseñar e implementar el sistema. El Docente de la asignatura persigue el objetivo duro de verificar el cumplimiento de la metodología y los objetivos de la asignatura, mediante la tarea de evaluar los entregables del proyecto.
 
-\clearpage
-\begin{figure}[htbp]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.7\textwidth,height=0.55\textheight,keepaspectratio]{istar_sr.png}
 \caption{Diagrama de Razón Estratégica (SR) del SGA}
@@ -210,16 +206,17 @@ Criterio de verificación & Condición cuantificable, con métrica, umbral y mé
 \subsubsection{Catálogo de requisitos funcionales}
 \label{sec:catalogo-rf}
 
-El catálogo siguiente incorpora los dieciséis requisitos funcionales identificados en la Entrega 2 (1B), migrados a la plantilla de ocho atributos sin alterar su contenido sustantivo, y su ampliación hasta un total de veintisiete requisitos funcionales derivados de la evidencia de campo descrita en la Sección 5. Los identificadores RF-01 a RF-16 corresponden a los requisitos migrados; los identificadores RF-17 a RF-27 corresponden a los requisitos incorporados en esta entrega. En los requisitos migrados se conservan, como campos adicionales al cierre de la ficha, las Precondiciones, el Flujo principal y las Postcondiciones ya redactados en la Entrega 2 (1B).
+El catálogo siguiente incorpora los dieciséis requisitos funcionales identificados en la Entrega 2 (1B), migrados a la plantilla de ocho atributos sin alterar su contenido sustantivo, y su ampliación hasta un total de treinta y un requisitos funcionales derivados de la evidencia de campo descrita en la Sección 5. Los identificadores RF-01 a RF-16 corresponden a los requisitos migrados; los identificadores RF-17 a RF-27 corresponden a los requisitos incorporados en la Entrega 3 (2A); los identificadores RF-28 a RF-31 se incorporan en la práctica PE5 y especifican los componentes de inteligencia artificial del sistema (Sección~\ref{sec:componentes-ia}). En los requisitos migrados se conservan, como campos adicionales al cierre de la ficha, las Precondiciones, el Flujo principal y las Postcondiciones ya redactados en la Entrega 2 (1B).
 
 Los requisitos RF-01 y RF-14 no derivan de una cita textual de las entrevistas, ya que ninguna pregunta del guion abordó de forma directa el mecanismo de autenticación. Su origen se declara como la restricción R-02 sobre acceso diferenciado por rol, necesaria para sostener la distinción de responsabilidades entre Administrador y Trabajador agrícola evidenciada a lo largo de ambas entrevistas.
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-01. Inicio de sesión}
 \label{tab:RF-01}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-01 \\
 \hline
@@ -227,7 +224,7 @@ Nombre & Inicio de sesión \\
 \hline
 Descripción & El sistema deberá permitir que el administrador y los trabajadores agrícolas inicien sesión mediante un usuario y una contraseña para acceder a las funcionalidades correspondientes a su rol. \\
 \hline
-Actor / origen & Administrador, Trabajador agrícola --- R-02 (el acceso a la información dependerá del rol asignado a cada usuario). \\
+Actor / origen & Administrador, Trabajador agrícola: R-02 (el acceso a la información dependerá del rol asignado a cada usuario). \\
 \hline
 Entradas & Usuario (texto, obligatorio); contraseña (texto, obligatorio). \\
 \hline
@@ -243,15 +240,17 @@ Flujo principal & 1. El usuario ingresa sus credenciales. 2. El sistema valida l
 \hline
 Postcondiciones & El usuario accede correctamente al sistema. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-02. Gestión de parcelas}
 \label{tab:RF-02}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-02 \\
 \hline
@@ -259,7 +258,7 @@ Nombre & Gestión de parcelas \\
 \hline
 Descripción & El sistema deberá permitir registrar, consultar, actualizar y eliminar la información correspondiente a las parcelas o lotes que conforman la finca. \\
 \hline
-Actor / origen & Administrador --- EV-01 [04:02], [04:14]. \\
+Actor / origen & Administrador: EV-01 [04:02], [04:14]. \\
 \hline
 Entradas & Nombre o código de parcela (texto, obligatorio); ubicación (texto, obligatorio); área (numérico, obligatorio); estado (selección, obligatorio). \\
 \hline
@@ -275,15 +274,17 @@ Flujo principal & 1. El administrador selecciona el módulo de parcelas. 2. Regi
 \hline
 Postcondiciones & La información de la parcela queda registrada o actualizada correctamente. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-03. Gestión de cultivos}
 \label{tab:RF-03}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-03 \\
 \hline
@@ -291,7 +292,7 @@ Nombre & Gestión de cultivos \\
 \hline
 Descripción & El sistema deberá permitir registrar y administrar los cultivos de verde y cacao asociados a cada parcela de la finca. \\
 \hline
-Actor / origen & Administrador --- EV-01 [03:05], [03:18]. \\
+Actor / origen & Administrador: EV-01 [03:05], [03:18]. \\
 \hline
 Entradas & Parcela asociada (selección, obligatorio); tipo de cultivo (selección: verde o cacao, obligatorio); variedad (texto, opcional); fecha de cultivo (fecha, obligatorio). \\
 \hline
@@ -307,15 +308,17 @@ Flujo principal & 1. El administrador selecciona una parcela. 2. Registra la inf
 \hline
 Postcondiciones & El cultivo queda asociado correctamente a la parcela correspondiente. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-04. Registro de actividades agrícolas}
 \label{tab:RF-04}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-04 \\
 \hline
@@ -323,7 +326,7 @@ Nombre & Registro de actividades agrícolas \\
 \hline
 Descripción & El sistema deberá permitir registrar las actividades realizadas por los trabajadores agrícolas, indicando la fecha, la actividad ejecutada y la parcela donde fue desarrollada. \\
 \hline
-Actor / origen & Trabajador agrícola --- EV-02 [00:54]; EV-01 [07:11]. \\
+Actor / origen & Trabajador agrícola: EV-02 [00:54]; EV-01 [07:11]. \\
 \hline
 Entradas & Fecha (fecha, obligatorio); tipo de actividad (selección, obligatorio); parcela (selección, obligatorio). \\
 \hline
@@ -339,15 +342,17 @@ Flujo principal & 1. El trabajador accede al módulo de actividades. 2. Registra
 \hline
 Postcondiciones & La actividad queda registrada correctamente en el sistema. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-05. Registro de cosechas}
 \label{tab:RF-05}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-05 \\
 \hline
@@ -355,7 +360,7 @@ Nombre & Registro de cosechas \\
 \hline
 Descripción & El sistema deberá permitir registrar la producción obtenida en cada cosecha, especificando el cultivo, la parcela, la cantidad recolectada, la unidad de medida y la fecha del registro. \\
 \hline
-Actor / origen & Trabajador agrícola --- EV-01 [04:32], [04:47]; EV-02 [02:08]. \\
+Actor / origen & Trabajador agrícola: EV-01 [04:32], [04:47]; EV-02 [02:08]. \\
 \hline
 Entradas & Cultivo (selección, obligatorio); parcela (selección, obligatorio); cantidad (numérico, obligatorio); unidad de medida (selección, obligatorio); fecha (fecha, obligatorio). \\
 \hline
@@ -371,15 +376,17 @@ Flujo principal & 1. El trabajador selecciona el cultivo correspondiente. 2. Ing
 \hline
 Postcondiciones & La producción queda registrada y disponible para consultas y reportes. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-06. Gestión de inventario de insumos}
 \label{tab:RF-06}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-06 \\
 \hline
@@ -387,7 +394,7 @@ Nombre & Gestión de inventario de insumos \\
 \hline
 Descripción & El sistema deberá permitir registrar, consultar, actualizar y eliminar la información correspondiente a los insumos agrícolas y herramientas utilizadas en la finca, incluyendo fertilizantes, fungicidas, herbicidas y herramientas de trabajo. \\
 \hline
-Actor / origen & Administrador --- EV-01 [05:36], [05:44], [05:58], [06:14]. \\
+Actor / origen & Administrador: EV-01 [05:36], [05:44], [05:58], [06:14]. \\
 \hline
 Entradas & Nombre del insumo (texto, obligatorio); tipo (selección: fertilizante, fungicida, herbicida o herramienta, obligatorio); cantidad disponible (numérico, obligatorio); unidad de medida (selección, obligatorio). \\
 \hline
@@ -403,15 +410,17 @@ Flujo principal & 1. El administrador accede al módulo de inventario. 2. Regist
 \hline
 Postcondiciones & El inventario queda actualizado con la información registrada. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-07. Consulta de producción por período}
 \label{tab:RF-07}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-07 \\
 \hline
@@ -419,7 +428,7 @@ Nombre & Consulta de producción por período \\
 \hline
 Descripción & El sistema deberá permitir consultar la producción agrícola registrada durante un período específico, facilitando el seguimiento del rendimiento de los cultivos. \\
 \hline
-Actor / origen & Administrador --- EV-01 [04:47], [04:54]. \\
+Actor / origen & Administrador: EV-01 [04:47], [04:54]. \\
 \hline
 Entradas & Fecha de inicio y fecha de fin del período (fecha, obligatorio). \\
 \hline
@@ -435,15 +444,17 @@ Flujo principal & 1. El administrador selecciona el período de consulta. 2. El 
 \hline
 Postcondiciones & La información solicitada se muestra correctamente al usuario. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-08. Planificación de actividades agrícolas}
 \label{tab:RF-08}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-08 \\
 \hline
@@ -451,7 +462,7 @@ Nombre & Planificación de actividades agrícolas \\
 \hline
 Descripción & El sistema deberá permitir planificar las actividades agrícolas indicando la tarea, la fecha programada y la parcela donde será ejecutada. \\
 \hline
-Actor / origen & Administrador --- EV-01 [06:51], [06:58]. \\
+Actor / origen & Administrador: EV-01 [06:51], [06:58]. \\
 \hline
 Entradas & Tarea (texto, obligatorio); fecha programada (fecha, obligatorio); parcela (selección, obligatorio). \\
 \hline
@@ -467,15 +478,17 @@ Flujo principal & 1. El administrador accede al módulo de planificación. 2. Re
 \hline
 Postcondiciones & La actividad queda programada para su posterior ejecución. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-09. Asignación de tareas}
 \label{tab:RF-09}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-09 \\
 \hline
@@ -483,7 +496,7 @@ Nombre & Asignación de tareas \\
 \hline
 Descripción & El sistema deberá permitir asignar actividades específicas a los trabajadores agrícolas, indicando la tarea, la parcela y la fecha de ejecución. \\
 \hline
-Actor / origen & Administrador --- EV-01 [06:58]; EV-02 [01:01], [01:18]. \\
+Actor / origen & Administrador: EV-01 [06:58]; EV-02 [01:01], [01:18]. \\
 \hline
 Entradas & Trabajador (selección, obligatorio); actividad (selección, obligatorio); parcela (selección, obligatorio); fecha de ejecución (fecha, obligatorio). \\
 \hline
@@ -499,15 +512,17 @@ Flujo principal & 1. El administrador selecciona al trabajador. 2. Asigna la act
 \hline
 Postcondiciones & La tarea queda asignada al trabajador seleccionado. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-10. Seguimiento del cumplimiento de tareas}
 \label{tab:RF-10}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-10 \\
 \hline
@@ -515,7 +530,7 @@ Nombre & Seguimiento del cumplimiento de tareas \\
 \hline
 Descripción & El sistema deberá permitir consultar el estado de las actividades asignadas a los trabajadores, identificando aquellas pendientes, en proceso o finalizadas. \\
 \hline
-Actor / origen & Administrador --- EV-01 [07:11], [07:18]. \\
+Actor / origen & Administrador: EV-01 [07:11], [07:18]. \\
 \hline
 Entradas & Ninguna directa; opera sobre tareas previamente asignadas (RF-09). \\
 \hline
@@ -531,15 +546,17 @@ Flujo principal & 1. El administrador accede al módulo de seguimiento. 2. El si
 \hline
 Postcondiciones & El administrador conoce el avance de las actividades programadas. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-11. Generación de reportes de producción}
 \label{tab:RF-11}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-11 \\
 \hline
@@ -547,7 +564,7 @@ Nombre & Generación de reportes de producción \\
 \hline
 Descripción & El sistema deberá permitir generar reportes de producción por cultivo, parcela o período, facilitando el análisis de la información registrada. \\
 \hline
-Actor / origen & Administrador --- EV-01 [08:10]. \\
+Actor / origen & Administrador: EV-01 [08:10]. \\
 \hline
 Entradas & Filtros de consulta: cultivo, parcela o período (selección, al menos uno obligatorio). \\
 \hline
@@ -563,15 +580,17 @@ Flujo principal & 1. El administrador accede al módulo de reportes. 2. Seleccio
 \hline
 Postcondiciones & El reporte queda disponible para su consulta o descarga. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-12. Identificación de productividad por parcela}
 \label{tab:RF-12}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-12 \\
 \hline
@@ -579,7 +598,7 @@ Nombre & Identificación de productividad por parcela \\
 \hline
 Descripción & El sistema deberá permitir identificar las parcelas con mayor y menor productividad mediante el análisis de la producción registrada. \\
 \hline
-Actor / origen & Administrador --- EV-01 [07:54], [08:02]. \\
+Actor / origen & Administrador: EV-01 [07:54], [08:02]. \\
 \hline
 Entradas & Período de análisis (fecha, obligatorio); vista derivada del resultado de la consulta de producción por período (RF-07). \\
 \hline
@@ -595,15 +614,17 @@ Flujo principal & 1. El administrador accede al módulo de análisis. 2. El sist
 \hline
 Postcondiciones & El administrador dispone de información para evaluar el rendimiento de las parcelas. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-13. Generación de estadísticas agrícolas}
 \label{tab:RF-13}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-13 \\
 \hline
@@ -611,7 +632,7 @@ Nombre & Generación de estadísticas agrícolas \\
 \hline
 Descripción & El sistema deberá generar estadísticas basadas en la información registrada, permitiendo visualizar indicadores relacionados con la producción, las actividades realizadas y el rendimiento de los cultivos. \\
 \hline
-Actor / origen & Administrador --- EV-01 [07:28], [07:36], [07:43]. \\
+Actor / origen & Administrador: EV-01 [07:28], [07:36], [07:43]. \\
 \hline
 Entradas & Ninguna directa; procesa la información ya registrada en el sistema. \\
 \hline
@@ -627,15 +648,17 @@ Flujo principal & 1. El administrador accede al módulo de estadísticas. 2. El 
 \hline
 Postcondiciones & Las estadísticas quedan disponibles para apoyar la toma de decisiones. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-14. Gestión de usuarios}
 \label{tab:RF-14}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-14 \\
 \hline
@@ -643,7 +666,7 @@ Nombre & Gestión de usuarios \\
 \hline
 Descripción & El sistema deberá permitir registrar, modificar, consultar y desactivar las cuentas de los usuarios autorizados, asignando el rol correspondiente a cada uno. \\
 \hline
-Actor / origen & Administrador --- R-02 (el acceso a la información dependerá del rol asignado a cada usuario); EV-01 [02:35]. \\
+Actor / origen & Administrador: R-02 (el acceso a la información dependerá del rol asignado a cada usuario); EV-01 [02:35]. \\
 \hline
 Entradas & Nombre de usuario (texto, obligatorio); rol (selección, obligatorio); estado (selección: activo o inactivo, obligatorio). \\
 \hline
@@ -659,15 +682,17 @@ Flujo principal & 1. El administrador accede al módulo de usuarios. 2. Registra
 \hline
 Postcondiciones & La información del usuario queda actualizada en el sistema. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-15. Consultar recomendaciones de IA}
 \label{tab:RF-15}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-15 \\
 \hline
@@ -675,7 +700,7 @@ Nombre & Consultar recomendaciones de IA \\
 \hline
 Descripción & El sistema deberá analizar la información registrada sobre los cultivos de verde y cacao para generar recomendaciones que apoyen la planificación de actividades y la toma de decisiones por parte del administrador. \\
 \hline
-Actor / origen & Administrador --- EV-01 [09:26], [09:36]. \\
+Actor / origen & Administrador: EV-01 [09:26], [09:36]. \\
 \hline
 Entradas & Ninguna directa; el módulo de IA procesa los registros históricos existentes de producción, actividades e inventario. \\
 \hline
@@ -691,15 +716,17 @@ Flujo principal & 1. El administrador accede al módulo de Inteligencia Artifici
 \hline
 Postcondiciones & Las recomendaciones quedan disponibles para su consulta por parte del administrador. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-16. Registro de enfermedades del cultivo}
 \label{tab:RF-16}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-16 \\
 \hline
@@ -707,7 +734,7 @@ Nombre & Registro de enfermedades del cultivo \\
 \hline
 Descripción & El sistema deberá permitir registrar las enfermedades detectadas en los cultivos de verde y cacao, indicando el cultivo afectado, el nombre de la enfermedad, el nivel de gravedad y observaciones, con el fin de llevar un control fitosanitario y facilitar la generación de alertas cuando sea necesario. \\
 \hline
-Actor / origen & Administrador, Trabajador agrícola --- EV-02 [01:42]; EV-01 [01:16], [01:25]. \\
+Actor / origen & Administrador, Trabajador agrícola: EV-02 [01:42]; EV-01 [01:16], [01:25]. \\
 \hline
 Entradas & Cultivo afectado (selección, obligatorio); nombre de la enfermedad (selección desde catálogo, RF-20, obligatorio); nivel de gravedad (selección, obligatorio); observaciones (texto, opcional). \\
 \hline
@@ -723,17 +750,19 @@ Flujo principal & 1. El usuario selecciona el cultivo afectado. 2. Registra la e
 \hline
 Postcondiciones & La enfermedad queda registrada y disponible para su consulta. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
 A continuación se incorporan los once requisitos funcionales adicionales (RF-17 a RF-27), derivados de las capacidades identificadas en la evidencia de campo que no quedaban cubiertas por los dieciséis requisitos migrados. Cada uno sigue estrictamente la plantilla de ocho atributos, sin campos adicionales.
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-17. Registro de peso y comprobante de acopio}
 \label{tab:RF-17}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-17 \\
 \hline
@@ -741,7 +770,7 @@ Nombre & Registro de peso y comprobante de acopio \\
 \hline
 Descripción & El sistema deberá permitir registrar el peso entregado y el número de comprobante emitido por el centro de acopio para cada cosecha, como respaldo de la producción declarada. \\
 \hline
-Actor / origen & Trabajador agrícola, Administrador --- EV-01 [04:32], [04:47]. \\
+Actor / origen & Trabajador agrícola, Administrador: EV-01 [04:32], [04:47]. \\
 \hline
 Entradas & Peso entregado (numérico, kg o toneladas, obligatorio); número de comprobante (texto, obligatorio). \\
 \hline
@@ -751,15 +780,17 @@ Prioridad (MoSCoW) & Debería tener. \\
 \hline
 Criterio de verificación & El 100~\% de los registros de cosecha con comprobante de acopio permiten recuperar el peso y el número de comprobante en una consulta posterior, verificado sobre una muestra de 30 registros. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-18. Comparación de producción entre periodos}
 \label{tab:RF-18}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-18 \\
 \hline
@@ -767,7 +798,7 @@ Nombre & Comparación de producción entre periodos \\
 \hline
 Descripción & El sistema deberá permitir comparar la producción registrada entre dos periodos seleccionados por el administrador, para un mismo cultivo o parcela. \\
 \hline
-Actor / origen & Administrador --- EV-01 [04:47], [04:54]. \\
+Actor / origen & Administrador: EV-01 [04:47], [04:54]. \\
 \hline
 Entradas & Periodo 1, periodo 2, cultivo o parcela (selección, obligatorio); vista derivada del resultado de la consulta de producción por período (RF-07). \\
 \hline
@@ -777,15 +808,17 @@ Prioridad (MoSCoW) & Debería tener. \\
 \hline
 Criterio de verificación & La comparación entre dos periodos con 500 registros de producción se presenta en $\leq$ 3,0 s, verificado en el percentil 95 de 30 ejecuciones. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-19. Reporte de pérdidas por plagas}
 \label{tab:RF-19}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-19 \\
 \hline
@@ -793,7 +826,7 @@ Nombre & Reporte de pérdidas por plagas \\
 \hline
 Descripción & El sistema deberá generar un reporte de pérdidas de producción estimadas asociadas a plagas y enfermedades, por cultivo y por parcela. \\
 \hline
-Actor / origen & Administrador --- EV-01 [08:17], [08:22], [08:29] (reporte señalado como el más importante por el administrador). \\
+Actor / origen & Administrador: EV-01 [08:17], [08:22], [08:29] (reporte señalado como el más importante por el administrador). \\
 \hline
 Entradas & Periodo (fecha, obligatorio); cultivo o parcela (selección, opcional). \\
 \hline
@@ -803,15 +836,17 @@ Prioridad (MoSCoW) & Debe tener. \\
 \hline
 Criterio de verificación & El reporte de pérdidas por plagas se genera en $\leq$ 3,0 s con 500 registros de enfermedad cargados, verificado en el percentil 95 de 30 ejecuciones. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-20. Catálogo de plagas y enfermedades por cultivo}
 \label{tab:RF-20}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-20 \\
 \hline
@@ -819,7 +854,7 @@ Nombre & Catálogo de plagas y enfermedades por cultivo \\
 \hline
 Descripción & El sistema deberá mantener un catálogo de plagas y enfermedades asociadas a cada tipo de cultivo, con nombre normalizado, para estandarizar el registro de incidencias fitosanitarias. \\
 \hline
-Actor / origen & Administrador --- EV-02 [01:42]; EV-01 [01:16], [01:25]. \\
+Actor / origen & Administrador: EV-02 [01:42]; EV-01 [01:16], [01:25]. \\
 \hline
 Entradas & Nombre de la plaga o enfermedad (texto, obligatorio); cultivo asociado (selección, obligatorio). \\
 \hline
@@ -829,15 +864,17 @@ Prioridad (MoSCoW) & Debería tener. \\
 \hline
 Criterio de verificación & El 100~\% de los registros de enfermedad (RF-16) permiten seleccionar el nombre desde el catálogo sin ingreso de texto libre, verificado sobre una muestra de 30 registros. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-21. Planificación de compra de insumos por calendario}
 \label{tab:RF-21}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-21 \\
 \hline
@@ -845,7 +882,7 @@ Nombre & Planificación de compra de insumos por calendario \\
 \hline
 Descripción & El sistema deberá permitir planificar la compra de insumos agrícolas asignando cantidades estimadas por cultivo a meses específicos del año. \\
 \hline
-Actor / origen & Administrador --- EV-01 [05:36], [05:44]. \\
+Actor / origen & Administrador: EV-01 [05:36], [05:44]. \\
 \hline
 Entradas & Insumo (selección, obligatorio); cultivo (selección, obligatorio); mes (selección, obligatorio); cantidad estimada (numérico, obligatorio). \\
 \hline
@@ -855,15 +892,17 @@ Prioridad (MoSCoW) & Debería tener. \\
 \hline
 Criterio de verificación & El sistema muestra el calendario de compras planificadas de los 12 meses en $\leq$ 2,0 s, verificado en el percentil 95 de 20 ejecuciones. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-22. Registro de entrega de insumos a trabajadores}
 \label{tab:RF-22}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-22 \\
 \hline
@@ -871,7 +910,7 @@ Nombre & Registro de entrega de insumos a trabajadores \\
 \hline
 Descripción & El sistema deberá permitir registrar la entrega de insumos agrícolas del administrador a un trabajador, actualizando la disponibilidad del inventario. \\
 \hline
-Actor / origen & Administrador --- EV-02 [02:25]. \\
+Actor / origen & Administrador: EV-02 [02:25]. \\
 \hline
 Entradas & Insumo (selección, obligatorio); cantidad entregada (numérico, obligatorio); trabajador receptor (selección, obligatorio); fecha (fecha, obligatorio). \\
 \hline
@@ -881,15 +920,17 @@ Prioridad (MoSCoW) & Podría tener. \\
 \hline
 Criterio de verificación & El 100~\% de las entregas registradas descuentan correctamente la cantidad del inventario disponible, verificado sobre una muestra de 30 entregas. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-23. Registro de ingresos}
 \label{tab:RF-23}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-23 \\
 \hline
@@ -897,7 +938,7 @@ Nombre & Registro de ingresos \\
 \hline
 Descripción & El sistema deberá permitir registrar los ingresos generados por la venta de la producción agrícola, asociados a cultivo y periodo. \\
 \hline
-Actor / origen & Administrador --- EV-01 [06:23], [06:28], [06:37]. \\
+Actor / origen & Administrador: EV-01 [06:23], [06:28], [06:37]. \\
 \hline
 Entradas & Monto (numérico, obligatorio); cultivo (selección, obligatorio); periodo (fecha, obligatorio); fecha (fecha, obligatorio). \\
 \hline
@@ -907,15 +948,17 @@ Prioridad (MoSCoW) & Podría tener (necesidad secundaria frente a las prioridade
 \hline
 Criterio de verificación & El registro de un ingreso queda disponible para consulta en $\leq$ 2,0 s tras su ingreso, verificado sobre 20 registros consecutivos. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-24. Consulta de historial de registros por trabajador y fecha}
 \label{tab:RF-24}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-24 \\
 \hline
@@ -923,7 +966,7 @@ Nombre & Consulta de historial de registros por trabajador y fecha \\
 \hline
 Descripción & El sistema deberá permitir consultar el historial de labores y cosechas registradas, filtrado por trabajador y por rango de fechas, para permitir la reconciliación de la información y evitar la desviación de datos identificada en el registro en papel. \\
 \hline
-Actor / origen & Administrador --- EV-01 [02:04], [02:17]. \\
+Actor / origen & Administrador: EV-01 [02:04], [02:17]. \\
 \hline
 Entradas & Trabajador (selección, opcional); rango de fechas (obligatorio). \\
 \hline
@@ -933,15 +976,17 @@ Prioridad (MoSCoW) & Debe tener. \\
 \hline
 Criterio de verificación & La consulta del historial filtrado por trabajador y fecha con 500 registros se presenta en $\leq$ 2,0 s, verificado en el percentil 95 de 30 ejecuciones. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-25. Generación de alertas automáticas de atención inmediata}
 \label{tab:RF-25}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-25 \\
 \hline
@@ -949,7 +994,7 @@ Nombre & Generación de alertas automáticas de atención inmediata \\
 \hline
 Descripción & El sistema deberá generar alertas automáticas visibles al administrador cuando se registre una condición que requiera atención inmediata, incluyendo enfermedades de gravedad alta e insumos con disponibilidad crítica. \\
 \hline
-Actor / origen & Administrador --- EV-01 [10:33]. \\
+Actor / origen & Administrador: EV-01 [10:33]. \\
 \hline
 Entradas & Ninguna directa; se genera a partir de los registros de RF-16 y RF-06. \\
 \hline
@@ -959,15 +1004,17 @@ Prioridad (MoSCoW) & Debe tener. \\
 \hline
 Criterio de verificación & El 100~\% de las condiciones que requieren atención inmediata (enfermedades con gravedad alta registradas vía RF-16 e insumos con disponibilidad crítica registrados vía RF-06) generan una alerta visible en $\leq$ 5,0 s desde su registro, verificada cada fuente por separado sobre una muestra de 30 casos por tipo. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-26. Detección temprana de señales de enfermedad en parcelas mediante IA}
 \label{tab:RF-26}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-26 \\
 \hline
@@ -975,7 +1022,7 @@ Nombre & Detección temprana de señales de enfermedad en parcelas mediante IA \
 \hline
 Descripción & El sistema deberá analizar mediante IA la información histórica registrada de una parcela para generar una alerta temprana cuando se identifiquen patrones asociados a una posible enfermedad, antes de su confirmación visual por el usuario. \\
 \hline
-Actor / origen & Administrador --- EV-01 [09:02]. \\
+Actor / origen & Administrador: EV-01 [09:02]. \\
 \hline
 Entradas & Registros históricos de la parcela (labores, cosechas, enfermedades previas). \\
 \hline
@@ -985,15 +1032,17 @@ Prioridad (MoSCoW) & Debe tener. \\
 \hline
 Criterio de verificación & El módulo de IA genera la alerta temprana con una exactitud (accuracy) mínima del 70~\% sobre un conjunto de validación de al menos 30 casos etiquetados. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RF-27. Consulta de producción agregada por cultivo}
 \label{tab:RF-27}
 
 \begin{center}
-\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
 \hline
 Identificador & RF-27 \\
 \hline
@@ -1001,7 +1050,7 @@ Nombre & Consulta de producción agregada por cultivo \\
 \hline
 Descripción & El sistema deberá permitir consultar la producción total registrada agrupada por cultivo, sin necesidad de discriminar por parcela individual. \\
 \hline
-Actor / origen & Administrador --- EV-01 [09:57]. \\
+Actor / origen & Administrador: EV-01 [09:57]. \\
 \hline
 Entradas & Cultivo (selección); periodo (opcional); vista derivada del resultado de la consulta de producción agregada del período (RF-07). \\
 \hline
@@ -1011,8 +1060,123 @@ Prioridad (MoSCoW) & Debería tener. \\
 \hline
 Criterio de verificación & La consulta de producción agregada por cultivo con 500 registros se presenta en $\leq$ 2,0 s, verificado en el percentil 95 de 30 ejecuciones. \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
+
+A continuación se incorporan los cuatro requisitos funcionales que especifican los dos componentes de inteligencia artificial del sistema (RF-28 a RF-31), exigidos por el Paso 3 de la PE5. RF-28 completa el componente IA-01, ya existente en la línea base como RF-15 y RF-26, con el mecanismo de retroalimentación humana que exige la restricción R-05. RF-29 a RF-31 especifican IA-02, el segundo componente de inteligencia artificial incorporado en esta práctica: un detector de plagas y enfermedades por imagen, justificado y descrito en la Sección~\ref{sec:componentes-ia}. Los cuatro siguen estrictamente la plantilla de ocho atributos, sin campos adicionales.
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RF-28. Confirmar o descartar una alerta o recomendación del módulo de IA}
+\label{tab:RF-28}
+
+\begin{center}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-28 \\
+\hline
+Nombre & Confirmar o descartar una alerta o recomendación del módulo de IA \\
+\hline
+Descripción & El sistema deberá permitir que el administrador confirme o descarte cada alerta temprana (RF-26) o recomendación (RF-15) presentada, registrando la decisión como retroalimentación del componente IA-01. \\
+\hline
+Actor / origen & Administrador: EV-01 [09:02], [09:10] (necesidad de verificar la información antes de actuar); R-05. \\
+\hline
+Entradas & Alerta o recomendación presentada (RF-15, RF-26); decisión del administrador (confirmar o descartar). \\
+\hline
+Salidas & Registro de la decisión, disponible como retroalimentación para el plan de monitoreo del componente (Sección~\ref{sec:componentes-ia}); ningún cambio se aplica automáticamente sin esta confirmación. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El 100~\% de las alertas y recomendaciones generadas quedan con una decisión de confirmación o descarte registrada, verificado sobre una muestra de 30 alertas o recomendaciones; ninguna acción se ejecuta automáticamente sin esta decisión. \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RF-29. Clasificar una fotografía de una incidencia fitosanitaria}
+\label{tab:RF-29}
+
+\begin{center}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-29 \\
+\hline
+Nombre & Clasificar una fotografía de una incidencia fitosanitaria \\
+\hline
+Descripción & El sistema deberá, a partir de una fotografía tomada durante el registro de una incidencia fitosanitaria (RF-16), proponer una clase del catálogo de plagas y enfermedades del cultivo correspondiente (RF-20), o «sin hallazgo» / «no concluyente», junto con un nivel de confianza. \\
+\hline
+Actor / origen & Administrador, Trabajador agrícola: EV-01 [01:16], [01:25], [08:17]--[08:29] (pérdidas por plagas como reporte prioritario); EV-02 [01:34] (reporte de incidencias fitosanitarias por el trabajador agrícola). \\
+\hline
+Entradas & Fotografía tomada en campo; cultivo y parcela seleccionados en el registro de la incidencia (RF-16). \\
+\hline
+Salidas & Clase propuesta del catálogo (RF-20), o «sin hallazgo» / «no concluyente»; nivel de confianza; región de la imagen que motivó la propuesta (RNF-26). \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & Sobre un conjunto de 30 fotografías de campo con clase confirmada, el sistema devuelve una propuesta de clase y nivel de confianza para el 100~\% de las capturas, sin modificar automáticamente el registro de enfermedad (R-05). \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RF-30. Registrar la clase confirmada en el historial de la parcela}
+\label{tab:RF-30}
+
+\begin{center}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-30 \\
+\hline
+Nombre & Registrar la clase confirmada en el historial de la parcela \\
+\hline
+Descripción & El sistema deberá permitir que el usuario confirme, corrija o descarte la propuesta de RF-29 y, solo tras esa decisión, completar el registro de la incidencia (RF-16) con la clase resultante. \\
+\hline
+Actor / origen & Administrador, Trabajador agrícola: RF-16; R-05. \\
+\hline
+Entradas & Propuesta de clase de RF-29; decisión del usuario (confirmar, corregir o descartar). \\
+\hline
+Salidas & Registro de enfermedad (RF-16) completado con la clase resultante y el origen «detección por imagen»; si se descarta, no se crea ni modifica ningún registro a partir de la propuesta. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El 100~\% de los registros de enfermedad con origen «detección por imagen» tienen una decisión explícita del usuario asociada, verificado sobre una muestra de 20 casos; ninguna propuesta descartada genera o modifica un registro. \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RF-31. Generar alerta por incidencia acumulada de una plaga o enfermedad por parcela}
+\label{tab:RF-31}
+
+\begin{center}
+\begin{tabular}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-31 \\
+\hline
+Nombre & Generar alerta por incidencia acumulada de una plaga o enfermedad por parcela \\
+\hline
+Descripción & El sistema deberá generar una alerta mediante el mecanismo ya existente (RF-25) cuando el número de detecciones confirmadas (RF-30) de una misma clase en una misma parcela alcance un umbral de incidencia configurado por el administrador. \\
+\hline
+Actor / origen & Administrador: EV-01 [08:17]--[08:29] (pérdidas por plagas como preocupación prioritaria), [10:33] (alertas de atención inmediata). \\
+\hline
+Entradas & Detecciones confirmadas (RF-30); umbral de incidencia configurado por el administrador (valor por defecto propuesto: 3 detecciones en 7 días). \\
+\hline
+Salidas & Alerta de atención inmediata (RF-25) con parcela, clase y detecciones que la originaron. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El 100~\% de los casos de prueba en que se alcanza el umbral configurado generan alerta en $\leq$ 5,0 s, y ningún caso por debajo del umbral la genera, verificado sobre 10 escenarios simulados. \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
 
 \subsection{Requisitos no funcionales}
 \label{sec:requisitos-no-funcionales}
@@ -1021,7 +1185,7 @@ Criterio de verificación & La consulta de producción agregada por cultivo con 
 \subsubsection{Criterio de cuantificación ISO/IEC 25010:2023}
 \label{sec:criterio-cuantificacion-rnf}
 
-La cuantificación de los requisitos no funcionales del SGA sigue un criterio único: todo requisito no funcional debe expresarse mediante una métrica, un valor objetivo y un método de medición verificable, evitando criterios procedimentales que solo describan una actividad de prueba sin un umbral de aceptación. Este criterio se aplica sobre las nueve características del modelo de calidad de producto de la norma ISO/IEC 25010:2023~\cite{iso25010-2023}. La Tabla~\ref{tab:cobertura-rnf} resume la cobertura mínima exigida por característica y la cobertura alcanzada en el catálogo de la Sección~\ref{sec:catalogo-rnf}.
+La cuantificación de los requisitos no funcionales del SGA sigue un criterio único: todo requisito no funcional debe expresarse mediante una métrica, un valor objetivo y un método de medición verificable, evitando criterios procedimentales que solo describan una actividad de prueba sin un umbral de aceptación. Este criterio se aplica sobre las nueve características del modelo de calidad de producto de la norma ISO/IEC 25010:2023~\cite{iso25010-2023}, ampliadas para esta práctica con la equidad como concepto operativo adicional exigido a los componentes de inteligencia artificial (Sección~4.4 de la guía de la PE5): ausencia de diferencias injustificadas de desempeño entre grupos, especificada con una métrica de brecha, los grupos comparados y la brecha máxima tolerada. La Tabla~\ref{tab:cobertura-rnf} resume la cobertura mínima exigida por característica y la cobertura alcanzada en el catálogo de la Sección~\ref{sec:catalogo-rnf}.
 
 \begin{center}
 \begin{longtable}{|p{5cm}|p{2.2cm}|p{6cm}|}
@@ -1037,15 +1201,15 @@ La cuantificación de los requisitos no funcionales del SGA sigue un criterio ú
 \endfoot
 \hline
 \endlastfoot
-Adecuación funcional & 1 & RNF-07 \\
+Adecuación funcional & 1 & RNF-07, RNF-16, RNF-21 \\
 \hline
-Eficiencia de desempeño & 2 & RNF-01, RNF-08 \\
+Eficiencia de desempeño & 2 & RNF-01, RNF-08, RNF-17, RNF-22 \\
 \hline
 Compatibilidad & 1 & RNF-05 \\
 \hline
 Interacción de usuario & 2 & RNF-04, RNF-12 \\
 \hline
-Fiabilidad & 2 & RNF-02, RNF-09 \\
+Fiabilidad & 2 & RNF-02, RNF-09, RNF-18, RNF-23 \\
 \hline
 Seguridad & 3 & RNF-03, RNF-10, RNF-11 \\
 \hline
@@ -1055,7 +1219,9 @@ Portabilidad & 1 & RNF-13 \\
 \hline
 Flexibilidad & 1 & RNF-14 \\
 \hline
-Explicabilidad (Sección~\ref{sec:explicabilidad-ia}) & 1 & RNF-15 \\
+Explicabilidad (Sección~\ref{sec:explicabilidad-ia} y~\ref{sec:componentes-ia}) & 2 & RNF-15, RNF-26 \\
+\hline
+Equidad del componente de IA, Secc.~4.4 de la guía (Sección~\ref{sec:componentes-ia}) & 4 & RNF-19, RNF-20, RNF-24, RNF-25 \\
 \hline
 \end{longtable}
 \label{tab:cobertura-rnf}
@@ -1105,14 +1271,15 @@ Prioridad & Alta, Media o Baja. \\
 \label{tab:plantilla-rnf}
 \end{center}
 
-Los requisitos RNF-01 a RNF-06 corresponden a los identificados en la Entrega 2 (1B), migrados a esta ficha y corregidos: sus criterios de verificación originales describían una actividad de prueba sin un umbral cuantificable, y se sustituyen aquí por una métrica con valor objetivo y método de medición explícitos. La categoría «Usabilidad» de la Entrega 2 (1B) se renombra a «Interacción de usuario», conforme a la nomenclatura de la edición 2023 de la norma. Los requisitos RNF-07 a RNF-14 se incorporan para cubrir las características y los mínimos exigidos en esta entrega. El requisito RNF-15 se desarrolla íntegramente en la Sección~\ref{sec:explicabilidad-ia}.
+Los requisitos RNF-01 a RNF-06 corresponden a los identificados en la Entrega 2 (1B), migrados a esta ficha y corregidos: sus criterios de verificación originales describían una actividad de prueba sin un umbral cuantificable, y se sustituyen aquí por una métrica con valor objetivo y método de medición explícitos. La categoría «Usabilidad» de la Entrega 2 (1B) se renombra a «Interacción de usuario», conforme a la nomenclatura de la edición 2023 de la norma. Los requisitos RNF-07 a RNF-14 se incorporan para cubrir las características y los mínimos exigidos en la Entrega 3 (2A). El requisito RNF-15 se desarrolla íntegramente en la Sección~\ref{sec:explicabilidad-ia}. Los requisitos RNF-16 a RNF-26 se incorporan en la práctica PE5: RNF-16 a RNF-20 formalizan el rendimiento y la equidad del componente IA-01, ya existente en la línea base, y RNF-21 a RNF-26 especifican el rendimiento, la equidad y la explicabilidad del componente IA-02, incorporado en esta práctica (Sección~\ref{sec:componentes-ia}).
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-01. Tiempo de respuesta en la consulta de parcelas}
 \label{tab:RNF-01}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-01 \\
 \hline
@@ -1134,15 +1301,17 @@ Origen & ISO/IEC 25010:2023 (característica sin evidencia directa de campo); RF
 \hline
 Prioridad & Alta \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-02. Disponibilidad del sistema}
 \label{tab:RNF-02}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-02 \\
 \hline
@@ -1164,15 +1333,17 @@ Origen & ISO/IEC 25010:2023 (característica sin evidencia directa de campo). \\
 \hline
 Prioridad & Alta \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-03. Control de acceso por rol}
 \label{tab:RNF-03}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-03 \\
 \hline
@@ -1194,15 +1365,17 @@ Origen & R-02, RD-04. \\
 \hline
 Prioridad & Alta \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-04. Curva de aprendizaje de usuarios nuevos}
 \label{tab:RNF-04}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-04 \\
 \hline
@@ -1224,15 +1397,17 @@ Origen & ISO/IEC 25010:2023, motivado por el perfil de usuario sin experiencia d
 \hline
 Prioridad & Media \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-05. Compatibilidad con navegadores}
 \label{tab:RNF-05}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-05 \\
 \hline
@@ -1254,15 +1429,17 @@ Origen & RD-03. \\
 \hline
 Prioridad & Media \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-06. Modularidad de la arquitectura}
 \label{tab:RNF-06}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-06 \\
 \hline
@@ -1284,15 +1461,17 @@ Origen & RD-05. \\
 \hline
 Prioridad & Media \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-07. Cobertura de unidades de medida por cultivo}
 \label{tab:RNF-07}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-07 \\
 \hline
@@ -1314,15 +1493,17 @@ Origen & EV-02 [02:08]; EV-01 [04:47]. \\
 \hline
 Prioridad & Alta \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-08. Tiempo de generación de reportes de pérdidas}
 \label{tab:RNF-08}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-08 \\
 \hline
@@ -1344,15 +1525,17 @@ Origen & ISO/IEC 25010:2023 (característica sin evidencia directa de campo). \\
 \hline
 Prioridad & Alta \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-09. Tolerancia a interrupciones durante el registro}
 \label{tab:RNF-09}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-09 \\
 \hline
@@ -1374,15 +1557,17 @@ Origen & ISO/IEC 25010:2023, motivado por la pérdida de datos declarada en EV-0
 \hline
 Prioridad & Alta \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-10. Bloqueo por intentos fallidos de acceso}
 \label{tab:RNF-10}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-10 \\
 \hline
@@ -1404,15 +1589,17 @@ Origen & UC-01; RD-04. \\
 \hline
 Prioridad & Alta \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-11. Cifrado de credenciales almacenadas}
 \label{tab:RNF-11}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-11 \\
 \hline
@@ -1434,15 +1621,17 @@ Origen & ISO/IEC 25010:2023; R-04. \\
 \hline
 Prioridad & Alta \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-12. Accesibilidad para usuarios sin experiencia digital previa}
 \label{tab:RNF-12}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-12 \\
 \hline
@@ -1464,15 +1653,17 @@ Origen & EV-02 [00:24], [02:33], [02:43]. \\
 \hline
 Prioridad & Media \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-13. Acceso desde dispositivo móvil}
 \label{tab:RNF-13}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-13 \\
 \hline
@@ -1494,15 +1685,17 @@ Origen & EV-01 [08:42]. \\
 \hline
 Prioridad & Alta \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-14. Incorporación de nuevos cultivos sin modificar código}
 \label{tab:RNF-14}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-14 \\
 \hline
@@ -1524,14 +1717,17 @@ Origen & ISO/IEC 25010:2023; RD-05. \\
 \hline
 Prioridad & Media \\
 \hline
-\end{longtable}
+\end{tabular}
 \end{center}
+\end{minipage}
 
 \bigskip
 \noindent RNF-15, correspondiente a la explicabilidad de las alertas y recomendaciones del módulo de IA, se documenta íntegramente en la Sección~\ref{sec:explicabilidad-ia}, ficha de la Tabla~\ref{tab:RNF-15}.
 
-\subsection{Requisito de explicabilidad del componente de IA o AA}
+\subsection{Requisitos no funcionales de los componentes de inteligencia artificial}
 \label{sec:explicabilidad-ia}
+
+Esta sección desarrolla, con el nivel de detalle que exige la Sección 4.4 de la guía de la PE5, los requisitos no funcionales específicos de los dos componentes de inteligencia artificial del sistema: las decisiones automáticas que producen (3.3.1), las necesidades de explicación de cada tipo de usuario (3.3.2) y la ficha completa de RNF-15 a RNF-26 (3.3.3), que cubren rendimiento, equidad y explicabilidad. El origen histórico de esta sección es el requisito de explicabilidad de IA-01 (RNF-15); por eso se desarrolla primero en detalle el marco conceptual de explicabilidad, aplicable también a RNF-26 (IA-02).
 
 El módulo de Inteligencia Artificial del SGA genera alertas y recomendaciones que inciden en decisiones sobre el manejo de los cultivos. Por tratarse de un componente de IA, el sistema incorpora un requisito de explicabilidad, entendida como la capacidad del sistema de proporcionar información comprensible sobre cómo y por qué llegó a una salida determinada~\cite{chazette2020}. El marco de referencia utilizado es el modelo de explicabilidad de Chazette, Brunotte y Speith~\cite{chazette2021,chazette2022}.
 
@@ -1561,9 +1757,15 @@ D-02 & Generación de recomendación de manejo del cultivo & RF-15 & Sugerencia;
 \hline
 D-03 & Cálculo del nivel de confianza asociado a una alerta o recomendación & RF-26, RF-15 & Automático; informativo, no accionable por sí solo \\
 \hline
+D-04 & Clasificación de una fotografía de campo en una clase de plaga o enfermedad del catálogo (o «sin hallazgo» / «no concluyente») & RF-29 & Sugerencia; el registro requiere confirmación humana (RF-30, R-05) \\
+\hline
+D-05 & Generación de alerta por incidencia acumulada de una plaga o enfermedad en una parcela & RF-31 & Automático sobre detecciones ya confirmadas; requiere atención humana, no ejecuta ninguna acción por sí sola (R-05) \\
+\hline
 \end{longtable}
 \label{tab:decisiones-ia}
 \end{center}
+
+Las decisiones D-04 y D-05 corresponden al componente IA-02, incorporado en esta práctica (Sección~\ref{sec:componentes-ia}); ambas siguen el mismo principio que D-01 a D-03: la inteligencia artificial propone, el usuario decide.
 
 % Subseccion 3.3.2: Necesidades de explicacion por tipo de usuario
 \subsubsection{Necesidades de explicación por tipo de usuario}
@@ -1583,26 +1785,27 @@ D-03 & Cálculo del nivel de confianza asociado a una alerta o recomendación & 
 \endfoot
 \hline
 \endlastfoot
-D-01 & Administrador & Causal y por evidencia: datos históricos y patrón que motivaron la alerta, con nivel de incertidumbre explícito & Simultáneo a la alerta --- EV-01 [09:02] \\
+D-01 & Administrador & Causal y por evidencia: datos históricos y patrón que motivaron la alerta, con nivel de incertidumbre explícito & Simultáneo a la alerta (EV-01 [09:02]) \\
 \hline
-D-02 & Administrador & Causal y por evidencia, con nivel de incertidumbre explícito & Simultáneo a la recomendación --- EV-01 [09:10] \\
+D-02 & Administrador & Causal y por evidencia, con nivel de incertidumbre explícito & Simultáneo a la recomendación (EV-01 [09:10]) \\
 \hline
-D-01, D-02 (tarea derivada) & Jornalero & Instructiva, de baja densidad: qué tarea ejecutar y en qué parcela, sin el detalle causal del modelo & Al recibir la tarea asignada, RF-09 --- EV-02 [02:33] \\
+D-01, D-02 (tarea derivada) & Jornalero & Instructiva, de baja densidad: qué tarea ejecutar y en qué parcela, sin el detalle causal del modelo & Al recibir la tarea asignada, RF-09 (EV-02 [02:33]) \\
 \hline
 \end{longtable}
 \label{tab:necesidades-explicacion}
 \end{center}
 
-% Subseccion 3.3.3: Ficha del requisito de explicabilidad
-\subsubsection{Ficha del requisito de explicabilidad}
+% Subseccion 3.3.3: Fichas de los RNF de los componentes de IA
+\subsubsection{Fichas de los requisitos no funcionales de rendimiento, equidad y explicabilidad (RNF-15 a RNF-26)}
 \label{sec:ficha-explicabilidad}
 
+\begin{minipage}{\linewidth}
 \bigskip
 \noindent\textbf{RNF-15. Explicabilidad de las alertas y recomendaciones del módulo de IA}
 \label{tab:RNF-15}
 
 \begin{center}
-\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
 \hline
 Identificador & RNF-15 \\
 \hline
@@ -1624,8 +1827,447 @@ Origen & EV-01 [09:02], [09:10]; Chazette y Schneider (2020)~\cite{chazette2020}
 \hline
 Prioridad & Alta \\
 \hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+Los requisitos RNF-16 a RNF-26 formalizan, con ficha de diez atributos, el rendimiento y la equidad de los dos componentes de inteligencia artificial del sistema, y la explicabilidad de IA-02. Se documentan en detalle en la Sección~\ref{sec:componentes-ia}.
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RNF-16. Exactitud de la detección temprana de enfermedades (IA-01)}
+\label{tab:RNF-16}
+
+\begin{center}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-16 \\
+\hline
+Nombre & Exactitud de la detección temprana de enfermedades (IA-01) \\
+\hline
+Característica ISO/IEC 25010:2023 & Adecuación funcional \\
+\hline
+Subcaracterística & Corrección funcional \\
+\hline
+Descripción & El componente de detección temprana (RF-26) deberá alcanzar una exactitud mínima sobre un conjunto de validación etiquetado por confirmación en campo, antes de cada despliegue. \\
+\hline
+Métrica & Exactitud (\emph{accuracy}) \\
+\hline
+Valor objetivo & $\geq$ 70~\%. \\
+\hline
+Método de medición & Medido sobre un conjunto de validación de al menos 30 casos etiquetados por confirmación del administrador (RF-28), antes de cada despliegue. \\
+\hline
+Origen & RF-26; EV-01 [09:02]. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RNF-17. Tiempo de respuesta del módulo de IA de alertas y recomendaciones (IA-01)}
+\label{tab:RNF-17}
+
+\begin{center}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-17 \\
+\hline
+Nombre & Tiempo de respuesta del módulo de IA de alertas y recomendaciones (IA-01) \\
+\hline
+Característica ISO/IEC 25010:2023 & Eficiencia de desempeño \\
+\hline
+Subcaracterística & Comportamiento temporal \\
+\hline
+Descripción & El sistema deberá presentar la alerta o recomendación generada por IA-01 dentro de un tiempo máximo desde la solicitud o el evento que la origina. \\
+\hline
+Métrica & Tiempo de respuesta \\
+\hline
+Valor objetivo & $\leq$ 5,0 s. \\
+\hline
+Método de medición & Percentil 95 de 30 solicitudes o eventos, con al menos 500 registros históricos cargados. \\
+\hline
+Origen & RF-15; RF-26. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RNF-18. Disponibilidad del módulo de IA con degradación controlada (IA-01)}
+\label{tab:RNF-18}
+
+\begin{center}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-18 \\
+\hline
+Nombre & Disponibilidad del módulo de IA con degradación controlada (IA-01) \\
+\hline
+Característica ISO/IEC 25010:2023 & Fiabilidad \\
+\hline
+Subcaracterística & Disponibilidad \\
+\hline
+Descripción & Si el módulo de IA no está disponible o falla, el sistema deberá seguir operando sin recomendaciones ni alertas tempranas, sin bloquear ninguna función de registro o consulta. \\
+\hline
+Métrica & Porcentaje de funciones no relacionadas con IA operativas durante una interrupción simulada del módulo \\
+\hline
+Valor objetivo & 100~\%. \\
+\hline
+Método de medición & Prueba de interrupción simulada del módulo de IA sobre las funciones de registro (RF-04, RF-05, RF-16) y consulta (RF-07, RF-11), verificando que ninguna quede bloqueada. \\
+\hline
+Origen & ISO/IEC 25010:2023~\cite{iso25010-2023}; RNF-02. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RNF-19. Equidad de desempeño entre cultivos de cacao y verde (IA-01)}
+\label{tab:RNF-19}
+
+\begin{center}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-19 \\
+\hline
+Nombre & Equidad de desempeño entre cultivos de cacao y verde (IA-01) \\
+\hline
+Característica ISO/IEC 25010:2023 & Equidad (concepto operativo de la PE5, Sección 4.4 de la guía; no es una de las nueve características de la norma) \\
+\hline
+Subcaracterística & Ausencia de diferencias injustificadas de desempeño entre grupos \\
+\hline
+Descripción & La exactitud de la detección temprana (RF-26) no deberá diferir de forma sustancial entre los registros de cultivo de cacao y los de plátano verde. \\
+\hline
+Métrica & Brecha de exactitud entre grupos (cacao frente a verde) \\
+\hline
+Valor objetivo & $\leq$ 10 puntos porcentuales. Tolerancia mayor que entre subgrupos de un mismo cultivo (RNF-20), porque cacao y verde son dominios agronómicos distintos con variabilidad propia esperable. \\
+\hline
+Método de medición & Exactitud de RF-26 calculada por separado sobre los registros de cada cultivo, con al menos 30 casos etiquetados por cultivo (RF-28); comparación trimestral. \\
+\hline
+Origen & RF-03 (el sistema cubre ambos cultivos); sesgo de densidad de datos entre cultivos documentado por el equipo (\texttt{fichas\_IA\_datos\_y\_monitoreo.md}). \\
+\hline
+Prioridad & Media \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RNF-20. Equidad de desempeño entre parcelas con distinto volumen de registro (IA-01)}
+\label{tab:RNF-20}
+
+\begin{center}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-20 \\
+\hline
+Nombre & Equidad de desempeño entre parcelas con distinto volumen de registro (IA-01) \\
+\hline
+Característica ISO/IEC 25010:2023 & Equidad (concepto operativo de la PE5, Sección 4.4 de la guía; no es una de las nueve características de la norma) \\
+\hline
+Subcaracterística & Ausencia de diferencias injustificadas de desempeño entre grupos \\
+\hline
+Descripción & La tasa de falsos positivos de las alertas tempranas (RF-26) no deberá diferir de forma sustancial entre parcelas con alto y bajo volumen histórico de registros. \\
+\hline
+Métrica & Brecha de tasa de falsos positivos entre parcelas de alto y bajo volumen de registro, usando la mediana de registros acumulados como punto de corte \\
+\hline
+Valor objetivo & $\leq$ 5 puntos porcentuales. \\
+\hline
+Método de medición & Cálculo trimestral sobre las alertas confirmadas o descartadas (RF-28), separando parcelas por encima y por debajo de la mediana de registros acumulados. \\
+\hline
+Origen & Sesgo de subregistro documentado por el equipo: las parcelas revisadas con más frecuencia acumulan más incidencias (\texttt{fichas\_IA\_datos\_y\_monitoreo.md}). \\
+\hline
+Prioridad & Media \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RNF-21. Corrección de la clasificación de imágenes (IA-02)}
+\label{tab:RNF-21}
+
+\begin{center}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-21 \\
+\hline
+Nombre & Corrección de la clasificación de imágenes (IA-02) \\
+\hline
+Característica ISO/IEC 25010:2023 & Adecuación funcional \\
+\hline
+Subcaracterística & Corrección funcional \\
+\hline
+Descripción & El clasificador de fotografías (RF-29) deberá alcanzar un desempeño mínimo antes de cada despliegue, evaluado sobre un conjunto de prueba local no usado en el entrenamiento. \\
+\hline
+Métrica & F1 macro promediado por clase \\
+\hline
+Valor objetivo & $\geq$ 0,85; ninguna clase individual por debajo de 0,75. \\
+\hline
+Método de medición & Evaluado sobre un conjunto de prueba retenido de al menos 100 imágenes por clase, antes de cada despliegue. \\
+\hline
+Origen & RF-29; RF-20 (catálogo de clases). \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RNF-22. Tiempo de inferencia de la clasificación de imágenes (IA-02)}
+\label{tab:RNF-22}
+
+\begin{center}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-22 \\
+\hline
+Nombre & Tiempo de inferencia de la clasificación de imágenes (IA-02) \\
+\hline
+Característica ISO/IEC 25010:2023 & Eficiencia de desempeño \\
+\hline
+Subcaracterística & Comportamiento temporal \\
+\hline
+Descripción & El sistema deberá devolver la propuesta de clase de RF-29 dentro de un tiempo máximo desde que se toma o carga la fotografía. \\
+\hline
+Métrica & Tiempo de respuesta \\
+\hline
+Valor objetivo & $\leq$ 2,0 s. \\
+\hline
+Método de medición & Percentil 95 sobre 30 clasificaciones consecutivas. \\
+\hline
+Origen & RF-29. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RNF-23. Continuidad del registro sin conectividad (IA-02)}
+\label{tab:RNF-23}
+
+\begin{center}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-23 \\
+\hline
+Nombre & Continuidad del registro sin conectividad (IA-02) \\
+\hline
+Característica ISO/IEC 25010:2023 & Fiabilidad \\
+\hline
+Subcaracterística & Tolerancia a fallos \\
+\hline
+Descripción & Si no hay conectividad o el módulo de clasificación no está disponible, el sistema deberá permitir completar el registro de la incidencia (RF-16) mediante selección manual del catálogo (RF-20), sin bloquear el registro. \\
+\hline
+Métrica & Porcentaje de registros de incidencia completables sin el módulo de clasificación disponible \\
+\hline
+Valor objetivo & 100~\%. \\
+\hline
+Método de medición & Prueba de indisponibilidad simulada del módulo sobre 20 intentos de registro de incidencia. \\
+\hline
+Origen & RF-16; RF-20; ISO/IEC 25010:2023~\cite{iso25010-2023}. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RNF-24. Equidad de desempeño entre condiciones de luz (IA-02)}
+\label{tab:RNF-24}
+
+\begin{center}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-24 \\
+\hline
+Nombre & Equidad de desempeño entre condiciones de luz (IA-02) \\
+\hline
+Característica ISO/IEC 25010:2023 & Equidad (concepto operativo de la PE5, Sección 4.4 de la guía; no es una de las nueve características de la norma) \\
+\hline
+Subcaracterística & Ausencia de diferencias injustificadas de desempeño entre grupos \\
+\hline
+Descripción & El F1 del clasificador (RF-29) no deberá diferir de forma sustancial entre fotografías tomadas con luz plena y con sombra. \\
+\hline
+Métrica & Brecha de F1 entre condición de luz (plena frente a sombra) \\
+\hline
+Valor objetivo & $\leq$ 5 puntos porcentuales. \\
+\hline
+Método de medición & F1 calculado por separado sobre subconjuntos etiquetados por condición de luz dentro del conjunto de prueba de RNF-21, con al menos 50 imágenes por condición. \\
+\hline
+Origen & Sesgo de condiciones de captura documentado por el equipo (\texttt{fichas\_IA\_datos\_y\_monitoreo.md}). \\
+\hline
+Prioridad & Media \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RNF-25. Equidad de desempeño entre gamas de dispositivo (IA-02)}
+\label{tab:RNF-25}
+
+\begin{center}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-25 \\
+\hline
+Nombre & Equidad de desempeño entre gamas de dispositivo (IA-02) \\
+\hline
+Característica ISO/IEC 25010:2023 & Equidad (concepto operativo de la PE5, Sección 4.4 de la guía; no es una de las nueve características de la norma) \\
+\hline
+Subcaracterística & Ausencia de diferencias injustificadas de desempeño entre grupos \\
+\hline
+Descripción & El F1 del clasificador (RF-29) no deberá diferir de forma sustancial entre fotografías capturadas con dispositivos de gama alta y de gama baja. \\
+\hline
+Métrica & Brecha de F1 entre gama de dispositivo \\
+\hline
+Valor objetivo & $\leq$ 5 puntos porcentuales. \\
+\hline
+Método de medición & F1 calculado por separado sobre subconjuntos etiquetados por gama de dispositivo dentro del conjunto de prueba de RNF-21, con al menos 50 imágenes por gama. \\
+\hline
+Origen & Sesgo de predominio de un único dispositivo en la captura inicial, documentado por el equipo (\texttt{fichas\_IA\_datos\_y\_monitoreo.md}). \\
+\hline
+Prioridad & Media \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\bigskip
+\noindent\textbf{RNF-26. Explicabilidad de la clasificación de imágenes (IA-02)}
+\label{tab:RNF-26}
+
+\begin{center}
+\begin{tabular}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-26 \\
+\hline
+Nombre & Explicabilidad de la clasificación de imágenes (IA-02) \\
+\hline
+Característica ISO/IEC 25010:2023 & Interacción de usuario \\
+\hline
+Subcaracterística & Autodescriptividad \\
+\hline
+Descripción & El sistema deberá presentar, junto con cada propuesta de clase de RF-29, el nivel de confianza y la región de la fotografía que motivó la clasificación, de forma simultánea a la propuesta y en lenguaje comprensible para el usuario. \\
+\hline
+Métrica & Proporción de propuestas que incluyen clase, confianza y región señalada de forma simultánea \\
+\hline
+Valor objetivo & 100~\%. \\
+\hline
+Método de medición & Verificado sobre una muestra de 20 propuestas de clasificación. \\
+\hline
+Origen & RF-29; marco de explicabilidad de la Sección~\ref{sec:explicabilidad-ia} (Chazette et al.~\cite{chazette2020,chazette2021,chazette2022}); EV-01 [09:02]. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\subsection{Componentes de inteligencia artificial del sistema}
+\label{sec:componentes-ia}
+
+Conforme a la Sección 4.4 y el Paso 3 de la guía de la PE5, esta sección reúne para cada componente de inteligencia artificial los cinco bloques exigidos (descripción; datos de entrenamiento; métricas de éxito; requisitos éticos, de privacidad y clasificación de riesgo; plan de monitoreo) en una ficha única, con las trazas hacia los RF y RNF ya especificados en las secciones anteriores. El SGA incorpora dos componentes cuyo comportamiento se obtiene por aprendizaje a partir de datos y no por programación explícita: IA-01, ya presente en la línea base (RF-15, RF-26, RF-28; RNF-15 a RNF-20), y IA-02, incorporado en esta práctica (RF-29 a RF-31; RNF-21 a RNF-26).
+
+\textbf{Justificación de IA-02 con evidencia de campo.} El segundo componente elegido es un detector de plagas y enfermedades por imagen. La evidencia disponible en este ERS respalda la elección de forma directa: el reporte de pérdidas por plagas es, explícitamente, el que el administrador señala como el más importante de analizar (EV-01 [08:17]--[08:29], origen ya citado en RF-19); el catálogo de plagas y enfermedades (RF-20) y su registro asociado (RF-16) nacen de la misma evidencia (EV-01 [01:16], [01:25]; EV-02 [01:42]); y el trabajador agrícola depende de reportar incidencias fitosanitarias al administrador (EV-02 [01:34]), hoy mediante reconocimiento visual no asistido. El detector se integra con estos artefactos ya especificados (alimenta RF-16 a través de RF-29/RF-30 y refuerza el mecanismo de alerta de RF-25 a través de RF-31) sin introducir funcionalidad no solicitada por el dominio. No se dispone en este repositorio de una segunda alternativa evidenciada con el mismo nivel de detalle (por ejemplo, un predictor de rendimiento de cosecha), por lo que la elección se sostiene en la evidencia ya trazada a RF-16, RF-19, RF-20 y RF-25 antes que en una comparación entre candidatos.
+
+\subsubsection{Ficha del componente IA-01: alertas y recomendaciones sobre registros históricos}
+\label{sec:ficha-ia01}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador y nombre & IA-01: Alertas y recomendaciones sobre registros históricos \\
+\hline
+Tarea y tipo & Recomendación y detección de anomalías (patrones) sobre los registros históricos de producción, actividades, inventario y enfermedades. \\
+\hline
+Entradas y salidas & Entradas: registros históricos del SGA (RF-04, RF-05, RF-06, RF-16). Salidas: recomendaciones (RF-15) y alertas tempranas (RF-26) con nivel de confianza (D-03), sujetas a confirmación humana (RF-28, R-05). \\
+\hline
+Datos de entrenamiento & Origen: registros propios del sistema (producción RF-05, labores RF-04, enfermedades RF-16, inventario RF-06, entregas RF-22); para la puesta en marcha, digitalización controlada de la bitácora en papel del administrador (EV-01 [02:04], [02:17]). Sin datos de terceros. Volumen: mínimo operativo de 500 registros productivos por ciclo anual; por debajo de ese volumen el componente opera solo con reglas (RF-25), sin capa predictiva. Variables: parcela, cultivo, variedad, fecha, tipo de labor, cantidad cosechada con unidad (RNF-07), enfermedad con gravedad, inventario disponible; sin datos biométricos ni de localización de personas. Etiquetado: cada alerta o recomendación queda etiquetada por la confirmación o el descarte del administrador (RF-28); sin costo adicional de anotación manual. Sesgos conocidos: subregistro de enfermedades leves en parcelas revisadas con menor frecuencia, desbalance entre parcelas pequeñas y grandes, estacionalidad climática (mitigación: RNF-20 y evaluación estratificada por mes). Base legal (LOPDP): los registros de labores contienen datos personales del trabajador agrícola (identificador, actividad, parcela); tratamiento amparado en la ejecución de la relación laboral y el interés legítimo de gestión agrícola (Art.~8 LOPDP), con finalidad declarada de planificación productiva, no de evaluación individual. \\
+\hline
+Métricas de éxito & Exactitud de la detección temprana $\geq$ 70~\% (RNF-16); tiempo de respuesta $\leq$ 5,0 s (RNF-17); adicionalmente, precisión de recomendaciones aceptadas $\geq$ 80~\% y tasa de falsos positivos de alerta $\leq$ 30~\%, ambas medidas sobre el registro de decisiones de RF-28. \\
+\hline
+Equidad & Brecha de exactitud entre cultivos de cacao y verde $\leq$ 10 puntos porcentuales (RNF-19); brecha de tasa de falsos positivos entre parcelas de alto y bajo volumen de registro $\leq$ 5 puntos porcentuales (RNF-20). \\
+\hline
+Explicabilidad & RNF-15: explicación causal y por evidencia, con incertidumbre explícita, simultánea a la salida, de menor densidad para el trabajador agrícola (Sección~\ref{sec:explicabilidad-ia}). \\
+\hline
+Riesgos y \emph{fallback} & Consecuencia del error: una verificación en campo innecesaria o una alerta omitida, nunca una acción automática (R-05, RF-28). Si el módulo falla o no está disponible, el sistema continúa operando sin recomendaciones ni alertas tempranas, sin bloquear ninguna función de registro o consulta (RNF-18). \\
+\hline
+Clasificación de riesgo & Riesgo mínimo conforme al Reglamento (UE) 2024/1689 (Sección~\ref{sec:riesgo-ia}). \\
+\hline
+Plan de monitoreo & Indicadores: tasa de aceptación de recomendaciones, proporción de alertas descartadas, cobertura de datos por parcela. Frecuencia mensual sobre el registro de decisiones (RF-28). Deriva: caída $>$10 puntos porcentuales en la exactitud respecto del mes anterior, o aceptación $<$60~\% durante dos meses, dispara reentrenamiento; si no se recupera el umbral de RNF-16, el componente vuelve al modo solo reglas (RF-25). \\
+\hline
+Trazas & RF-04, RF-05, RF-06, RF-15, RF-16, RF-22, RF-25, RF-26, RF-28; RNF-02, RNF-07, RNF-15 a RNF-20; decisiones D-01 a D-03; R-05. \\
+\hline
 \end{longtable}
 \end{center}
+
+\subsubsection{Ficha del componente IA-02: detector de plagas y enfermedades por imagen}
+\label{sec:ficha-ia02}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador y nombre & IA-02: Detector de plagas y enfermedades por imagen \\
+\hline
+Tarea y tipo & Clasificación de imágenes (visión por computador): propone una clase del catálogo de plagas y enfermedades del cultivo correspondiente (RF-20), o «sin hallazgo» / «no concluyente». \\
+\hline
+Entradas y salidas & Entrada: fotografía tomada en campo durante el registro de una incidencia (RF-16), con cultivo y parcela. Salida: clase propuesta del catálogo (RF-20), nivel de confianza y región de la imagen que motivó la propuesta (RF-29, RNF-26). \\
+\hline
+Datos de entrenamiento & Origen: capturas fotográficas tomadas en campo durante RF-16, complementadas con repositorios públicos etiquetados como semilla inicial de las clases del catálogo (RF-20); las fotos de entorno ya levantadas como evidencia sirven de calibración de condiciones reales de captura. Volumen: entre 800 y 1200 imágenes etiquetadas para el arranque, mínimo 150 por clase objetivo del catálogo. Etiquetado: doble (identificación preliminar desde la semilla pública y confirmación agronómica local sobre cada imagen, desacuerdo resuelto por tercera revisión), con concordancia mínima kappa de 0,80 antes de aceptar el conjunto. Sesgos conocidos: iluminación y etapa fenológica concentradas en pocas jornadas de captura, predominio de un dispositivo móvil, síntomas avanzados sobrerrepresentados (mitigación: RNF-24, RNF-25, muestreo estratificado). Base legal (LOPDP): las imágenes de plantas no constituyen datos personales; protocolo de captura con exclusión de personas, documentos o placas del encuadre, con recorte si una persona aparece igualmente. \\
+\hline
+Métricas de éxito & F1 macro $\geq$ 0,85, ninguna clase por debajo de 0,75 (RNF-21); tiempo de inferencia $\leq$ 2,0 s (RNF-22); adicionalmente, degradación aceptable fuera de distribución F1 $\geq$ 0,75 en evaluación semestral previa a temporada de lluvias. \\
+\hline
+Equidad & Brecha de F1 entre condición de luz (plena/sombra) $\leq$ 5 puntos porcentuales (RNF-24); brecha de F1 entre gama de dispositivo $\leq$ 5 puntos porcentuales (RNF-25). \\
+\hline
+Explicabilidad & RNF-26: clase, confianza y región de la imagen que motivó la clasificación, simultáneas a la propuesta, comprensibles para administrador y trabajador agrícola. \\
+\hline
+Riesgos y \emph{fallback} & Sin conectividad o con confianza insuficiente, la propuesta se presenta como sugerencia editable y el registro continúa por selección manual del catálogo (RF-20, RNF-23); nunca bloquea el registro de la incidencia (RF-16). El registro solo se completa tras confirmación, corrección o descarte humano (RF-30, R-05). \\
+\hline
+Clasificación de riesgo & Riesgo mínimo conforme al Reglamento (UE) 2024/1689 (Sección~\ref{sec:riesgo-ia}). \\
+\hline
+Plan de monitoreo & Indicadores: concordancia entre clase propuesta y clase finalmente registrada (RF-30), proporción de capturas descartadas, distribución de condiciones de captura. Frecuencia mensual sobre los registros confirmados. Deriva: concordancia $<$80~\% o F1 $<$0,80 dispara reentrenamiento trimestral programado o inmediato; dos ciclos sin recuperar el umbral retiran la propuesta automática y el flujo vuelve a selección manual pura. \\
+\hline
+Trazas & RF-16, RF-19, RF-20, RF-25, RF-29, RF-30, RF-31; RNF-21 a RNF-26; decisiones D-04, D-05; R-05. \\
+\hline
+\end{longtable}
+\end{center}
+
+\subsubsection{Clasificación de riesgo y marco legal aplicable}
+\label{sec:riesgo-ia}
+
+Conforme al Paso 3.d de la guía, el sistema se clasifica siguiendo el enfoque basado en riesgo del Reglamento (UE) 2024/1689, que distingue prácticas prohibidas (Art.~5), sistemas de alto riesgo (Anexo~III, con obligaciones reforzadas) y obligaciones de transparencia cuando el sistema interactúa directamente con personas o genera contenido que podría confundirse con una decisión humana. Ambos componentes de IA del SGA se clasifican como de \textbf{riesgo mínimo}, por tres razones:
+
+\begin{enumerate}
+\item \textbf{No constituyen práctica prohibida.} Ninguno de los dos componentes manipula subliminalmente al usuario, asigna una puntuación social ni realiza categorización biométrica: IA-01 recomienda sobre registros agrícolas y IA-02 clasifica fotografías de plantas.
+\item \textbf{No encajan en los ámbitos de alto riesgo del Anexo~III.} Las salidas de ambos componentes se refieren a cultivos y parcelas, no a personas: no deciden sobre empleo, evaluación de trabajadores, crédito, educación, servicios esenciales, identificación biométrica ni infraestructura crítica. El sistema sí gestiona información de trabajadores (RF-14, RF-01), pero esa gestión es una función determinista del SGA, no una decisión de los componentes de IA, que no evalúan el desempeño de personas ni asignan tareas.
+\item \textbf{La restricción R-05 refuerza la ausencia de decisión autónoma.} Ninguna salida de IA-01 o IA-02 es accionable por sí sola: RF-28 exige confirmación o descarte de cada alerta o recomendación, y RF-30 exige confirmación, corrección o descarte de cada clasificación antes de registrarla.
+\end{enumerate}
+
+Las obligaciones que el sistema sí asume, propias de un componente de riesgo mínimo que interactúa con el usuario, son de transparencia: informar que las alertas, recomendaciones y clasificaciones son generadas por inteligencia artificial (cubierto por RNF-15 y RNF-26), mantener supervisión humana efectiva (R-05, RF-28, RF-30) y documentar técnicamente los componentes (fichas de las Secciones~\ref{sec:ficha-ia01} y~\ref{sec:ficha-ia02}).
+
+En cuanto a la normativa ecuatoriana de protección de datos personales (Ley Orgánica de Protección de Datos Personales y su Reglamento General), el sistema en su conjunto sí trata datos personales de los trabajadores a través de RF-01 (control de acceso por rol) y RF-14 (gestión de usuarios), con cifrado de credenciales (RNF-11). Para IA-01 específicamente, el tratamiento de los registros históricos que la alimentan se ampara en la ejecución de la relación laboral y el interés legítimo de gestión agrícola (Art.~8 LOPDP), con la finalidad declarada de planificación productiva y sin uso para evaluación individual del trabajador. Para IA-02, las fotografías de plantas no constituyen datos personales bajo el protocolo de captura descrito en la ficha de la Sección~\ref{sec:ficha-ia02}, por lo que este componente no añade un tratamiento de datos personales adicional al ya existente en el sistema.
 
 \subsection{Historias de usuario}
 \label{sec:historias-usuario}
