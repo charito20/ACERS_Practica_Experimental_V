@@ -1,0 +1,50 @@
+% ============================================================
+% ANEXO D - Retrospectiva Start-Stop-Continue (tabla)
+% (Roselyn Sanchez - PE5). Version tabulada de la Seccion 9.
+% ============================================================
+\section*{Anexo D. Retrospectiva Start -- Stop -- Continue}
+\addcontentsline{toc}{section}{Anexo D. Retrospectiva Start -- Stop -- Continue}
+
+Versi\'on tabulada de la retrospectiva del equipo (v\'ease Secci\'on~\ref{sec:retrospectiva}). Cada acci\'on tiene un responsable; el cumplimiento se revisar\'a en la siguiente actividad evaluativa.
+
+\vspace{0.3cm}
+\begin{center}
+\begin{longtable}{|p{1.9cm}|p{7.2cm}|p{4.9cm}|}
+\hline
+\textbf{Categor\'ia} & \textbf{Elemento} & \textbf{Responsable / acci\'on} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Categor\'ia} & \textbf{Elemento} & \textbf{Responsable / acci\'on} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+
+Start & Publicar conteos base antes de calcular m\'etricas (M1--M6) con aritm\'etica reproducible. & Robinson Jeanpierre --- mantener conteos versionados ante cada cambio de l\'inea base. \\ \hline
+
+Start & Versionar registro de defectos y RFC desde la misma sesi\'on en que se producen. & Mar\'ia Escudero --- todo artefacto de validaci\'on entra al repositorio el mismo d\'ia. \\ \hline
+
+Start & Mediciones por script con salida determinista y verificaci\'on por hash SHA-256. & Robinson Jeanpierre --- replicar patr\'on script + salida + hash. \\ \hline
+
+Start & Sincronizaci\'on semanal backlog $\leftrightarrow$ ERS (cada RF con historia y viceversa). & Danela Arteaga --- revisi\'on al cierre de cada semana. \\ \hline
+
+Stop & Marcar enlaces de trazabilidad sin verificaci\'on l\'inea a l\'inea. & Equipo --- dar de alta solo enlaces verificados contra el artefacto real. \\ \hline
+
+Stop & Crear requisitos ``vista'' que duplican comportamiento ya especificado (subi\'o M5 a 3,50). & Equipo/Kamila Calle --- un requisito nuevo solo si introduce comportamiento propio. \\ \hline
+
+Stop & Cargar videos y comprimidos pesados al repositorio de documentaci\'on. & Roselyn S\'anchez --- multimedia a almacenamiento externo restringido; Git solo fuentes. \\ \hline
+
+Stop & Redactar requisitos con t\'erminos no medibles (``r\'apido'', ``amigable'') sin umbral. & Equipo --- todo requisito nace con m\'etrica, unidad y m\'etodo. \\ \hline
+
+Continue & Plantilla de ocho atributos por requisito en toda nueva especificaci\'on. & Kamila Calle --- est\'andar del cat\'alogo. \\ \hline
+
+Continue & Commits granulares con convenci\'on por artefacto (\texttt{docs(...)}/\texttt{feat(...)}). & Todo el equipo --- es adem\'as evidencia del Anexo C. \\ \hline
+
+Continue & Revisi\'on cruzada con autor\'ia explícita cuando un bloque incorpora trabajo de otra integrante. & Todo el equipo --- aplicar en cada entrega. \\ \hline
+
+Continue & Anclar cada requisito nuevo a evidencia EV-XX con marca de tiempo desde la elicitation. & Todo el equipo --- sostiene M4atr en 100\,\%. \\ \hline
+\end{longtable}
+\end{center}
