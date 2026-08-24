@@ -33,6 +33,8 @@ https://github.com/Roselyn15/Proyecto-IR---AgroMoreira---Sistema-de-Gestion-Agri
     `informe/sec7_requisitos_ia.tex`, `informe/anexoE_declaracion_ia.tex` y
     `informe/anexo_b_ia_etica_kamila.tex` — secciones para integrar al informe
     final.
+  - `presentacion_defensa/` — presentación de defensa en LaTeX Beamer
+    (18 diapositivas, secuencia del Paso 4.a de la guía).
   - `analisis_estadistico/` — auditoría estadística de las métricas M1 a M4
     (responsable: jean200525, componente empírico y análisis estadístico):
     script reproducible de conteo, inventarios de los 42 requisitos, matriz de
@@ -75,3 +77,43 @@ powershell -ExecutionPolicy Bypass -File .\09_Cierre_PE5\analisis_estadistico\ge
 Las salidas se regeneran en `09_Cierre_PE5/analisis_estadistico/salidas/` y son
 deterministas para una misma versión del ERS (verificado por hash SHA-256,
 ver `verificacion_reproducibilidad.md`).
+
+## Informe final y presentación (criterio G2)
+
+El informe final se genera desde LaTeX. **Archivo principal:**
+`09_Cierre_PE5/informe/main.tex`.
+
+**Compilador:** pdfLaTeX (TeX Live 2023+ o MiKTeX actualizado).
+
+**Dependencias:** paquetes estándar incluidos en cualquier distribución
+completa de TeX — `babel` (español), `inputenc`, `fontenc`, `lmodern`,
+`geometry`, `longtable`, `array`, `graphicx`, `url`, `hyperref`, `enumitem`,
+`IEEEtran` (estilo bibliográfico). No requiere fuentes ni paquetes externos.
+
+**Orden exacto de comandos** (desde la raíz del repositorio):
+
+```bash
+cd 09_Cierre_PE5/informe
+pdflatex main.tex
+bibtex main
+pdflatex main.tex
+pdflatex main.tex
+```
+
+La salida es `main.pdf`. El nombre para la subida al SGA es:
+`PE5_U5_PFC_Final_Espinoza_Calle_Arteaga_Escudero_Sanchez.pdf`
+(confirmar con el docente el manejo del quinto apellido).
+
+**Secciones pendientes de integración:** `sec1_introduccion.tex`,
+`sec2_metodologia_ir.tex`, `sec4_modelos_uml.tex`,
+`sec6_gestion_trazabilidad.tex` y `anexo_a_instrumento.tex`. El documento
+compila sin ellas dejando un marcador visible; basta con que cada responsable
+agregue su archivo en `09_Cierre_PE5/informe/` con ese nombre.
+
+**Presentación de defensa:**
+
+```bash
+cd 09_Cierre_PE5/presentacion_defensa
+pdflatex main.tex
+pdflatex main.tex
+```
