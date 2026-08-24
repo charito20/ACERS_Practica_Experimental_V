@@ -1,0 +1,224 @@
+% ============================================================
+% PRESENTACION DE DEFENSA - PE5 (Roselyn Sanchez, coord.)
+% 15-20 diapositivas con la secuencia exigida por la guia
+% (Paso 4.a). Compilar: pdflatex main.tex (x2)
+% ============================================================
+\documentclass[12pt,aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}{}
+
+\title[Defensa PFC AgroMoreira --- PE5]{Sistema de Gesti\'on Agr\'icola con IA para Cultivos de Verde y Cacao}
+\subtitle{Integraci\'on, M\'etricas y Defensa del Proyecto Integrador de Ingenier\'ia de Requisitos (PE5)}
+\author[Equipo ACERS]{Robinson J. \and Calle K. \and Arteaga D. \and Escudero M. \and S\'anchez R.}
+\institute[UTEQ ISR-401]{Universidad T\'ecnica Estatal de Quevedo\\Ingenier\'ia de Requerimientos (ISR-401) --- 2026--2027 PPA}
+\date{Agosto de 2026}
+
+\begin{document}
+
+% ---------- 1. Portada ----------
+\begin{frame}
+  \titlepage
+  \begin{center}\small
+    Repositorio del trabajo:
+    \url{https://github.com/charito20/ACERS_Practica_Experimental_V}
+  \end{center}
+\end{frame}
+
+% ---------- 2. Agenda ----------
+\begin{frame}{Agenda}
+  \small
+  \begin{enumerate}
+    \item Problema y contexto
+    \item Sistema y stakeholders
+    \item Proceso de IR (PE1--PE5)
+    \item ERS final: estructura y requisitos clave
+    \item Modelos UML principales
+    \item Validaci\'on: inspecci\'on y re-inspecci\'on
+    \item Trazabilidad end-to-end y m\'etricas de calidad
+    \item Componentes de inteligencia artificial
+    \item Lecciones aprendidas, conclusiones y preguntas
+  \end{enumerate}
+\end{frame}
+
+% ---------- 3. Problema y contexto ----------
+\begin{frame}{Problema y contexto}
+  \textbf{Finca AgroMoreira}: 16~ha de policultivo (palma, verde y cacao), 7 trabajadores.
+  \begin{itemize}
+    \item Registros manuales en bit\'acoras f\'isicas $\Rightarrow$ p\'erdida de informaci\'on (p.\,ej., fundas semanales de pl\'atano no registradas).
+    \item Comunicaci\'on 100\,\% verbal administrador--jornaleros.
+    \item Amenazas fitosanitarias: moniliasis, sigatoka y una enfermedad sin identificar.
+    \item Necesidad: centralizar datos y decidir a tiempo.
+  \end{itemize}
+\end{frame}
+
+% ---------- 4. Sistema y stakeholders ----------
+\begin{frame}{Sistema y stakeholders}
+  \textbf{SGA}: aplicaci\'on web para gestionar parcelas, cultivos, labores, cosechas, inventario, reportes e IA.
+  \begin{itemize}
+    \item \textbf{Administrador} (cliente principal, influencia alta): decide con datos; prefiere el celular; pide alertas autom\'aticas.
+    \item \textbf{Jornalero} (usuario final): ejecuta labores; recibe instrucciones; neutral frente a la tecnolog\'ia.
+    \item Mapa poder/inter\'es y modelo i* documentados en la ERS.
+    \item Brecha de perfiles $\Rightarrow$ dos flujos de uso diferenciados por rol (RF-01, RF-14).
+  \end{itemize}
+\end{frame}
+
+% ---------- 5. Proceso de IR ----------
+\begin{frame}{Proceso de IR (PE1--PE5)}
+  \small
+  \begin{tabular}{@{}p{2.2cm}@{\;}p{10.6cm}@{}}
+    \textbf{PE1--PE2} & Elicitaci\'on (entrevistas ENTR-01..06, encuesta, observaci\'on EV-01..EV-07), requisitos brutos $\rightarrow$ especificaci\'on con plantilla de 8 atributos. \\
+    \textbf{PE3} & Modelado UML: contexto, casos de uso, clases refinadas, secuencias, actividad, estados. \\
+    \textbf{PE4} & Validaci\'on: inspecci\'on, registro de defectos, RFC, l\'inea base versionada. \\
+    \textbf{PE5} & Auditor\'ia ISO/IEC 25010:2023 (M1--M6), trazabilidad end-to-end, requisitos de IA, informe final y defensa. \\
+  \end{tabular}
+\end{frame}
+
+% ---------- 6. ERS final ----------
+\begin{frame}{ERS/SRS final v2.0 (ISO/IEC/IEEE 29148:2018)}
+  \begin{itemize}
+    \item L\'inea base auditada: 42 requisitos (27 RF + 15 RNF).
+    \item PE5 incorpora 15 requisitos de IA $\Rightarrow$ \textbf{57 requisitos} (31 RF + 26 RNF).
+    \item Cada requisito con ID \'unico, prioridad, fuente EV-XX y criterio verificable.
+    \item Historias de usuario con aceptaci\'on Dado--Cuando--Entonces sincronizadas al ERS.
+  \end{itemize}
+\end{frame}
+
+% ---------- 7. Requisitos clave ----------
+\begin{frame}{Requisitos clave del sistema}
+  \small
+  \begin{itemize}
+    \item RF-01 / RF-14: control de acceso por rol y gesti\'on de usuarios.
+    \item RF-05 / RF-07: registro y consulta de cosechas por per\'iodo (racimos/verde, tachos/cacao).
+    \item RF-16: registro de enfermedades con gravedad $\rightarrow$ alerta.
+    \item RF-19: reporte de p\'erdidas por plagas (el m\'as valorado por el administrador, EV-01).
+    \item RNF de seguridad, rendimiento ($\leq$3\,s), disponibilidad (99\,\%) y explicabilidad de las salidas de IA (condici\'on de confianza declarada en EV-01).
+  \end{itemize}
+\end{frame}
+
+% ---------- 8. Modelos UML ----------
+\begin{frame}{Modelos UML principales}
+  \begin{itemize}
+    \item UC-01: diagrama general de casos de uso (Administrador, Jornalero, IA); \emph{include}/\emph{extend} en recomendaciones y alertas.
+    \item CD-01: clases refinadas del dominio; SEQ-01..12 por caso de uso; AD-01..03 operativos; SD-01 estados de tarea.
+    \item Los modelos detectaron temprano los CU nuevos que exige IA-02 (RF-28--31), evitando requisitos hu\'erfanos.
+  \end{itemize}
+\end{frame}
+
+% ---------- 9. Validacion ----------
+\begin{frame}{Validaci\'on: inspecci\'on y re-inspecci\'on}
+  \begin{itemize}
+    \item PE4: inspecci\'on del ERS $\rightarrow$ registro de defectos y correcciones con commit de evidencia.
+    \item PE5 re-inspecci\'on: hallazgos DR-01 a DR-05 cerrados sobre la versi\'on corregida.
+    \item Verificaci\'on de que las correcciones no introdujeron nuevos defectos: conteo reproducible por script + comparaci\'on por hash SHA-256.
+    \item Resultado: defectos residuales $0{,}119 \rightarrow 0{,}024$ por requisito (umbral $\leq 0{,}05$).
+  \end{itemize}
+\end{frame}
+
+% ---------- 10. Trazabilidad ----------
+\begin{frame}{Trazabilidad end-to-end}
+  \begin{center}
+    Fuente/EV $\rightarrow$ RF $\rightarrow$ CU $\rightarrow$ Clase $\rightarrow$ Estado $\rightarrow$ BDD $\rightarrow$ CP
+  \end{center}
+  \begin{itemize}
+    \item Hu\'erfanos y cadenas rotas listados con causa y acci\'on: enlazado, eliminado o justificado.
+    \item Sincronizaci\'on backlog $\leftrightarrow$ ERS verificada fila a fila.
+    \item M4atr (trazabilidad hacia atr\'as): 42/42 = 100\,\%; M4ade (Must Have): 16/16 = 100\,\%.
+  \end{itemize}
+\end{frame}
+
+% ---------- 11. Metricas ----------
+\begin{frame}{Auditor\'ia de calidad: m\'etricas M1--M6 (ISO/IEC 25010:2023)}
+  \small
+  \begin{tabular}{@{}l l l l@{}}
+    \textbf{M\'etrica} & \textbf{Valor} & \textbf{Referencia} & \textbf{Cumple}\\[2pt]
+    M1a Completitud atributos & 100\,\% (57/57) & $\geq 95$\,\% & S\'i\\
+    M2 Consistencia & $1-1/861=0{,}9988$ & $\geq 0{,}98$ & S\'i\\
+    M3 Verificabilidad & 100\,\% & $\geq 90$\,\% & S\'i\\
+    M4 Trazabilidad & ade 16/16; atr 42/42 & $\geq 90$\,\% & S\'i\\
+    M5 Modificabilidad & 3,50 $\rightarrow$ \textbf{3,00} & $\leq 3{,}0$ & Tras correcci\'on\\
+    M6 Correcci\'on & 0,119 $\rightarrow$ \textbf{0,024} & $\leq 0{,}05$ & Tras correcci\'on\\
+  \end{tabular}
+
+  \vspace{4pt}
+  {\scriptsize Conteos base publicados antes de calcular; aritm\'etica visible en \texttt{09\_Cierre\_PE5/analisis\_estadistico/}.}
+\end{frame}
+
+% ---------- 12. IA-01 ----------
+\begin{frame}{Componente de IA --- IA-01: recomendador de manejo agr\'icola}
+  \begin{itemize}
+    \item Entradas: producci\'on, actividades, enfermedades e inventario registrados.
+    \item Salidas: recomendaciones priorizadas y alertas (insumo agotado, se\~nales de enfermedad).
+    \item M\'inimos cumplidos: 3 RF (incluye confirmar/descartar recomendaci\'on, RF-28) + 3 RNF de rendimiento + 2 de equidad + 1 de explicabilidad, con umbral, unidad y m\'etodo.
+    \item \emph{Fallback}: sin datos suficientes o sin conexi\'on, el sistema lo declara y no inventa salidas.
+  \end{itemize}
+\end{frame}
+
+% ---------- 13. IA-02 ----------
+\begin{frame}{Componente de IA --- IA-02: detector de plagas por imagen}
+  \begin{itemize}
+    \item Justificado por evidencia real: amenaza de moniliasis/sigatoka y detecci\'on tard\'ia visual (EV-01, RF-16, RF-19).
+    \item Flujo: foto de incidencia $\rightarrow$ clasificaci\'on $\rightarrow$ confirmaci\'on humana $\rightarrow$ alerta acumulada por parcela.
+    \item Equidad: brecha m\'axima tolerada entre cultivos (verde/cacao), condiciones de captura y gamas de dispositivo.
+    \item Explicabilidad: toda salida indica factores que la motivaron; decisi\'on final siempre del administrador (R-05).
+  \end{itemize}
+\end{frame}
+
+% ---------- 14. Etica y legal ----------
+\begin{frame}{\'Etica, riesgo y datos personales}
+  \begin{itemize}
+    \item Clasificaci\'on de riesgo conforme al enfoque basado en riesgo del Reglamento (UE) 2024/1689; obligaciones derivadas declaradas como requisitos.
+    \item LOPDP (Ecuador) y su reglamento (Decreto 904): base legal, minimizaci\'on, conservaci\'on y derechos del titular.
+    \item Supervisi\'on humana de toda decisi\'on que afecte la gesti\'on de la finca; IA como apoyo, no sustituto del criterio (R-05).
+    \item Declaraci\'on de uso de asistentes de IA en el Anexo E del informe.
+  \end{itemize}
+\end{frame}
+
+% ---------- 15. Lecciones aprendidas ----------
+\begin{frame}{Lecciones aprendidas (retrospectiva)}
+  \begin{itemize}
+    \item \textbf{Start}: conteos base antes de medir; artefactos versionados el mismo d\'ia; scripts reproducibles con hash.
+    \item \textbf{Stop}: enlaces de trazabilidad ``por si acaso''; requisitos-vista duplicados; multimedia pesado en Git; t\'erminos no medibles.
+    \item \textbf{Continue}: plantilla de 8 atributos; commits granulares; revisi\'on cruzada; anclaje EV-XX desde la elicitation.
+  \end{itemize}
+\end{frame}
+
+% ---------- 16. Conclusiones ----------
+\begin{frame}{Conclusiones (una por unidad)}
+  \small
+  \begin{enumerate}
+    \item La elicitation multi-t\'ecnica revel\'o la brecha admin/jornalero y la urgencia fitosanitaria que definen el sistema.
+    \item El rigor 29148 convirti\'o intenciones en 57 requisitos verificables; el modelado previno hu\'erfanos de IA-02.
+    \item Medir--corregir--re-midi\'o baj\'o los defectos residuales de 0,119 a 0,024 por requisito.
+    \item La trazabilidad end-to-end es barata si se registra en el momento y costosa despu\'es.
+    \item Especificar IA exigi\'o un paradigma nuevo: umbrales probabil\'isticos, equidad, explicabilidad, riesgo y monitoreo por deriva.
+  \end{enumerate}
+\end{frame}
+
+% ---------- 17. Limitaciones y trabajo futuro ----------
+\begin{frame}{Limitaciones reconocidas y trabajo futuro}
+  \begin{itemize}
+    \item Cierre pendiente de integraci\'on: filas finales de la matriz (Paso 2) y CU espec\'ificos de RF-28--31.
+    \item M\'etricas de modelo (exactitud/F1) se validar\'an cuando exista conjunto de datos etiquetado suficiente.
+    \item App m\'ovil nativa y sensores IoT: expl\'icitamente fuera de alcance (Won't Have) para esta versi\'on.
+  \end{itemize}
+\end{frame}
+
+% ---------- 18. Preguntas ----------
+\begin{frame}{Preguntas}
+  \begin{center}
+    \Large Gracias. ¿Preguntas?
+  \end{center}
+  \vspace{6pt}
+  \small
+  \begin{itemize}
+    \item Informe y auditor\'ia: \url{https://github.com/charito20/ACERS_Practica_Experimental_V}
+    \item Proyecto hist\'orico del equipo: \url{https://github.com/Roselyn15/Proyecto-IR---AgroMoreira---Sistema-de-Gestion-Agricola-con-IA-para-cultivos-de-verde-y-cacao-}
+  \end{itemize}
+\end{frame}
+
+\end{document}
