@@ -12,8 +12,7 @@ https://github.com/Roselyn15/Proyecto-IR---AgroMoreira---Sistema-de-Gestion-Agri
 - `01_ERS/ERS_SRS_2A_v1.0.tex` — copia del ERS con las correcciones de la
   re-inspección aplicadas (criterio de RF-25, referencias a casos de uso UC en
   RNF-05 y RNF-10, métricas M15.1 a M15.4 de RNF-15, entradas de RF-12, RF-18 y
-  RF-27 como vistas derivadas de RF-07). Los mismos cambios están aplicados en
-  el repositorio del equipo (commits 554ea3b y siguientes). Versión 2.0:
+  RF-27 como vistas derivadas de RF-07), consolidadas en la versión 2.0:
   agrega RF-28 a RF-31 y RNF-16 a RNF-26 (componentes de IA IA-01 e IA-02,
   Paso 3 de la PE5), con ficha de componente y clasificación de riesgo
   conforme al Reglamento (UE) 2024/1689.
