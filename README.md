@@ -13,9 +13,14 @@ https://github.com/Roselyn15/Proyecto-IR---AgroMoreira---Sistema-de-Gestion-Agri
   re-inspección aplicadas (criterio de RF-25, referencias a casos de uso UC en
   RNF-05 y RNF-10, métricas M15.1 a M15.4 de RNF-15, entradas de RF-12, RF-18 y
   RF-27 como vistas derivadas de RF-07). Los mismos cambios están aplicados en
-  el repositorio del equipo (commits 554ea3b y siguientes).
+  el repositorio del equipo (commits 554ea3b y siguientes). Versión 2.0:
+  agrega RF-28 a RF-31 y RNF-16 a RNF-26 (componentes de IA IA-01 e IA-02,
+  Paso 3 de la PE5), con ficha de componente y clasificación de riesgo
+  conforme al Reglamento (UE) 2024/1689.
 - `09_Cierre_PE5/` — artefactos de la auditoría:
   - `conteos_base_auditoria.csv` — conteos publicados antes de calcular.
+  - `conteos_base_auditoria_actualizado.csv` — conteos recalculados tras la
+    fusión del componente IA-02 (57 requisitos: 31 RF + 26 RNF).
   - `calculo_M5_modificabilidad.csv` — dependencias auditadas con línea del
     documento que respalda cada enlace.
   - `registro_defectos_lineabase_1B_2A.csv` — observaciones corregidas entre la
@@ -23,8 +28,11 @@ https://github.com/Roselyn15/Proyecto-IR---AgroMoreira---Sistema-de-Gestion-Agri
   - `registro_reinspeccion_PE5.csv` — hallazgos DR-01 a DR-05 con estado.
   - `fichas_IA_datos_y_monitoreo.md` — datos de entrenamiento, métricas de
     éxito y plan de monitoreo de los dos componentes de IA.
-  - `informe/sec5_validacion.tex`, `informe/sec8_metricas.tex` y
-    `informe/anexo_b_respuestas.tex` — secciones para integrar al informe final.
+  - `informe/sec5_validacion.tex`, `informe/sec8_metricas.tex`,
+    `informe/anexo_b_respuestas.tex`, `informe/sec3_ers_final.tex`,
+    `informe/sec7_requisitos_ia.tex`, `informe/anexoE_declaracion_ia.tex` y
+    `informe/anexo_b_ia_etica_kamila.tex` — secciones para integrar al informe
+    final.
   - `analisis_estadistico/` — auditoría estadística de las métricas M1 a M4
     (responsable: jean200525, componente empírico y análisis estadístico):
     script reproducible de conteo, inventarios de los 42 requisitos, matriz de
