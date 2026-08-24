@@ -1,0 +1,35 @@
+% ============================================================
+% SECCION 9 - RETROSPECTIVA (Roselyn Sanchez - PE5)
+% Formato Start - Stop - Continue con acciones y responsables.
+% ============================================================
+\section{Retrospectiva}
+\label{sec:retrospectiva}
+
+Al cierre de la PE5 el equipo ejecut\'o una retrospectiva estructurada en formato \emph{Start -- Stop -- Continue} para evaluar su propio proceso de trabajo a lo largo del proyecto integrador, conforme al enfoque de mejora continua del ciclo de vida que propone PMBOK 7.\textsuperscript{a}~edici\'on \cite{pmbok7}. Cada columna recoge como m\'inimo tres elementos; cada acci\'on de mejora tiene un responsable identificable, de modo que la declaraci\'on de aporte individual del Anexo~C pueda verificarse contra el historial del repositorio. La versi\'on tabulada de este ejercicio se presenta en el Anexo~D.
+
+\subsection{Start (pr\'acticas que debieron iniciar antes)}
+
+\begin{itemize}[leftmargin=0.8cm]
+  \item \textbf{Publicar los conteos base antes de calcular m\'etricas.} La auditor\'ia de la PE5 exigi\'o contar primero y calcular despu\'es: los conteos se publicaron en \texttt{conteos\_base\_auditoria.csv} antes de derivar M1--M4, lo que hizo la aritm\'etica reproducible \cite{wohlin2012}. Esta pr\'actica debi\'o aplicarse desde la primera entrega para sustentar cualquier porcentaje reportado. (\emph{Responsable: Robinson Jeanpierre --- mantener el archivo de conteos versionado en cada cambio de l\'inea base.})
+  \item \textbf{Versionar el registro de defectos y las RFC desde su origen.} El registro de defectos de la inspecci\'on y las solicitudes de cambio de la PE4 no estaban en el repositorio hist\'orico y hubo que recuperarlos y reconstruirlos para poder calcular M6 (correcci\'on). (\emph{Responsable: Mar\'ia Escudero --- todo artefacto de validaci\'on entra al repositorio en la misma sesi\'on en que se produce.})
+  \item \textbf{Scripts de conteo reproducibles con verificaci\'on por hash.} Los scripts PowerShell de conteo de requisitos y generaci\'on de pares para M2, con salidas deterministas verificadas por SHA-256, demostraron que ``si no se puede contar, no se puede reportar''. (\emph{Responsable: Robinson Jeanpierre --- replicar el patr\'on script + salida + hash en futuras mediciones.})
+  \item \textbf{Sincronizaci\'on peri\'odica backlog $\leftrightarrow$ ERS.} Verificar que cada requisito funcional tenga historia asociada debi\'o ser una tarea semanal del tablero, no una verificaci\'on de cierre; hacerlo temprano habr\'ia evitado re-trabajo en el Paso 2. (\emph{Responsable: Danela Arteaga --- revisi\'on de sincronizaci\'on al cerrar cada semana.})
+\end{itemize}
+
+\subsection{Stop (pr\'acticas innecesarias o costosas)}
+
+\begin{itemize}[leftmargin=0.8cm]
+  \item \textbf{Marcar enlaces de trazabilidad ``por si acaso''.} En la matriz inicial varios enlaces entre evidencia, requisitos y casos de uso se registraron sin verificaci\'on l\'inea a l\'inea; la medici\'on honesta arroj\'o una cobertura parcial (28/42 filas vigentes) que oblig\'o a rehacer filas completas. Un enlace sin verificaci\'on es un defecto de trazabilidad, no una precauci\'on \cite{gotel1994}. (\emph{Acci\'on: dar de alta en la matriz solo enlaces verificados contra el artefacto real.})
+  \item \textbf{Duplicar requisitos como ``vistas'' sin necesidad.} La re-especificaci\'on de vistas derivadas elev\'o el acoplamiento promedio a 3,50 requisitos afectados por cambio (M5), sobre el umbral de 3,0; la correcci\'on consisti\'o precisamente en eliminar esa duplicaci\'on referenciando el requisito base. (\emph{Acci\'on: un requisito nuevo solo se crea si introduce comportamiento propio.})
+  \item \textbf{Cargar material pesado (videos y comprimidos) al repositorio de documentaci\'on.} Los archivos multimedia de evidencia ralentizaron clonaciones y compilaciones del equipo durante todo el proyecto. (\emph{Responsable: Roselyn S\'anchez --- mover videos y audios a almacenamiento externo con enlace restringido, manteniendo en Git s\'olo transcripciones, tablas y documentos fuente.})
+  \item \textbf{Redactar requisitos con t\'erminos no medibles.} Formulaciones tipo ``el sistema debe ser r\'apido o amigable'' obligaron a reescrituras masivas cuando se aplic\'o el criterio de verificabilidad (umbral, unidad y m\'etodo) \cite{iso29148}. (\emph{Acci\'on: todo requisito nuevo nace con su m\'etrica.})
+\end{itemize}
+
+\subsection{Continue (pr\'acticas valiosas que se mantendr\'an)}
+
+\begin{itemize}[leftmargin=0.8cm]
+  \item \textbf{Plantilla de ocho atributos por requisito.} Mantener identificador, nombre, descripci\'on, actores, prioridad MoSCoW, precondiciones, flujo principal y postcondiciones/criterio en cada requisito fue lo que permiti\'o que M1a (completitud de atributos) llegara al 100\,\% sin esfuerzo adicional en el cierre. (\emph{Mantener como est\'andar del equipo.})
+  \item \textbf{Commits granulares con convenci\'on por artefacto.} El historial con commits peque\~nos y descriptivos por archivo o decisi\'on facilit\'o la verificaci\'on del aporte individual, la trazabilidad de cambios y la preparaci\'on de esta defensa. (\emph{Mantener; es tambi\'en la evidencia del Anexo C.})
+  \item \textbf{Revisi\'on cruzada entre integrantes.} La pr\'actica de que una integrante cite expl\'icitamente el aporte de otra dentro de los artefactos (por ejemplo, los bloques de datos y monitoreo de las fichas de IA firmados por Mar\'ia dentro de la secci\'on de IA de Kamila) mantuvo la autor\'ia clara y evitó solapes. (\emph{Mantener en cada entrega.})
+  \item \textbf{Anclaje de decisiones en evidencia de campo.} Cada requisito clave conserva su referencia EV-XX con marca de tiempo de la entrevista; ese h\'abito es la raz\'on por la que la trazabilidad hacia atr\'as (M4atr) cierra en 100\,\%. (\emph{Mantener desde la elicitation de cualquier requisito nuevo.})
+\end{itemize}
