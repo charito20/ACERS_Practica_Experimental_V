@@ -1,0 +1,78 @@
+% Sección 7 del informe final PE5: Requisitos de IA (redacta: Kamila Calle)
+\section{Requisitos de inteligencia artificial}
+\label{sec:informe-ia}
+
+\subsection{Identificación de los componentes y justificación por evidencia}
+
+El SGA incorpora dos componentes cuyo comportamiento se obtiene por aprendizaje a partir de datos y no por programación explícita:
+
+\textbf{IA-01, alertas y recomendaciones sobre registros históricos.} Ya presente en la línea base: analiza los registros de producción, actividades, inventario y enfermedades para generar recomendaciones (RF-15) y alertas tempranas de posible enfermedad (RF-26) con nivel de confianza explícito (decisión D-03). Su necesidad nace de EV-01: el administrador condiciona su confianza en el sistema a poder verificar la información antes de actuar (EV-01 [09:02], [09:10]). En esta práctica se completa con RF-28, el mecanismo de confirmación o descarte que faltaba especificar para cerrar el ciclo de retroalimentación que exige la restricción R-05.
+
+\textbf{IA-02, detector de plagas y enfermedades por imagen.} Incorporado en esta práctica. La elección responde a evidencia ya trazada en el ERS: el reporte de pérdidas por plagas es, en palabras del propio administrador, el reporte más importante de analizar (EV-01 [08:17]--[08:29], origen de RF-19); el registro de enfermedades (RF-16) y su catálogo normalizado (RF-20) nacen de esa misma necesidad (EV-01 [01:16], [01:25]; EV-02 [01:42]); y el trabajador agrícola depende hoy de reportar las incidencias fitosanitarias al administrador por reconocimiento visual no asistido (EV-02 [01:34]). El componente propone una clase del catálogo de RF-20 a partir de una fotografía tomada durante el registro de RF-16, con nivel de confianza y evidencia visual, y se integra con artefactos ya especificados: alimenta el registro de enfermedades (RF-16) y refuerza el mecanismo de alertas ya existente (RF-25), sin introducir funcionalidad ajena al dominio evidenciado.
+
+No se dispone en el repositorio de trabajo de esta práctica de una segunda alternativa (por ejemplo, un predictor de rendimiento de cosecha) evidenciada con el mismo nivel de detalle que el detector de plagas: la elección se apoya en evidencia ya trazada a cuatro requisitos existentes (RF-16, RF-19, RF-20, RF-25) en lugar de en una comparación formal entre candidatos.
+
+\subsection{Requisitos especificados por componente}
+
+Cada componente cumple el mínimo exigido por la Sección 4.4 de la guía de la PE5: 3~RF, 3~RNF de rendimiento, 2~RNF de equidad y 1~RNF de explicabilidad, todos con umbral, unidad y método de comprobación. Las fichas completas constan en el ERS v2.0 (Secciones 3.1 a 3.3); la Tabla~\ref{tab:resumen-req-ia} resume los umbrales.
+
+\begin{center}
+\begin{longtable}{|p{1.7cm}|p{2.4cm}|p{1.4cm}|p{8.2cm}|}
+\caption{Resumen de requisitos de IA con sus umbrales}\label{tab:resumen-req-ia}\\
+\hline
+\textbf{ID} & \textbf{Tipo} & \textbf{Comp.} & \textbf{Umbral y método} \\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Tipo} & \textbf{Comp.} & \textbf{Umbral y método} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+RF-15, RF-26, RF-28 & RF & IA-01 & Recomendación y alerta con confianza explícita (D-03); 100~\% de decisiones confirmadas o descartadas sobre 30 casos (RF-28) \\
+\hline
+RF-29 & RF & IA-02 & Propuesta de clase y confianza para el 100~\% de 30 fotografías de campo \\
+\hline
+RF-30 & RF & IA-02 & Registro solo tras confirmación humana; 0 registros desde propuestas descartadas (20 casos) \\
+\hline
+RF-31 & RF & IA-02 & Alerta al alcanzar umbral de incidencia (3 detecciones/7 días por defecto) en $\leq$ 5,0~s; 10 escenarios \\
+\hline
+RNF-16 & Rendimiento & IA-01 & Exactitud de detección temprana $\geq$ 70~\%, conjunto de validación $\geq$ 30 casos \\
+\hline
+RNF-17 & Rendimiento & IA-01 & Tiempo de respuesta $\leq$ 5,0~s, percentil 95 de 30 solicitudes \\
+\hline
+RNF-18 & Rendimiento & IA-01 & Disponibilidad con \emph{fallback}: 100~\% de funciones no IA operativas ante fallo del módulo \\
+\hline
+RNF-19 & Equidad & IA-01 & Brecha de exactitud cacao / verde $\leq$ 10~pp, trimestral \\
+\hline
+RNF-20 & Equidad & IA-01 & Brecha de falsos positivos entre parcelas de alto/bajo volumen de registro $\leq$ 5~pp \\
+\hline
+RNF-21 & Rendimiento & IA-02 & F1 macro $\geq$ 0,85, ninguna clase $<$ 0,75; conjunto de prueba $\geq$ 100 imágenes/clase \\
+\hline
+RNF-22 & Rendimiento & IA-02 & Inferencia $\leq$ 2,0~s, percentil 95 de 30 clasificaciones \\
+\hline
+RNF-23 & Rendimiento & IA-02 & Sin conectividad: 100~\% de registros completables por selección manual \\
+\hline
+RNF-24 & Equidad & IA-02 & Brecha de F1 entre condición de luz $\leq$ 5~pp \\
+\hline
+RNF-25 & Equidad & IA-02 & Brecha de F1 entre gama de dispositivo $\leq$ 5~pp \\
+\hline
+RNF-15, RNF-26 & Explicabilidad & ambos & 100~\% de salidas con explicación simultánea (causa/evidencia, incertidumbre; en IA-02, región de la imagen) \\
+\end{longtable}
+\end{center}
+
+\subsection{Fichas de componente}
+
+Las fichas completas de los componentes IA-01 e IA-02, con los bloques exigidos por la guía (descripción, entradas y salidas, datos de entrenamiento, métricas de éxito, equidad, explicabilidad, riesgos y \emph{fallback}, clasificación de riesgo y plan de monitoreo), constan en la Sección 3.4 del ERS v2.0 y se reproducen en el Anexo correspondiente de este informe. Los bloques de datos de entrenamiento y de plan de monitoreo son aporte de María Escudero (Paso 3, métricas del modelo); la redacción de los RF, los RNF y la clasificación de riesgo son responsabilidad de esta sección.
+
+\subsection{Ética, privacidad y clasificación de riesgo}
+
+\textbf{Clasificación de riesgo (Reglamento (UE) 2024/1689): riesgo mínimo, para ambos componentes.} Ninguno constituye práctica prohibida (Art.~5: sin manipulación subliminal, puntuación social ni categorización biométrica); ninguno encaja en los ámbitos de alto riesgo del Anexo~III, pues sus salidas se refieren a cultivos y parcelas, no a personas: aunque el sistema gestiona información de trabajadores (RF-01, RF-14), esa gestión es una función determinista del SGA, no una decisión de los componentes de IA. Además, la restricción R-05 impide que cualquier salida sea accionable sin confirmación humana (RF-28, RF-30). Obligaciones asumidas: transparencia sobre el origen artificial de las salidas (RNF-15, RNF-26) y supervisión humana efectiva (R-05, RF-28, RF-30).
+
+\textbf{Protección de datos personales (LOPDP y su Reglamento General).} El sistema trata datos personales de los trabajadores a través de RF-01 y RF-14, con cifrado de credenciales (RNF-11). El tratamiento de los registros históricos que alimentan IA-01 se ampara en la ejecución de la relación laboral y el interés legítimo de gestión agrícola (Art.~8 LOPDP), con finalidad declarada de planificación productiva, no de evaluación individual del trabajador. Las fotografías que procesa IA-02 no constituyen datos personales bajo el protocolo de captura descrito en su ficha (exclusión de personas del encuadre), por lo que este componente no añade tratamiento de datos personales adicional.
+
+\subsection{Trazabilidad de los requisitos de IA}
+
+Los requisitos de IA quedan enlazados hacia atrás a EV-01 y EV-02, y hacia adelante al registro de enfermedades (RF-16), al catálogo de plagas (RF-20), al reporte de pérdidas (RF-19) y al mecanismo de alertas (RF-25); los RNF de rendimiento, equidad y explicabilidad modifican o refuerzan los criterios de aceptación de los RF a los que sirven. Las filas correspondientes de RF-28 a RF-31 y RNF-16 a RNF-26 se incorporan a la matriz de trazabilidad final en la Sección de gestión y trazabilidad de este informe.
