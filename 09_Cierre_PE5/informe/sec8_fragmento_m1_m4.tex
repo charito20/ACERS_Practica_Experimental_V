@@ -1,16 +1,20 @@
 % Fragmento para la seccion 8 (Metricas de calidad) del informe final.
-% Contiene las metricas M1 a M4 medidas por la auditoria estadistica.
+% Contiene las metricas M1 a M4 medidas por la auditoria estadistica en dos olas.
 % Integrar junto a sec8_metricas.tex, que cubre M5 y M6.
 
 \subsection{Auditoría estadística de completitud, consistencia, verificabilidad y trazabilidad}
 \label{subsec:m1-m4}
 
-Las métricas M1 a M4 fueron medidas por conteo directo sobre el archivo
-\texttt{ERS\_SRS\_2A\_v1.0.tex} mediante el script reproducible
-\texttt{conteo\_requisitos.ps1}, cuyas salidas CSV están versionadas en el
-repositorio. Los conteos base se publicaron antes de calcular cada métrica y
-una segunda ejecución produjo salidas idénticas (verificación por hash
-SHA-256).
+Las métricas M1 a M4 fueron medidas por conteo directo mediante el script
+reproducible \texttt{conteo\_requisitos.ps1}, cuyas salidas CSV están
+versionadas en el repositorio. Se midió en dos olas: la primera sobre la línea
+base corregida (\texttt{ERS\_SRS\_2A\_v1.0.tex}, 42 requisitos) y la segunda
+sobre la versión fusionada con los componentes de IA
+(\texttt{ERS\_SRS\_2A\_v2.0.tex}, 57 requisitos), seleccionada con el
+parámetro \texttt{-ErsPath}. Los conteos base se publicaron antes de calcular
+cada métrica y una segunda ejecución produjo salidas idénticas (verificación
+por hash SHA-256). La tabla reporta los valores finales de la segunda ola; los
+valores de la primera se citan entre paréntesis cuando difieren.
 
 \begin{center}
 \begin{longtable}{|p{3.2cm}|p{2.8cm}|p{2.2cm}|p{1.5cm}|p{4.0cm}|}
@@ -20,33 +24,38 @@ SHA-256).
 \endfirsthead
 \hline
 \endhead
-M1a Completitud de atributos & $42/42 \times 100 = 100~\%$ & $\geq 95~\%$ & Sí & Ninguna \\
+M1a Completitud de atributos & $54/57 \times 100 = 94{,}7~\% \rightarrow 57/57 = 100~\%$ (ola 1: $42/42$) & $\geq 95~\%$ & Sí (tras corrección) & Primera medición detectó Origen sin fuente trazable en RNF-20/24/25; añadida la referencia al requisito de origen y re-medido \\
 \hline
 M1b CU especificados & No medible en este repositorio & $= 100~\%$ & N/D & Verificación cruzada contra el catálogo de CU del equipo \\
 \hline
 M1c Actores operativos con $\geq 1$ RF & $2/2 \times 100 = 100~\%$ & $= 100~\%$ & Sí & Lectura alternativa 2/4 justificada vía i* \\
 \hline
-M2 Consistencia & $1 - 0/116 = 1{,}00$ & $\geq 0{,}98$ & Sí & Observaciones de solapamiento RF-07/RF-11/RF-13 y RF-25/RF-26 registradas \\
+M2 Consistencia & $1 - 0/191 = 1{,}00$ (ola 1: $1 - 0/116$) & $\geq 0{,}98$ & Sí & Nueve ámbitos en la ola 2; observaciones de solapamiento registradas, sin conflicto \\
 \hline
-M3 Verificabilidad & $42/42 \times 100 = 100~\%$ & $\geq 90~\%$ & Sí & Recomendación menor de redacción en RNF-07/09/11 \\
+M3 Verificabilidad & $57/57 \times 100 = 100~\%$ (ola 1: $42/42$) & $\geq 90~\%$ & Sí & Las 15 fichas de IA nacieron con umbral, unidad y método \\
 \hline
-M4ade Trazabilidad adelante & $16/16 \times 100 = 100~\%$ (alcance Debe tener) & $\geq 90~\%$ & Sí & Tramo CU$\rightarrow$clase$\rightarrow$CP pendiente de verificación cruzada \\
+M4ade Trazabilidad adelante & $16/16 \times 100 = 100~\%$ (alcance Debe tener) & $\geq 90~\%$ & Sí & RF-28 a RF-31 son Debería tener; tramo CU$\rightarrow$clase$\rightarrow$CP pendiente de verificación cruzada \\
 \hline
-M4atr Trazabilidad atrás & $42/42 \times 100 = 100~\%$ & $= 100~\%$ & Sí & Ninguna \\
+M4atr Trazabilidad atrás & $57/57 \times 100 = 100~\%$ (ola 1: $42/42$) & $= 100~\%$ & Sí & Cerrado junto con M1a (mismo atributo Origen) \\
 \hline
 \end{longtable}
 \label{tab:auditoria-m1-m4}
 \end{center}
 
-El análisis de consistencia examinó los 116 pares intra-ámbito de la población
-de 42 requisitos agrupada en ocho ámbitos funcionales, sin conflictos directos
-ni indirectos abiertos al cierre. La prueba de verificabilidad aplicó las
-cuatro preguntas de la guía a cada requisito; el escaneo de vocabulario no
-medible arrojó cero coincidencias. En trazabilidad, los 16 requisitos de
-prioridad «Debe tener» cuentan con historia de usuario y escenario de
-aceptación Gherkin, lo que arroja una sincronización backlog--ERS del
-$100~\%$; no se detectaron requisitos huérfanos ni historias sin requisito de
-origen.
+El análisis de consistencia examinó 116 pares intra-ámbito en la primera ola
+(42 requisitos, ocho ámbitos funcionales) y 191 pares en la segunda (57
+requisitos, nueve ámbitos), sin conflictos directos ni indirectos abiertos en
+ninguna de las dos. La auditoría demostró además el ciclo completo de mejora:
+la incorporación de los 15 requisitos de IA había degradado M1a a $94{,}7~\%$
+por tres fichas sin fuente trazable; localizada la causa, la corrección se
+aplicó sobre las fichas de equidad (RNF-20, RNF-24 y RNF-25) y la re-medición
+confirmó el $100~\%$. La prueba de verificabilidad aplicó las cuatro preguntas
+de la guía a cada requisito; el escaneo de vocabulario no medible arrojó cero
+coincidencias. En trazabilidad, los 16 requisitos de prioridad «Debe tener»
+cuentan con historia de usuario y escenario de aceptación Gherkin, lo que
+arroja una sincronización backlog--ERS del $100~\%$; no se detectaron
+requisitos huérfanos ni historias sin requisito de origen.
 
-Los conteos completos, la matriz de pares y la cadena por requisito constan en
-el directorio \texttt{09\_Cierre\_PE5/analisis\_estadistico/} del repositorio.
+Los conteos completos, la matriz de pares, la aritmética por métrica con ambas
+olas y la cadena por requisito constan en el directorio
+\texttt{09\_Cierre\_PE5/analisis\_estadistico/} del repositorio.

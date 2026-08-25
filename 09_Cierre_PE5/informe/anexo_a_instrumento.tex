@@ -34,7 +34,8 @@ Total de requisitos & 42 & 57 \\
 Casos de uso especificados & 16 & +CU de RF-28..31 en cierre \\
 Actores operativos con RF & 2 & 2 \\
 Historias de usuario en el ERS & 16 & 16+ \\
-Pares analizados para M2 & 861 ($n=42$) & rec\'alculo al fusionar \\
+Pares intra-\'ambito medidos para M2 & 116 (ocho \'ambitos) & 191 (nueve \'ambitos) \\
+Pares te\'oricos $n(n-1)/2$ (referencia) & 861 & 1596 \\
 Filas vigentes en matriz al medir & 28/42 & cierre Paso 2 \\
 \hline
 \end{tabular}
@@ -44,22 +45,22 @@ Filas vigentes en matriz al medir & 28/42 & cierre Paso 2 \\
 
 \subsubsection*{M1 --- Completitud}
 \textbf{F\'ormula:} $M1a = (\#\,\text{req.\ con 4 atributos}/\#\,\text{req.\ totales})\times100$; $M1b = (\#\,\text{CU espec.}/\#\,\text{CU ident.})\times100$; $M1c = (\#\,\text{actores con}\geq1\,\text{RF}/\#\,\text{actores})\times100$.\\
-\textbf{Aritm\'etica:} $M1a = 42/42\times100 = 100\,\%$ (luego $57/57$ tras la fusi\'on IA-02); $M1b = 16/16\times100 = 100\,\%$; $M1c = 2/2\times100 = 100\,\%$.\\
-\textbf{Referencia:} $M1a\geq95\,\%$; $M1b=M1c=100\,\%$. \textbf{Veredicto:} cumple. \textbf{Nivel:} 4. \textbf{Acci\'on:} sin acci\'on.
+\textbf{Aritm\'etica:} $M1a = 42/42\times100 = 100\,\%$ en la l\'inea base; la primera medici\'on sobre la versi\'on 2.0 dio $54/57\times100 = 94{,}7\,\%$ (Origen sin fuente trazable en RNF-20, RNF-24 y RNF-25); tras a\~nadir el requisito de origen a esas tres fichas, $57/57\times100 = 100\,\%$. $M1b = 16/16\times100 = 100\,\%$; $M1c = 2/2\times100 = 100\,\%$.\\
+\textbf{Referencia:} $M1a\geq95\,\%$; $M1b=M1c=100\,\%$. \textbf{Veredicto:} cumple. \textbf{Nivel:} 4. \textbf{Acci\'on aplicada:} correcci\'on de origen en tres fichas de equidad y re-medici\'on, con el par $94{,}7\,\%\rightarrow100\,\%$ publicado en \texttt{aritmetica\_metricas.csv}.
 
 \subsubsection*{M2 --- Consistencia}
 \textbf{F\'ormula:} $M2 = 1 - \#\,\text{conflictos}/\#\,\text{pares analizados}$.\\
-\textbf{Aritm\'etica:} 861 pares generados por script ($n(n-1)/2$, $n=42$); 1 conflicto directo detectado (DR-02) y cerrado $\Rightarrow M2 = 1 - 1/861 = 0{,}9988$, con cero conflictos abiertos al cierre.\\
-\textbf{Referencia:} $\geq0{,}98$. \textbf{Veredicto:} cumple. \textbf{Nivel:} 4. \textbf{Acci\'on:} DR-02 resuelto y documentado en \texttt{registro\_reinspeccion\_PE5.csv}.
+\textbf{Aritm\'etica:} ola 1: 116 pares intra-\'ambito generados por script (ocho \'ambitos, $n=42$), cero conflictos $\Rightarrow M2 = 1 - 0/116 = 1{,}00$. Ola 2 sobre la versi\'on 2.0: 191 pares intra-\'ambito (nueve \'ambitos, $n=57$), cero conflictos $\Rightarrow M2 = 1 - 0/191 = 1{,}00$. El conteo te\'orico todos-contra-todos ($n(n-1)/2$: 861 y 1596) queda registrado solo como referencia en \texttt{conteos\_base\_auditoria\_actualizado.csv}.\\
+\textbf{Referencia:} $\geq0{,}98$. \textbf{Veredicto:} cumple. \textbf{Nivel:} 4. \textbf{Acci\'on:} observaciones de solapamiento documentadas por par en \texttt{m2\_pares\_analizados.csv}; DR-02 fue hallado y cerrado en la re-inspecci\'on previa a ambas olas de medici\'on.
 
 \subsubsection*{M3 --- Verificabilidad}
 \textbf{F\'ormula:} $M3 = (\#\,\text{requisitos con criterio comprobable}/\#\,\text{totales})\times100$.\\
-\textbf{Aritm\'etica:} $42/42\times100 = 100\,\%$: umbral, unidad y m\'etodo presentes en todo el cat\'alogo, incluidos los 15 requisitos de IA incorporados en PE5.\\
+\textbf{Aritm\'etica:} $57/57\times100 = 100\,\%$ sobre la versi\'on fusionada ($42/42$ en la l\'inea base): umbral, unidad y m\'etodo presentes en todo el cat\'alogo, incluidas las 15 fichas de IA incorporadas en PE5.\\
 \textbf{Referencia:} $\geq90\,\%$. \textbf{Veredicto:} cumple. \textbf{Nivel:} 4. \textbf{Acci\'on:} sin acci\'on; regla ``todo requisito nace con su m\'etrica''.
 
 \subsubsection*{M4 --- Trazabilidad}
 \textbf{F\'ormula:} $M4ade = (\#\,\text{RF con cadena adelante completa}/\#\,\text{RF})\times100$; $M4atr = (\#\,\text{RF con fuente identificada}/\#\,\text{RF})\times100$.\\
-\textbf{Aritm\'etica:} $M4atr = 42/42 = 100\,\%$; $M4ade = 16/16 = 100\,\%$ sobre Must Have. La primera medici\'on de cobertura global de filas vigentes arroj\'o $28/42 = 66{,}7\,\%$, bajo la referencia, por filas de RF-17 a RF-27 pendientes de reconstrucci\'on con las diez columnas.\\
+\textbf{Aritm\'etica:} $M4atr = 57/57 = 100\,\%$ en la versi\'on 2.0 ($42/42$ en la l\'inea base); $M4ade = 16/16 = 100\,\%$ sobre Must Have (RF-28 a RF-31 son Deber\'ia-tener y quedan fuera del alcance). La primera medici\'on de cobertura global de filas vigentes arroj\'o $28/42 = 66{,}7\,\%$, bajo la referencia, por filas de RF-17 a RF-27 pendientes de reconstrucci\'on con las diez columnas.\\
 \textbf{Referencia:} $M4ade\geq90\,\%$; $M4atr=100\,\%$. \textbf{Veredicto:} subm\'etricas cumplen; cobertura global en cierre por Paso~2 (Danela Arteaga). \textbf{Nivel:} 2 (debajo en cobertura global, acci\'on documentada y en ejecuci\'on).
 
 \subsubsection*{M5 --- Modificabilidad}
@@ -80,7 +81,7 @@ Filas vigentes en matriz al medir & 28/42 & cierre Paso 2 \\
 \textbf{M\'etrica} & \textbf{Valor} & \textbf{Ref.} & \textbf{Cumple} & \textbf{Nivel} & \textbf{Peso} & \textbf{Aporte}\\
 \hline
 M1 Completitud & 100\,\% & $\geq95$\,\% & S\'i & 4 & 0,20 & 0,80 \\
-M2 Consistencia & 0,9988 & $\geq0{,}98$ & S\'i & 4 & 0,15 & 0,60 \\
+M2 Consistencia & 1{,}00 & $\geq0{,}98$ & S\'i & 4 & 0,15 & 0,60 \\
 M3 Verificabilidad & 100\,\% & $\geq90$\,\% & S\'i & 4 & 0,20 & 0,80 \\
 M4 Trazabilidad & ade 100\,\%; atr 100\,\%; global en cierre & $\geq90$\,\% & Parcial & 2 & 0,20 & 0,40 \\
 M5 Modificabilidad & 3,50 $\rightarrow$ 3,00 & $\leq3{,}0$ & Tras corr. & 4 & 0,10 & 0,40 \\
@@ -95,4 +96,4 @@ M6 Correcci\'on & 0,119 $\rightarrow$ 0,024 & $\leq0{,}05$ & Tras corr. & 4 & 0,
 
 \subsection*{A.5 Reproducibilidad de la auditor\'ia}
 
-Los conteos son regenerables desde la ra\'iz del repositorio con los scripts \texttt{conteo\_requisitos.ps1} y \texttt{generar\_pares\_m2.ps1} (PowerShell 5.1+); sus salidas en \texttt{analisis\_estadistico/salidas/} son deterministas para una misma versi\'on del ERS, verificado por comparaci\'on de hash SHA-256 (\texttt{verificacion\_reproducibilidad.md}). Los insumos de M5 y M6 viven en \texttt{calculo\_M5\_modificabilidad.csv}, \texttt{registro\_defectos\_lineabase\_1B\_2A.csv} y \texttt{registro\_reinspeccion\_PE5.csv}. Cualquier evaluador puede replicar cada cifra de este anexo sin acceso a los autores \cite{wohlin2012}.
+Los conteos son regenerables desde la ra\'iz del repositorio con los scripts \texttt{conteo\_requisitos.ps1} (acepta el par\'ametro \texttt{-ErsPath} para apuntar a la versi\'on a auditar; por omisi\'on mide la l\'inea base v1.0) y \texttt{generar\_pares\_m2.ps1} (PowerShell 5.1+); sus salidas en \texttt{analisis\_estadistico/salidas/} son deterministas para una misma versi\'on del ERS, verificado por comparaci\'on de hash SHA-256 (\texttt{verificacion\_reproducibilidad.md}). Los insumos de M5 y M6 viven en \texttt{calculo\_M5\_modificabilidad.csv}, \texttt{registro\_defectos\_lineabase\_1B\_2A.csv} y \texttt{registro\_reinspeccion\_PE5.csv}. Cualquier evaluador puede replicar cada cifra de este anexo sin acceso a los autores \cite{wohlin2012}.

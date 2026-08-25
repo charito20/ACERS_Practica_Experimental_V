@@ -3,6 +3,32 @@
 % Bloques: Validacion y Metricas (Maria Escudero) + Especificacion y Gestion (Danela Arteaga)
 % Fragmento para \input en el informe final
 % ============================================================
+\subsection*{Fundamentos}
+
+\noindent\textbf{1. ¿Dónde está la frontera del sistema y qué quedó fuera de forma explícita?}\\
+La frontera es la aplicación web del SGA: gestión de parcelas y cultivos, registro agrícola (cosecha, labor, enfermedad), inventario y compras con alerta de stock mínimo, planificación de tareas, reportes e ingresos, y los dos componentes de IA especificados en esta práctica (IA-01 recomendador y IA-02 detector por imagen). Quedó fuera de forma explícita: la app móvil nativa y cualquier sensor o estación meteorológica (no tienen requisito asociado en el catálogo), el módulo contable completo ---el control financiero lo lleva el contador externo; solo entra el dato operativo que lo alimenta---, pasarelas de pago y logística de venta post-cosecha, y el entrenamiento y despliegue productivo de los modelos: aquí especificamos requisitos, fichas de datos y plan de monitoreo de la IA, no su implementación.
+
+\medskip
+\noindent\textbf{2. ¿Qué muestra el diagrama de contexto que no muestra el límite del sistema?}\\
+El diagrama de contexto responde quién interactúa con el sistema y qué información cruza la frontera: el administrador y el trabajador agrícola como actores operativos, el contador externo que recibe el reporte de pérdidas, los proveedores de insumos y las partes interesadas institucionales (equipo y docente). El límite, en cambio, define qué procesa el software por dentro. La diferencia se ve con un ejemplo: RF-19 produce el reporte de pérdidas económicas por plagas como salida hacia el contador, pero todo el proceso contable posterior queda fuera; el contexto modela ese intercambio de información, mientras que el límite declara que no es responsabilidad del SGA procesarlo.
+
+\medskip
+\noindent\textbf{3. ¿Qué modelo de procesos siguieron y por qué ese y no otro?}\\
+Un ciclo incremental alineado con los procesos técnicos de ISO/IEC/IEEE 15288 y 12207: definición de requisitos de interesados (entrevistas y modelos i* en la primera entrega) y análisis de requisitos del sistema (ERS línea base y su corrección), cerrando cada iteración una línea base versionada en Git. Lo elegimos porque el alcance creció durante el propio proyecto ---los componentes de IA entraron recién en el Paso~3 de la PE5--- y el incremental permitió validar temprano con el administrador, corregir con evidencia versionada (nueve observaciones de línea base y cinco hallazgos de re-inspección documentados) y re-auditar las métricas sobre cada versión sin reescribir el documento completo.
+
+\subsection*{Elicitación}
+
+\noindent\textbf{4. ¿Qué técnica les aportó requisitos que ninguna otra habría descubierto?}\\
+La observación directa en campo. Las bitácoras y registros fotográficos de las jornadas mostraron que el control de maleza a machete era la labor que más tiempo consumía y que las instrucciones se repartían de forma verbal, sin rastro verificable. En la encuesta digital el trabajador había respondido que ``recibe órdenes'', pero solo al observar la jornada quedó claro el problema de fondo: no existía trazabilidad de qué tarea se asignó, a quién y si se cumplió. De ahí nacieron RF-08 a RF-10 (planificación y asignación de tareas con evidencia de cumplimiento) como prioridad Debe tener; ninguna otra técnica hubiera dado esa priorización con fundamento.
+
+\medskip
+\noindent\textbf{5. ¿Qué stakeholder quedó subrepresentado y cómo compensaron su ausencia?}\\
+El contador externo: gestiona las finanzas de la finca, pero no fue entrevistado directamente; su necesidad nos llegó mediada por el administrador en la entrevista principal. Compensamos su ausencia de dos maneras. Primero, delimitando el alcance para no decidir por él: el módulo contable completo quedó fuera del sistema. Segundo, modelándolo como actor externo con una única interacción bien definida, recibir el reporte de pérdidas por plagas (RF-19), que es precisamente el dato que el administrador señaló como el más valioso (EV-01 [08:17]). Registramos la lección: un interesado no entrevistado debe entrar al modelo con el menor compromiso contractual posible, hasta poder validar con él.
+
+\medskip
+\noindent\textbf{6. Muéstrenme un requisito y díganme de qué evidencia nació.}\\
+RF-19, reporte de pérdidas económicas por plagas y enfermedades, nace textualmente de EV-01 [08:17]: el administrador declaró que saber cuánto pierde por plaga es la información que más le cuesta obtener hoy y la que más usaría para decidir inversiones fitosanitarias. La ficha del requisito cita esa evidencia en su campo Origen, la matriz de trazabilidad lo enlaza a la misma fuente, y su criterio de verificación ---totales por cultivo y período contrastables contra los registros de cosecha e incidencias--- se deriva del enunciado literal del entrevistado, no de una suposición nuestra.
+
 \subsection*{Validación}
 
 \noindent\textbf{10. ¿Cuántos defectos halló la inspección y cuáles siguen abiertos?}\\
