@@ -16,6 +16,9 @@ https://github.com/Roselyn15/Proyecto-IR---AgroMoreira---Sistema-de-Gestion-Agri
   agrega RF-28 a RF-31 y RNF-16 a RNF-26 (componentes de IA IA-01 e IA-02,
   Paso 3 de la PE5), con ficha de componente y clasificación de riesgo
   conforme al Reglamento (UE) 2024/1689.
+- `01_ERS/ERS_SRS_2A_v2.0.tex` — versión auditada al cierre: igual a v1.0 más
+  la corrección de la auditoría estadística (Origen trazable en RNF-20,
+  RNF-24 y RNF-25); el diff queda limitado a esas tres líneas.
 - `09_Cierre_PE5/` — artefactos de la auditoría:
   - `conteos_base_auditoria.csv` — conteos publicados antes de calcular.
   - `conteos_base_auditoria_actualizado.csv` — conteos recalculados tras la
@@ -36,9 +39,12 @@ https://github.com/Roselyn15/Proyecto-IR---AgroMoreira---Sistema-de-Gestion-Agri
     (18 diapositivas, secuencia del Paso 4.a de la guía).
   - `analisis_estadistico/` — auditoría estadística de las métricas M1 a M4
     (responsable: jean200525, componente empírico y análisis estadístico):
-    script reproducible de conteo, inventarios de los 42 requisitos, matriz de
-    116 pares para consistencia, cadena de trazabilidad por requisito,
-    aritmética visible de cada métrica y tabla consolidada.
+    script reproducible de conteo (parámetro `-ErsPath` para elegir versión),
+    inventarios de la línea base (42 requisitos) y de la versión 2.0 (57),
+    matriz de pares para consistencia (116 pares en ocho ámbitos sobre la
+    línea base; 191 en nueve ámbitos sobre la v2.0), cadena de trazabilidad
+    por requisito, aritmética visible de cada métrica con ambas olas y tabla
+    consolidada.
 
 ## Resultados de la auditoría
 
@@ -60,6 +66,18 @@ Resultados de la auditoría estadística (M1–M4), medida sobre
 | M4ade Trazabilidad adelante (Debe tener) | 16/16 = 100 % | >= 90 % | Sí |
 | M4atr Trazabilidad atrás | 42/42 = 100 % | = 100 % | Sí |
 
+Segunda ola de la auditoría estadística, medida sobre
+`01_ERS/ERS_SRS_2A_v2.0.tex` (57 requisitos, con los componentes de IA):
+
+| Métrica | Valor obtenido | Referencia | Cumple |
+|---|---|---|---|
+| M1a Completitud de atributos | 54/57 = 94,7 % → 57/57 = 100 % (tras corrección de origen en RNF-20, RNF-24 y RNF-25) | >= 95 % | Sí |
+| M1c Actores operativos con >= 1 RF | 2/2 = 100 % | = 100 % | Sí |
+| M2 Consistencia | 1 − 0/191 = 1,00 (nueve ámbitos; línea base: 1 − 0/116) | >= 0,98 | Sí |
+| M3 Verificabilidad | 57/57 = 100 % | >= 90 % | Sí |
+| M4ade Trazabilidad adelante (Debe tener) | 16/16 = 100 % (RF-28 a RF-31 son Debería tener) | >= 90 % | Sí |
+| M4atr Trazabilidad atrás | 57/57 = 100 % | = 100 % | Sí |
+
 El detalle completo está en `09_Cierre_PE5/analisis_estadistico/`.
 
 ## Cómo reproducir la auditoría estadística
@@ -69,7 +87,10 @@ Core). No requiere dependencias adicionales.
 
 ```powershell
 # desde la raiz del repositorio
+# linea base v1.0 (42 requisitos, valor por omision):
 powershell -ExecutionPolicy Bypass -File .\09_Cierre_PE5\analisis_estadistico\conteo_requisitos.ps1
+# version 2.0 auditada al cierre (57 requisitos):
+powershell -ExecutionPolicy Bypass -File .\09_Cierre_PE5\analisis_estadistico\conteo_requisitos.ps1 -ErsPath .\01_ERS\ERS_SRS_2A_v2.0.tex
 powershell -ExecutionPolicy Bypass -File .\09_Cierre_PE5\analisis_estadistico\generar_pares_m2.ps1
 ```
 
