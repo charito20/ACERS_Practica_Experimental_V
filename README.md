@@ -86,8 +86,11 @@ El informe final se genera desde LaTeX. **Archivo principal:**
 
 **Dependencias:** paquetes estándar incluidos en cualquier distribución
 completa de TeX — `babel` (español), `inputenc`, `fontenc`, `lmodern`,
-`geometry`, `longtable`, `array`, `graphicx`, `url`, `hyperref`, `enumitem`,
-`IEEEtran` (estilo bibliográfico). No requiere fuentes ni paquetes externos.
+`geometry`, `longtable`, `array`, `graphicx`, `url`, `hyperref`, `enumitem`.
+El estilo bibliográfico `IEEEtran.bst` **ya viene incluido en este repositorio**
+(`09_Cierre_PE5/informe/IEEEtran.bst`), porque no forma parte de una instalación
+mínima de TeX Live y `bibtex` lo busca primero en la carpeta actual. No requiere
+instalar nada aparte ni depender de qué tenga la máquina de quien compile.
 
 **Orden exacto de comandos** (desde la raíz del repositorio):
 
