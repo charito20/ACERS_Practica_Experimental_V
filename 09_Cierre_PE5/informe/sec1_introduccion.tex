@@ -1,0 +1,47 @@
+% ============================================================
+% SECCION 1 - INTRODUCCION (Robinson Jeanpierre / jean200525)
+% Problema, contexto, objetivos y estructura del documento.
+% ============================================================
+\section{Introducci\'on}
+\label{sec:introduccion}
+
+\subsection{Problema y contexto}
+
+La finca AgroMoreira es una unidad productiva familiar de 16 hect\'areas de policultivo ---palma, pl\'atano verde y cacao--- ubicada en la zona rural de Quevedo (Ecuador), con un equipo de siete trabajadores encabezado por un administrador con formaci\'on de cuarto nivel en biotecnolog\'ia agropecuaria. Pese a esa formaci\'on, la gesti\'on de la finca se sostiene sobre dos soportes fr\'agiles: registros manuales en bit\'acoras f\'isicas y comunicaci\'on verbal entre el administrador y los jornaleros.
+
+Las consecuencias est\'an documentadas en la evidencia de campo del proyecto (EV-01 a EV-07): p\'erdida de control de producci\'on cuando no se registraron las fundas semanales de pl\'atano, proyecciones err\'oneas derivadas de datos incompletos, imposibilidad de reconstruir el historial de aplicaciones fitosanitarias y reacci\'on tard\'ia ante enfermedades como la moniliasis en cacao y la sigatoka en pl\'atano, a las que se suma una enfermedad nueva sin identificar que afecta la producci\'on. A ello se agrega una brecha estructural entre los perfiles de usuario: un administrador que decide con datos, prefiere gestionar desde el celular y pide expl\'icitamente alertas autom\'aticas; y jornaleros que ejecutan labores con instrucciones semanales verbales y muestran una disposici\'on neutra frente a la tecnolog\'ia.
+
+El problema que este proyecto integrador aborda es, entonces, doble: (i)~la ausencia de un sistema centralizado de gesti\'on agr\'icola que capture la informaci\'on operativa de parcelas, cultivos, labores, cosechas e inventario; y (ii)~la ausencia de capacidad analítica para anticipar problemas fitosanitarios y de abastecimiento antes de que se traduzcan en p\'erdidas. La ingenier\'ia de requisitos es la disciplina que permite especificar ambos frentes con rigor verificable \cite{swebok2024}.
+
+\subsection{Soluci\'on propuesta: el SGA}
+
+El Sistema de Gesti\'on Agr\'icola con Inteligencia Artificial (SGA) se concibe como una aplicaci\'on web que centraliza la informaci\'on de la finca ---parcelas, cultivos de verde y cacao, trabajadores, labores, cosechas, insumos y herramientas--- y que incorpora dos componentes de inteligencia artificial: IA-01, recomendador de manejo agr\'icola basado en los registros del propio sistema, e IA-02, detector de plagas y enfermedades a partir de im\'agenes capturadas en campo. Ambos componentes se especifican con umbrales cuantitativos de rendimiento, equidad y explicabilidad, clasificaci\'on de riesgo conforme al Reglamento (UE) 2024/1689 y cumplimiento de la normativa ecuatoriana de protecci\'on de datos personales \cite{eu20241689,lopdp2021}.
+
+Quedan deliberadamente fuera del alcance de esta versi\'on la aplicaci\'on m\'ovil nativa y los sensores IoT de campo, documentados como \emph{Won't Have} en la priorizaci\'on MoSCoW: el acceso web responsivo cubre las necesidades actuales declaradas por los stakeholders, incluida la preferencia del administrador por el navegador del celular.
+
+\subsection{Objetivos del proyecto integrador}
+
+\subsubsection*{Objetivo general}
+
+Integrar, auditar y defender la Especificaci\'on de Requisitos de Software (ERS) del SGA de AgroMoreira como cierre del proyecto integrador de la asignatura, aplicando m\'etricas de calidad derivadas de ISO/IEC 25010:2023, verificando la trazabilidad end-to-end del requisito a la prueba y especificando los requisitos de los componentes de inteligencia artificial \cite{iso25010}.
+
+\subsubsection*{Objetivos espec\'ificos}
+
+\begin{enumerate}[leftmargin=0.9cm]
+  \item Auditar la calidad del ERS final mediante seis m\'etricas operativas (M1--M6) calculadas sobre conteos reales, publicados antes de calcular, con aritm\'etica visible y acciones de mejora implementadas y re-medidas.
+  \item Verificar y cerrar la trazabilidad end-to-end en la cadena Fuente $\rightarrow$ RF $\rightarrow$ CU $\rightarrow$ Clase $\rightarrow$ Estado $\rightarrow$ BDD $\rightarrow$ CP, eliminando requisitos hu\'erfanos y cadenas rotas.
+  \item Especificar al menos dos componentes de inteligencia artificial con sus bloques de descripci\'on, datos, m\'etricas de \'exito, \'etica/privacidad y monitoreo, incluyendo requisitos de equidad y explicabilidad.
+  \item Consolidar la versi\'on final del ERS (v2.0) y el informe integrador de las cinco unidades con referencias IEEE verificables.
+  \item Defender individualmente ante el tribunal cualquier decisi\'on de ingenier\'ia tomada en el proyecto, anclando cada respuesta en el artefacto correspondiente.
+  \item Ejecutar una retrospectiva de equipo y documentar el aporte individual verificable de cada integrante contra el historial del repositorio.
+\end{enumerate}
+
+\subsection{Alcance del documento y regla de autenticidad}
+
+Este informe cubre el ciclo completo de ingenier\'ia de requisitos ejecutado en cinco pr\'acticas experimentales (PE1--PE5): elicitaci\'on multi-t\'ecnica con evidencia marcada (EV-01 a EV-07, entrevistas ENTR-01 a ENTR-06), an\'alisis y codificaci\'on tem\'atica, modelado organizacional y UML, especificaci\'on conforme a ISO/IEC/IEEE 29148:2018, validaci\'n por inspecci\'on con registro de defectos y re-inspecci\'on, auditor\'ia m\'etrica final, trazabilidad end-to-end, requisitos de IA y preparaci\'on de la defensa t\'ecnica \cite{iso29148}. No cubre el dise\~no detallado, la implementaci\'on ni el entrenamiento efectivo de los modelos de IA: lo que aqu\'i se entrega es la especificaci\'on verificable que sustentar\'a esas fases posteriores.
+
+Siguiendo la regla de autenticidad de la pr\'actica, toda cifra reportada en este documento proviene de artefactos contables del repositorio del equipo: conteos base versionados antes de calcular, scripts PowerShell reproducibles con verificación por hash SHA-256, matriz de trazabilidad fila a fila y registro de defectos fechado. Ninguna m\'etrica se reporta sin el conteo que la respalda \cite{wohlin2012}.
+
+\subsection{Estructura del documento}
+
+El resto del informe se organiza as\'i: la Secci\'on~2 describe la metodolog\'ia de ingenier\'ia de requisitos seguida en PE1--PE5 y justifica las decisiones metodol\'ogicas; la Secci\'on~3 presenta la ERS/SRS final v2.0 y su evoluci\'on de l\'inea base; la Secci\'on~4 interpreta los modelos UML principales; la Secci\'on~5 documenta la validaci\'n (inspecci\'on, correcciones y re-inspecci\'on); la Secci\'on~6 integra la gesti\'n del proyecto y la matriz de trazabilidad end-to-end; la Secci\'on~7 especifica los requisitos de los componentes de inteligencia artificial; la Secci\'on~8 reporta la auditor\'ia de calidad con las seis m\'etricas ISO/IEC 25010:2023 y su comparaci\'n antes/despu\'es; la Secci\'on~9 recoge la retrospectiva Start--Stop--Continue; y la Secci\'on~10 cierra con cinco conclusiones integradoras, una por unidad. Los anexos A--E contienen el instrumento de auditor\'ia, el banco de preguntas del tribunal con respuestas preparadas, la declaraci\'n de aporte individual, la retrospectiva tabulada y la declaraci\'n de uso de asistentes de IA, respectivamente.
