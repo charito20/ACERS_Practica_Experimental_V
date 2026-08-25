@@ -1,0 +1,59 @@
+% ============================================================
+% SECCION 2 - METODOLOGIA DE IR (Robinson Jeanpierre / jean200525)
+% Proceso seguido en PE1-PE5, tecnicas y decisiones justificadas.
+% ============================================================
+\section{Metodolog\'ia de Ingenier\'ia de Requisitos}
+\label{sec:metodologia-ir}
+
+\subsection{Enfoque general}
+
+El proyecto sigui\'o un proceso incremental de ingenier\'ia de requisitos en cinco pr\'acticas experimentales (PE1--PE5), alineado con los procesos t\'ecnicos de definici\'on de requisitos de las partes interesadas y an\'alisis de requisitos del sistema descritos en ISO/IEC/IEEE 15288 e ISO/IEC/IEEE 12207 \cite{iso15288,iso12207}. Cada pr\'actica produjo artefactos versionados en Git y cerr\'o con una entrega evaluable; el resultado acumulado es la ERS v2.0 auditada en este informe. La elecci\'n de un proceso incremental ---y no en cascada--- respondi\'o al contexto real del equipo: stakeholders disponibles por ventanas cortas de tiempo, necesidad de validar temprano cada avance con el administrador de la finca, y evaluaci\'on acad\'emica por entregas parciales que act\'uan como hitos naturales de l\'inea base \cite{pohl2025}.
+
+\begin{center}
+\begin{tabular}{@{}p{1.6cm}@{\;}p{4.4cm}@{\;}p{5.2cm}@{\;}p{3.2cm}@{}}
+\hline
+\textbf{Pr\'actica} & \textbf{Foco} & \textbf{T\'ecnicas principales} & \textbf{Artefactos clave} \\
+\hline
+PE1 & Elicitaci\'on y an\'alisis inicial & Entrevista semiestructurada, encuesta digital, observaci\'on directa & Transcripciones ENTR-01..06, evidencia EV-01..07, codificaci\'on tem\'atica \\
+\hline
+PE2 & Especificaci\'on inicial & Plantilla de atributos, requisitos brutos $\rightarrow$ RF/RNF & ERS v1.0/2A, matriz de trazabilidad inicial \\
+\hline
+PE3 & Modelado y priorizaci\'on & i*, mapa poder/inter\'es, UML, MoSCoW + Kano, mockups & UC/CD/SEQ/AD/SD, MU-01..09, backlog HU \\
+\hline
+PE4 & Validaci\'on & Walkthrough, inspecci\'on formal, RFC & Registro de defectos, correcciones con commit \\
+\hline
+PE5 & Integraci\'on y cierre & Auditor\'ia m\'etrica ISO/IEC 25010, trazabilidad end-to-end, especificaci\'on de IA & Informe final, matriz final, fichas IA \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Elicitaci\'on: t\'ecnicas seleccionadas y justificaci\'on}
+
+La combinaci\'on de t\'ecnicas no fue casual: cada una cubr\'ia una debilidad espec\'ifica de las dem\'as. La \textbf{entrevista semiestructurada} se aplic\'o al administrador (ENTR-01) y a trabajadores (ENTR-02..06) porque da acceso directo al punto de vista del stakeholder y permite profundizar sobre la marcha; produjo la mayor parte de los requisitos funcionales y toda la evidencia cronometrada EV-01/EV-02 que sustenta la trazabilidad hacia atr\'as. La \textbf{encuesta digital} complement\'o a los trabajadores que no expresan necesidades espont\'aneamente en entrevista; confirm\'o, entre otros hallazgos, la recepci\'n verbal de instrucciones y la disposici\'on condicionada al uso de dispositivos. La \textbf{observaci\'on directa} durante las visitas (fotograf\'ias fechadas del entorno y de procesos AS-IS) valid\'o que lo declarado coincidiera con lo practicado, revelando el peso real del registro manual. El \textbf{an\'alisis documental} de transcripciones, fichas t\'ecnicas y respuestas cerr\'o el ciclo con codificaci\'on tem\'atica reproducible.
+
+Esta triangulaci\'on es la recomendada cuando los stakeholders tienen perfiles heterog\'eneos y disponibilidad limitada: ninguna t\'ecnica sola habr\'ia capturado tanto la visi\'on gerencial del administrador como las restricciones operativas reales de los jornaleros \cite{swebok2024,pohl2025}. Cada requisito clave conserva su referencia de origen (EV-XX con marca de tiempo), lo que hizo posible medir M4atr (trazabilidad hacia atr\'as) sin trabajo arqueol\'ogico posterior \cite{gotel1994}.
+
+\subsection{An\'alisis, modelado y especificaci\'on: decisiones metodol\'ogicas}
+
+Cuatro decisiones definen la fase central del proceso y se justifican por su consecuencia observable:
+
+\begin{itemize}[leftmargin=0.8cm]
+  \item \textbf{Modelado organizacional previo (i* y mapa poder/inter\'es).} Antes de modelar el sistema se modelaron los dependencias estrat\'egicas entre actores. Esta decisi\'n anticip\'o la brecha admin/jornalero que luego determin\'o dos flujos de uso diferenciados por rol y evit\'o especificar funciones de decisi\'on para usuarios que solo necesitan recibir instrucciones.
+  \item \textbf{Plantilla de ocho atributos por requisito.} Todo requisito nace con identificador \'unico, nombre, descripci\'on, actores, prioridad, precondiciones, flujo principal y postcondiciones/criterio de aceptaci\'on. Fue la decisi\'on de mayor retorno: M1a (completitud de atributos) lleg\'o a 100\,\% sin esfuerzo de cierre y la verificabilidad dej\'o de depender de revisiones heroicas \cite{iso29148}.
+  \item \textbf{Criterios de aceptaci\'on en notaci\'on Dado--Cuando--Entonces.} Adoptar BDD/Gherkin conect\'o directamente cada historia de usuario del backlog con su caso de prueba conceptual, habilitando la cadena end-to-end completa exigida en PE5 \cite{ireb2026,hoyxu2023}.
+  \item \textbf{Priorizaci\'n MoSCoW complementada con Kano.} MoSCoW delimit\'o el alcance negociable (con Won't Have explícitos: app nativa e IoT); Kano aport\'o la lectura de satisfaccion para distinguir requisitos b\'asicos de diferenciadores. Ambos resultados quedaron versionados (\texttt{priorizacion\_moscow\_kano.csv}) y son la base de las decisiones de alcance defendidas ante el tribunal.
+\end{itemize}
+
+El modelado UML (contexto, casos de uso, clases refinadas, secuencias por caso de uso, actividad operativa y estados) se realiz\'o en Draw.io con convenci\'on de identificadores estable (UC-, CD-, SEQ-, AD-, SD-) y exportaci\'n dual .drawio/.png para que la matriz de trazabilidad pueda referenciar cada diagrama como artefacto contable.
+
+\subsection{Validaci\'on y control de calidad documental}
+
+La estrategia de validaci\'n combin\'o verificaci\'on temprana y detecci\'n tard\'ia: un \textbf{walkthrough} con stakeholders durante PE3 para validar comprensibilidad de mockups y flujos, seguido de una \textbf{inspecci\'on formal} del ERS en PE4 con registro estructurado de defectos y solicitudes de cambio (RFC) resueltas con commit de evidencia, y una \textbf{re-inspecci\'on} en PE5 sobre el documento ya corregido para contar defectos residuales (insumo directo de la m\'etrica M6). El ciclo medir--corregir--volver a medir se trat\'o expl\'icitamente como experimento: conteos publicados antes de calcular, scripts PowerShell deterministas y comparaci\'on de salidas por hash SHA-256 para garantizar que ninguna mejora reportada fuera fruto de un conteo distinto \cite{wohlin2012,iso25010}.
+
+\subsection{Gesti\'on del proyecto integrador}
+
+La gesti\'n sigui\'o los dominios de desempe\~no de PMBOK 7.\textsuperscript{a}~edici\'on adaptados a un equipo acad\'emico de cinco personas \cite{pmbok7}: alcance acordado por plan de reparto con responsable por paso; tablero de historias de usuario sincronizado con el cat\'alogo de RF; repositorio Git p\'ublico como fuente \'unica de verdad con commits granulares por artefacto; y l\'inea base final etiquetada con checksums (\texttt{checksums.sha256}) para la entrega. Los roles se asignaron por fortaleza demostrada ---an\'alisis estad\'istico, especificaci\'on de IA, modelado, validaci\'n experimental e infraestructura--- pero con defensa cruzada obligatoria: cualquier integrante debe poder explicar el bloque de otro, condici\'on que el tribunal verifica individualmente.
+
+\subsection{Marcos normativos aplicados}
+
+Tres marcos convergen en la metodolog\'ia y explican decisiones concretas de especificaci\'n. Primero, ISO/IEC/IEEE 29148:2018 defini\'o la estructura del SRS y las caracter\'isticas de calidad exigibles a cada requisito individual y al conjunto \cite{iso29148}; ISO/IEC 25010:2023 provey\'o el modelo de calidad del que derivan tanto los RNF cuantificados como las seis m\'etricas de auditor\'ia \cite{iso25010}. Segundo, para los componentes de IA, la literatura especializada en ingenier\'ia de requisitos para aprendizaje autom\'atico fundament\'o la introducci\'n de umbrales probabil\'sticos, equidad y explicabilidad como requisitos de primera clase \cite{vogelsang2019,ahmad2023}, y el Reglamento (UE) 2024/1689 impuso el enfoque basado en riesgo que clasifica el sistema y deriva obligaciones trazables \cite{eu20241689}. Tercero, la normativa ecuatoriana de protecci\'n de datos (LOPDP y su reglamento) fij\'o base legal, minimizaci\'on y plazos de conservaci\'on para los registros productivos que el sistema trata \cite{lopdp2021,decreto904}. Cada obligaci\'n legal se convirti\'o en requisito con criterio de verificaci\'on, no en declaraci\'n de intenciones.
