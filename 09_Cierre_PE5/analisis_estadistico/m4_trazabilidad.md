@@ -1,5 +1,12 @@
 # M4 — Trazabilidad
 
+> **Ola 2 (2026-08-24, `ERS_SRS_2A_v2.0.tex`, 57 requisitos):** M4atr = 57/57 ×
+> 100 = **100 %** tras la corrección de origen en RNF-20, RNF-24 y RNF-25
+> (misma acción que cerró M1a). M4ade se mantiene en 16/16 sobre el alcance
+> «Debe tener»: RF-28 a RF-31 son «Debería tener» y amplían la población
+> «Debería/Podría» de 11 a 15 RF con la misma decisión de alcance declarada.
+> El cuerpo de este documento conserva la medición de la ola 1.
+
 **Fórmulas:**
 
 - M4ade = (# RF con cadena hacia adelante completa) / (# RF) × 100

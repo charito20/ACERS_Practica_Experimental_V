@@ -1,5 +1,9 @@
 # M3 — Verificabilidad
 
+> **Ola 2 (2026-08-24, `ERS_SRS_2A_v2.0.tex`, 57 requisitos):** M3 = 57/57 × 100
+> = **100 %**; las 15 fichas de IA nacieron con umbral, unidad y método. El
+> cuerpo de este documento conserva la medición de la ola 1 (42/42).
+
 **Fórmula:** M3 = (# requisitos con criterio comprobable) / (# requisitos totales) × 100
 
 **Referencia:** ≥ 90 %, con 100 % en RF críticos.

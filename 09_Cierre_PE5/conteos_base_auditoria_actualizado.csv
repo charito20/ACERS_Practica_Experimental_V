@@ -9,6 +9,7 @@ Partes interesadas no operativas;2;Equipo de desarrollo y Docente (sin RF asocia
 Historias de usuario en el ERS;16;HU para los 16 RF de prioridad Debe tener (seccion 3.4 del ERS v1.0); RF-28 a RF-31 son prioridad Deberia tener, fuera de este alcance, igual que RF-17 a RF-27
 Filas de datos de la matriz de trazabilidad;42;sin cambio; RF-28 a RF-31 y RNF-16 a RNF-26 (15 filas nuevas) todavia no tienen fila en la matriz -- pendiente de Danela (Paso 2)
 Requisitos con criterio de verificacion cuantificado (umbral+unidad+metodo);57;revision ficha por ficha de ERS_SRS_2A_v2.0.tex, incluidas las 15 fichas nuevas (RF-28 a RF-31, RNF-16 a RNF-26)
-Pares de requisitos analizados (M2);1596;n(n-1)/2 con n=57 (antes de la PE5, con n=42: 861) -- conteo base para Robinson (Paso 1)
+Pares totales posibles (todos contra todos);1596;n(n-1)/2 con n=57 (con n=42: 861) -- registrado solo como conteo base de referencia, no como pares efectivamente analizados
+Pares intra-ambito medidos por el script (M2);191;nueve ambitos funcionales con n=57 (linea base: ocho ambitos y 116 pares con n=42); salida reproducible m2_pares_analizados.csv -- cero conflictos en ambas olas
 Defectos de la linea base corregida (ciclo Entrega 2 a Entrega 3);9;registro_defectos_lineabase_1B_2A.csv (no reverificado en esta sesion)
 Hallazgos de la re-inspeccion PE5 (22-08-2026);5;registro_reinspeccion_PE5.csv (no reverificado en esta sesion)

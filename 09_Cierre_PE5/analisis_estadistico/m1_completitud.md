@@ -1,5 +1,11 @@
 # M1 — Completitud
 
+> **Ola 2 (2026-08-24, `ERS_SRS_2A_v2.0.tex`, 57 requisitos):** la primera
+> medición dio M1a = 54/57 × 100 = **94,7 %**, por Origen sin fuente trazable
+> en RNF-20, RNF-24 y RNF-25; aplicada la corrección (referencia al requisito
+> de origen en las tres fichas) y re-medida: **57/57 = 100 %**. El cuerpo de
+> este documento conserva la medición de la ola 1 (42/42).
+
 **Fórmulas (guía PE5, sección 4.2):**
 
 - M1a = (# requisitos con los 4 atributos completos) / (# requisitos totales) × 100

@@ -28,3 +28,22 @@ Interacción de usuario con RNF-04 y RNF-12. La cobertura de mínimos se cumple
 en ambas lecturas (ninguna característica queda bajo su mínimo), pero se
 recomienda unificar la clasificación del RNF-15 en una próxima revisión menor
 del documento. No altera ninguna métrica M1–M4 reportada.
+
+## Ola 2 — verificación sobre `ERS_SRS_2A_v2.0.tex` (2026-08-24)
+
+**Procedimiento:** doble ejecución de `conteo_requisitos.ps1 -ErsPath
+..\..\01_ERS\ERS_SRS_2A_v2.0.tex` más `generar_pares_m2.ps1`, con comparación
+de hash SHA-256 de todas las salidas CSV: **idénticas bit a bit**.
+
+| Archivo | SHA-256 (primeros 16 hex) |
+|---|---|
+| aritmetica_metricas.csv | `1B57A5A92E75607F`… |
+| historias_usuario.csv | `11093BDB5F8596AA`… (sin cambio respecto a la ola 1) |
+| inventario_rf.csv | `487235EFC9BCFECC`… (31 RF) |
+| inventario_rnf.csv | `53F91907240E92CA`… (26 RNF) |
+| m2_pares_analizados.csv | `CAA546F073B18EF3`… (191 pares, 0 conflictos) |
+| resumen_conteos.csv | `D43A7D39AD98FF8D`… |
+
+El conteo sobre la versión 2.0 es igualmente determinista; los hashes de
+inventarios y resumen difieren de la ola 1 por diseño (población de 42 a 57
+requisitos y corrección de Origen en tres fichas).
